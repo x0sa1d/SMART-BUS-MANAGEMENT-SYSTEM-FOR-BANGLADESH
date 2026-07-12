@@ -1,0 +1,893 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  MANAGER
+  DRIVER
+  PASSENGER
+}
+
+enum CompanyStatus {
+  ACTIVE
+  PENDING
+  SUSPENDED
+  REJECTED
+}
+
+enum StopType {
+  TERMINAL
+  BUS_STAND
+  UPAZILA_STOP
+  TOURIST
+  COMMERCIAL
+}
+
+enum BusStatus {
+  ACTIVE
+  IN_MAINTENANCE
+  AVAILABLE
+  RUNNING
+}
+
+enum BusType {
+  STANDARD
+  DELUXE
+  AC
+  NON_AC
+}
+
+enum TripStatus {
+  SCHEDULED
+  BOARDING
+  IN_TRANSIT
+  COMPLETED
+  CANCELLED
+  DELAYED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum TicketStatus {
+  ISSUED
+  VERIFIED
+  CANCELLED
+}
+
+enum SeatType {
+  REGULAR
+  PREMIUM
+  VIP
+}
+
+enum SeatStatus {
+  AVAILABLE
+  BOOKED
+  RESERVED
+  BLOCKED
+}
+
+enum PaymentMethod {
+  CASH
+  BKASH
+  NAGAD
+  ROCKET
+  SSLCOMMERZ
+  CARD
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum MaintenanceStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  OVERDUE
+}
+
+enum NotificationType {
+  BOOKING_CONFIRMATION
+  TRIP_REMINDER
+  DELAY_ALERT
+  PAYMENT_CONFIRMATION
+  MAINTENANCE_ALERT
+}
+
+enum NotificationChannel {
+  EMAIL
+  SMS
+  PUSH
+}
+
+enum ReportType {
+  DAILY_SALES
+  MONTHLY_REVENUE
+  DRIVER_PERFORMANCE
+  ROUTE_PERFORMANCE
+  PASSENGER_STATISTICS
+  MAINTENANCE_COSTS
+}
+
+enum ReportFormat {
+  PDF
+  EXCEL
+  CSV
+}
+
+enum RefundStatus {
+  REQUESTED
+  APPROVED
+  REJECTED
+  PROCESSED
+}
+
+enum FareRuleType {
+  BASE
+  SEAT_TYPE
+  PEAK_HOUR
+  SEASONAL
+  ROUTE
+}
+
+enum DocumentType {
+  LICENSE
+  INSURANCE
+  REGISTRATION
+  FITNESS
+  PERMIT
+}
+
+enum SeatHoldStatus {
+  ACTIVE
+  EXPIRED
+  CONVERTED
+  CANCELLED
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          Role      @default(PASSENGER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  sessions      Session[]
+  accounts      Account[]
+  passenger     Passenger?
+  driver        Driver?
+  notifications Notification[]
+  companyId     String?
+  company       BusCompany? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  verifiedTickets Ticket[] @relation("TicketVerifiedBy")
+
+  @@index([email])
+  @@index([role])
+  @@index([companyId])
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model Account {
+  id                    String    @id @default(uuid())
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Verification {
+  id         String   @id @default(uuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("verifications")
+}
+
+model Passenger {
+  id                    String    @id @default(uuid())
+  userId                String?   @unique
+  user                  User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  fullName              String
+  phone                 String
+  email                 String
+  address               String?
+  emergencyContact      String?
+  emergencyPhone        String?
+  loyaltyPoints         Int       @default(0)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  deletedAt             DateTime?
+
+  bookings            Booking[]
+  loyaltyTransactions LoyaltyTransaction[]
+
+  @@index([email])
+  @@index([phone])
+  @@map("passengers")
+}
+
+model Driver {
+  id              String    @id @default(uuid())
+  userId          String?   @unique
+  user            User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  fullName        String
+  licenseNumber   String    @unique
+  phone           String
+  email           String
+  experience      Int       @default(0)
+  licenseExpiry   DateTime?
+  nidNumber       String?
+  address         String?
+  rating          Float     @default(0)
+  totalTrips      Int       @default(0)
+  isActive        Boolean   @default(true)
+  companyId       String?
+  company         BusCompany? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  buses           Bus[]
+  schedules       Schedule[]
+  trips           Trip[]
+  maintenances    Maintenance[]
+  performances    DriverPerformance[]
+  documents       DriverDocument[]
+
+  @@index([licenseNumber])
+  @@index([isActive])
+  @@index([companyId])
+  @@map("drivers")
+}
+
+model Bus {
+  id                 String    @id @default(uuid())
+  busNumber          String    @unique
+  registrationNumber String    @unique
+  busType            BusType   @default(STANDARD)
+  capacity           Int
+  isAC               Boolean   @default(false)
+  driverId           String?
+  driver             Driver?   @relation(fields: [driverId], references: [id], onDelete: SetNull)
+  companyId          String?
+  company            BusCompany? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  status             BusStatus @default(AVAILABLE)
+  currentLat         Float?
+  currentLng         Float?
+  lastLocationUpdate DateTime?
+  insuranceExpiry    DateTime?
+  registrationExpiry DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  deletedAt          DateTime?
+
+  seats        Seat[]
+  schedules    Schedule[]
+  trips        Trip[]
+  maintenances Maintenance[]
+  documents    BusDocument[]
+
+  @@index([status])
+  @@index([driverId])
+  @@index([companyId])
+  @@map("buses")
+}
+
+model Route {
+  id                    String    @id @default(uuid())
+  name                  String
+  source                String
+  destination           String
+  sourceDistrictId      String?
+  sourceDistrict        District? @relation("SourceDistrict", fields: [sourceDistrictId], references: [id], onDelete: SetNull)
+  destinationDistrictId String?
+  destinationDistrict   District? @relation("DestDistrict", fields: [destinationDistrictId], references: [id], onDelete: SetNull)
+  distance              Float
+  estimatedDuration     Int
+  isActive              Boolean   @default(true)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  deletedAt             DateTime?
+
+  stops     RouteStop[]
+  schedules Schedule[]
+  fareRules FareRule[]
+
+  @@unique([sourceDistrictId, destinationDistrictId])
+  @@index([isActive])
+  @@index([sourceDistrictId])
+  @@index([destinationDistrictId])
+  @@map("routes")
+}
+
+model Division {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  nameBn    String?
+  code      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  districts District[]
+
+  @@map("divisions")
+}
+
+model District {
+  id         String    @id @default(uuid())
+  name       String    @unique
+  nameBn     String?
+  code       String    @unique
+  divisionId String
+  division   Division  @relation(fields: [divisionId], references: [id], onDelete: Cascade)
+  latitude   Float?
+  longitude  Float?
+  isHub      Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+
+  sourceRoutes      Route[] @relation("SourceDistrict")
+  destinationRoutes Route[] @relation("DestDistrict")
+  stops             Stop[]
+  upazilas          Upazila[]
+  companies         BusCompany[]
+
+  @@index([divisionId])
+  @@index([isHub])
+  @@map("districts")
+}
+
+model Upazila {
+  id         String   @id @default(uuid())
+  name       String
+  nameBn     String?
+  code       String   @unique
+  districtId String
+  district   District @relation(fields: [districtId], references: [id], onDelete: Cascade)
+  latitude   Float?
+  longitude  Float?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  stops Stop[]
+
+  @@unique([districtId, name])
+  @@index([districtId])
+  @@map("upazilas")
+}
+
+model BusCompany {
+  id              String        @id @default(uuid())
+  name            String
+  nameBn          String?
+  code            String        @unique
+  logo            String?
+  phone           String?
+  email           String?
+  address         String?
+  website         String?
+  districtId      String?
+  district        District?     @relation(fields: [districtId], references: [id], onDelete: SetNull)
+  status          CompanyStatus @default(ACTIVE)
+  fleetSize       Int           @default(0)
+  rating          Float         @default(4.0)
+  isNational      Boolean       @default(false)
+  foundedYear     Int?
+  contactName     String?
+  appliedAt       DateTime?
+  reviewedAt      DateTime?
+  reviewedById    String?
+  rejectionReason String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  deletedAt       DateTime?
+
+  buses   Bus[]
+  drivers Driver[]
+  users   User[]
+
+  @@index([status])
+  @@index([districtId])
+  @@index([isNational])
+  @@map("bus_companies")
+}
+
+model Stop {
+  id         String    @id @default(uuid())
+  name       String
+  city       String
+  districtId String?
+  district   District? @relation(fields: [districtId], references: [id], onDelete: SetNull)
+  upazilaId  String?
+  upazila    Upazila?  @relation(fields: [upazilaId], references: [id], onDelete: SetNull)
+  stopType   StopType  @default(BUS_STAND)
+  isTerminal Boolean   @default(false)
+  latitude   Float?
+  longitude  Float?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+
+  routeStops RouteStop[]
+
+  @@index([city])
+  @@index([districtId])
+  @@index([upazilaId])
+  @@index([isTerminal])
+  @@map("stops")
+}
+
+model RouteStop {
+  id        String @id @default(uuid())
+  routeId   String
+  route     Route  @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  stopId    String
+  stop      Stop   @relation(fields: [stopId], references: [id], onDelete: Cascade)
+  order     Int
+  createdAt DateTime @default(now())
+
+  @@unique([routeId, stopId])
+  @@index([routeId])
+  @@map("route_stops")
+}
+
+model Schedule {
+  id            String    @id @default(uuid())
+  routeId       String
+  route         Route     @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  busId         String
+  bus           Bus       @relation(fields: [busId], references: [id], onDelete: Cascade)
+  driverId      String
+  driver        Driver    @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  departureTime String
+  arrivalTime   String
+  fare          Decimal   @db.Decimal(10, 2)
+  isActive      Boolean   @default(true)
+  daysOfWeek    String[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  trips Trip[]
+
+  @@index([routeId])
+  @@index([busId])
+  @@index([isActive])
+  @@map("schedules")
+}
+
+model Trip {
+  id          String     @id @default(uuid())
+  scheduleId  String
+  schedule    Schedule   @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  busId       String
+  bus         Bus        @relation(fields: [busId], references: [id], onDelete: Cascade)
+  driverId    String
+  driver      Driver     @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  tripDate    DateTime   @db.Date
+  status      TripStatus @default(SCHEDULED)
+  currentLat  Float?
+  currentLng  Float?
+  eta         DateTime?
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  deletedAt   DateTime?
+
+  bookings  Booking[]
+  locations TripLocation[]
+
+  @@index([tripDate])
+  @@index([status])
+  @@index([scheduleId])
+  @@map("trips")
+}
+
+model Seat {
+  id        String     @id @default(uuid())
+  busId     String
+  bus       Bus        @relation(fields: [busId], references: [id], onDelete: Cascade)
+  seatNumber String
+  seatType  SeatType   @default(REGULAR)
+  row       Int
+  column    Int
+  status    SeatStatus @default(AVAILABLE)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  deletedAt DateTime?
+
+  bookings Booking[]
+  holds    SeatHold[]
+
+  @@unique([busId, seatNumber])
+  @@index([busId])
+  @@index([status])
+  @@map("seats")
+}
+
+model Booking {
+  id            String        @id @default(uuid())
+  ticketNumber  String        @unique
+  passengerId   String
+  passenger     Passenger     @relation(fields: [passengerId], references: [id], onDelete: Cascade)
+  tripId        String
+  trip          Trip          @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  seatId        String
+  seat          Seat          @relation(fields: [seatId], references: [id], onDelete: Cascade)
+  fare          Decimal       @db.Decimal(10, 2)
+  status        BookingStatus @default(PENDING)
+  qrCode        String?
+  bookedAt      DateTime      @default(now())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  deletedAt     DateTime?
+
+  payment Payment?
+  ticket  Ticket?
+  refund  Refund?
+
+  @@index([passengerId])
+  @@index([tripId])
+  @@index([status])
+  @@index([ticketNumber])
+  @@map("bookings")
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  bookingId     String        @unique
+  booking       Booking       @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  amount        Decimal       @db.Decimal(10, 2)
+  method        PaymentMethod
+  status        PaymentStatus @default(PENDING)
+  transactionId String?
+  gatewayRef    String?
+  paidAt        DateTime?
+  refundedAt    DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  deletedAt     DateTime?
+
+  refund Refund?
+
+  @@index([status])
+  @@index([method])
+  @@map("payments")
+}
+
+model Ticket {
+  id             String       @id @default(uuid())
+  bookingId      String       @unique
+  booking        Booking      @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  ticketNumber   String       @unique
+  verificationId String?      @unique
+  qrCodeData     String
+  status         TicketStatus @default(ISSUED)
+  verifiedAt     DateTime?
+  verifiedById   String?
+  verifiedBy     User?        @relation("TicketVerifiedBy", fields: [verifiedById], references: [id], onDelete: SetNull)
+  issuedAt       DateTime     @default(now())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  deletedAt      DateTime?
+
+  @@index([ticketNumber])
+  @@index([verificationId])
+  @@index([status])
+  @@map("tickets")
+}
+
+model Maintenance {
+  id          String            @id @default(uuid())
+  busId       String
+  bus         Bus               @relation(fields: [busId], references: [id], onDelete: Cascade)
+  driverId    String?
+  driver      Driver?           @relation(fields: [driverId], references: [id], onDelete: SetNull)
+  title       String
+  description String?
+  cost        Decimal           @db.Decimal(10, 2) @default(0)
+  status      MaintenanceStatus @default(SCHEDULED)
+  scheduledAt DateTime
+  completedAt DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  deletedAt   DateTime?
+
+  @@index([busId])
+  @@index([status])
+  @@map("maintenances")
+}
+
+model Notification {
+  id        String              @id @default(uuid())
+  userId    String
+  user      User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      NotificationType
+  channel   NotificationChannel @default(EMAIL)
+  isRead    Boolean             @default(false)
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+
+  @@index([userId])
+  @@index([isRead])
+  @@map("notifications")
+}
+
+model Settings {
+  id              String   @id @default(uuid())
+  companyName     String   @default("Smart Bus Management")
+  companyAddress  String?
+  companyPhone    String?
+  companyEmail    String?
+  currency        String   @default("BDT")
+  taxRate         Decimal  @db.Decimal(5, 2) @default(0)
+  bookingFee      Decimal  @db.Decimal(10, 2) @default(0)
+  cancellationFee Decimal  @db.Decimal(10, 2) @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("settings")
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  details   String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model Refund {
+  id          String       @id @default(uuid())
+  paymentId   String       @unique
+  payment     Payment      @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  bookingId   String       @unique
+  booking     Booking      @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  amount      Decimal      @db.Decimal(10, 2)
+  reason      String?
+  status      RefundStatus @default(REQUESTED)
+  processedBy String?
+  processedAt DateTime?
+  gatewayRef  String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([status])
+  @@index([bookingId])
+  @@map("refunds")
+}
+
+model Report {
+  id          String       @id @default(uuid())
+  title       String
+  type        ReportType
+  format      ReportFormat @default(PDF)
+  generatedBy String?
+  fileUrl     String?
+  parameters  String?
+  summary     String?
+  startDate   DateTime?
+  endDate     DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  deletedAt   DateTime?
+
+  @@index([type])
+  @@index([createdAt])
+  @@map("reports")
+}
+
+model TripLocation {
+  id        String   @id @default(uuid())
+  tripId    String
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  latitude  Float
+  longitude Float
+  speed     Float?
+  heading   Float?
+  recordedAt DateTime @default(now())
+
+  @@index([tripId])
+  @@index([recordedAt])
+  @@map("trip_locations")
+}
+
+model FareRule {
+  id          String       @id @default(uuid())
+  routeId     String?
+  route       Route?       @relation(fields: [routeId], references: [id], onDelete: SetNull)
+  name        String
+  ruleType    FareRuleType @default(BASE)
+  seatType    SeatType?
+  multiplier  Decimal      @db.Decimal(5, 2) @default(1)
+  fixedAmount Decimal?     @db.Decimal(10, 2)
+  startTime   String?
+  endTime     String?
+  validFrom   DateTime?
+  validUntil  DateTime?
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  deletedAt   DateTime?
+
+  @@index([routeId])
+  @@index([ruleType])
+  @@index([isActive])
+  @@map("fare_rules")
+}
+
+model DriverPerformance {
+  id              String   @id @default(uuid())
+  driverId        String
+  driver          Driver   @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  month           Int
+  year            Int
+  tripsCompleted  Int      @default(0)
+  onTimeRate      Float    @default(0)
+  rating          Float    @default(0)
+  incidents       Int      @default(0)
+  distanceCovered Float    @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([driverId, month, year])
+  @@index([driverId])
+  @@map("driver_performances")
+}
+
+model LoyaltyTransaction {
+  id          String    @id @default(uuid())
+  passengerId String
+  passenger   Passenger @relation(fields: [passengerId], references: [id], onDelete: Cascade)
+  points      Int
+  description String
+  bookingId   String?
+  createdAt   DateTime  @default(now())
+
+  @@index([passengerId])
+  @@index([createdAt])
+  @@map("loyalty_transactions")
+}
+
+model SeatHold {
+  id          String         @id @default(uuid())
+  seatId      String
+  seat        Seat           @relation(fields: [seatId], references: [id], onDelete: Cascade)
+  tripId      String
+  sessionId   String
+  passengerId String?
+  status      SeatHoldStatus @default(ACTIVE)
+  expiresAt   DateTime
+  createdAt   DateTime       @default(now())
+
+  @@index([seatId, tripId])
+  @@index([tripId])
+  @@index([sessionId])
+  @@index([expiresAt])
+  @@index([status])
+  @@map("seat_holds")
+}
+
+model BusDocument {
+  id         String       @id @default(uuid())
+  busId      String
+  bus        Bus          @relation(fields: [busId], references: [id], onDelete: Cascade)
+  type       DocumentType
+  documentNo String
+  fileUrl    String?
+  issuedAt   DateTime?
+  expiresAt  DateTime
+  isActive   Boolean      @default(true)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  deletedAt  DateTime?
+
+  @@index([busId])
+  @@index([type])
+  @@index([expiresAt])
+  @@map("bus_documents")
+}
+
+model DriverDocument {
+  id         String       @id @default(uuid())
+  driverId   String
+  driver     Driver       @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  type       DocumentType @default(LICENSE)
+  documentNo String
+  fileUrl    String?
+  issuedAt   DateTime?
+  expiresAt  DateTime
+  isActive   Boolean      @default(true)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  deletedAt  DateTime?
+
+  @@index([driverId])
+  @@index([expiresAt])
+  @@map("driver_documents")
+}
+
+model Permission {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  description String?
+  module      String
+  createdAt   DateTime         @default(now())
+  roles       RolePermission[]
+
+  @@index([module])
+  @@map("permissions")
+}
+
+model RolePermission {
+  id           String     @id @default(uuid())
+  role         Role
+  permissionId String
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+
+  @@unique([role, permissionId])
+  @@index([role])
+  @@map("role_permissions")
+}
