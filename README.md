@@ -74,8 +74,15 @@ Open [http://localhost:3000](http://localhost:3000)
 ### Demo Credentials
 
 After seeding:
-- **Admin:** `admin@smartbus.com` / `Admin@12345`
-- Register a new account for passenger access
+
+| Role | Email | Password |
+|------|-------|----------|
+| **Super Admin** | `admin@smartbus.com` | `Admin@12345` |
+| **Platform Admin** | `manager@smartbus.com` | `Manager@12345` |
+| **Passenger** | `passenger@smartbus.com` | `Passenger@12345` |
+| **Driver** | `driver@smartbus.com` | `Driver@12345` |
+
+You can also register a new passenger account from `/register`.
 
 ## Project Structure
 

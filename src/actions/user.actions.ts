@@ -12,6 +12,7 @@ import {
 import { success, failure, getErrorMessage } from "@/lib/action-utils";
 import { adminSchema, createUserSchema, profileSchema, updateUserRoleSchema } from "@/schemas";
 import { ROLE_LABELS, isRemovableUserRole } from "@/lib/permissions";
+import { ensureDriverProfileForUser, unlinkDriverProfile } from "@/lib/user-profiles";
 import type { Role } from "@prisma/client";
 
 export async function getUsers() {
@@ -136,6 +137,10 @@ export async function createUser(formData: FormData) {
 
     const { name, email, password, role, companyId } = parsed.data;
 
+    if (role === "MANAGER" && !companyId) {
+      return failure("Platform Admin accounts must be created from the Admins panel.");
+    }
+
     if (role === "MANAGER" && companyId) {
       const company = await db.busCompany.findFirst({
         where: { id: companyId, deletedAt: null },
@@ -143,7 +148,11 @@ export async function createUser(formData: FormData) {
       if (!company) return failure("Company not found");
     }
 
-    await upsertCredentialUser(email, name, password, role, role === "MANAGER" ? companyId : null);
+    const userId = await upsertCredentialUser(email, name, password, role, role === "MANAGER" ? companyId : null);
+
+    if (role === "DRIVER") {
+      await ensureDriverProfileForUser(userId, { fullName: name, email });
+    }
 
     revalidateSystem();
     return success({ email });
@@ -175,6 +184,12 @@ export async function updateUserRole(formData: FormData) {
       if (!company) return failure("Company not found");
     }
 
+    if (role === "MANAGER" && !companyId) {
+      return failure("Platform Admin accounts are managed from the Admins panel.");
+    }
+
+    const previousRole = user.role;
+
     await db.user.update({
       where: { id: userId },
       data: {
@@ -182,6 +197,12 @@ export async function updateUserRole(formData: FormData) {
         companyId: role === "MANAGER" ? companyId ?? null : null,
       },
     });
+
+    if (role === "DRIVER") {
+      await ensureDriverProfileForUser(userId, { fullName: user.name, email: user.email });
+    } else if (previousRole === "DRIVER") {
+      await unlinkDriverProfile(userId);
+    }
 
     revalidateSystem();
     return success(null);

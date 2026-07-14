@@ -38,7 +38,7 @@ export const auth = betterAuth({
         type: "string",
         required: false,
         defaultValue: "PASSENGER",
-        input: true,
+        input: false,
       },
       companyId: {
         type: "string",

@@ -1,5 +1,4 @@
 import { db } from "@/lib/db";
-import { hashPassword } from "better-auth/crypto";
 import {
   seedBangladeshLocations,
   seedBangladeshRoutes,
@@ -10,6 +9,7 @@ import { seedBusCompanies, linkBusesAndDriversToCompanies } from "./seed-compani
 import { seedFleet, refreshScheduleFares } from "./seed-fleet";
 import { seedUpazilas, upgradeTerminalStops } from "./seed-upazilas";
 import { seedSamplePassengerBookings } from "./seed-bookings";
+import { seedDemoAccounts } from "./seed-users";
 
 async function main() {
   console.log("Seeding database...");
@@ -24,33 +24,6 @@ async function main() {
         companyEmail: "info@smartbus.com",
       },
     });
-  }
-
-  const adminEmail = "admin123super@gmail.com";
-  const existingAdmin = await db.user.findUnique({ where: { email: adminEmail } });
-
-  if (!existingAdmin) {
-    const adminId = crypto.randomUUID();
-    const hashedPassword = await hashPassword("admin123super");
-
-    await db.user.create({
-      data: {
-        id: adminId,
-        name: "Super Admin",
-        email: adminEmail,
-        emailVerified: true,
-        role: "SUPER_ADMIN",
-        accounts: {
-          create: {
-            id: crypto.randomUUID(),
-            accountId: adminId,
-            providerId: "credential",
-            password: hashedPassword,
-          },
-        },
-      },
-    });
-    console.log("Created admin: admin@smartbus.com / Admin@12345");
   }
 
   const driver1 = await db.driver.upsert({
@@ -146,30 +119,7 @@ async function main() {
     }
   }
 
-  const passengerEmail = "passenger@smartbus.com";
-  const existingPassenger = await db.user.findUnique({ where: { email: passengerEmail } });
-  if (!existingPassenger) {
-    const passengerId = crypto.randomUUID();
-    const hashedPassword = await hashPassword("Passenger@12345");
-    await db.user.create({
-      data: {
-        id: passengerId,
-        name: "Demo Passenger",
-        email: passengerEmail,
-        emailVerified: true,
-        role: "PASSENGER",
-        accounts: {
-          create: {
-            id: crypto.randomUUID(),
-            accountId: passengerId,
-            providerId: "credential",
-            password: hashedPassword,
-          },
-        },
-      },
-    });
-    console.log("Created passenger: passenger@smartbus.com / Passenger@12345");
-  }
+  await seedDemoAccounts(driver1.id);
 
   // Bangladesh: 8 divisions, 64 districts, nationwide routes
   await seedBangladeshLocations();
@@ -234,6 +184,23 @@ async function main() {
         create: { role, permissionId: perm.id },
       });
     }
+  }
+
+  const passengerBook = allPermissions.find((p) => p.name === "book_tickets");
+  const driverTrips = allPermissions.find((p) => p.name === "view_trips");
+  if (passengerBook) {
+    await db.rolePermission.upsert({
+      where: { role_permissionId: { role: "PASSENGER", permissionId: passengerBook.id } },
+      update: {},
+      create: { role: "PASSENGER", permissionId: passengerBook.id },
+    });
+  }
+  if (driverTrips) {
+    await db.rolePermission.upsert({
+      where: { role_permissionId: { role: "DRIVER", permissionId: driverTrips.id } },
+      update: {},
+      create: { role: "DRIVER", permissionId: driverTrips.id },
+    });
   }
 
   // Fare rules for Dhaka-Chattogram route
