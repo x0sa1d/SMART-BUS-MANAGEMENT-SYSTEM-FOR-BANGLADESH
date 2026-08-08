@@ -32,7 +32,7 @@ export const REGISTERED_COMPANIES = [
   "Silkline Paribahan",
   "Citycom",
   "Challenger",
-  // A–C
+  // A-C
   "AC Delux",
   "AC Super",
   "Abdullah Paribahan",
@@ -58,7 +58,7 @@ export const REGISTERED_COMPANIES = [
   "Chondra Paribahan",
   "Chuadanga Delux",
   "Comfort Line",
-  // D–G
+  // D-G
   "Darsana Deluxe",
   "Dhaka Express",
   "Digonto Paribahan",
@@ -83,7 +83,7 @@ export const REGISTERED_COMPANIES = [
   "KINGS Bus Service",
   "Kohinur Paribahan",
   "Kornofuli Paribahan",
-  // M–P
+  // M-P
   "Mamun Enterprise",
   "Meherpur Delux",
   "MM Paribahan",
@@ -103,7 +103,7 @@ export const REGISTERED_COMPANIES = [
   "Polash Paribahan",
   "Porjotok Paribahan",
   "Prince Exclusive",
-  // R–S
+  // R-S
   "Rajbari Paribahan",
   "Rajdhani Express",
   "Rasel Enterprise",
@@ -134,7 +134,7 @@ export const REGISTERED_COMPANIES = [
   "Subarna Paribahan",
   "Sugandha Paribahan",
   "Surovi Paribahan",
-  // T–Y
+  // T-Y
   "Tisha Exclusive",
   "Tongipara Paribahan",
   "Tuba Line",

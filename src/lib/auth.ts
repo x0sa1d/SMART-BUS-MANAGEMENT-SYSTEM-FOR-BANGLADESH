@@ -50,6 +50,8 @@ export const auth = betterAuth({
   trustedOrigins: [
     appUrl,
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
   ].filter((origin, index, list) => origin && list.indexOf(origin) === index),
   hooks: {
     before: createAuthMiddleware(async (ctx) => {

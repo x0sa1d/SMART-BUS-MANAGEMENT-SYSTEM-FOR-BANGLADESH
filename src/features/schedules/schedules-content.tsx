@@ -237,7 +237,7 @@ export function SchedulesContent({
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-4 gap-4 text-sm">
                   <div><span className="text-muted-foreground">Route:</span> {s.route.source} → {s.route.destination}</div>
-                  <div className="flex items-center gap-1"><Clock className="h-3 w-3" /> {s.departureTime} – {s.arrivalTime}</div>
+                  <div className="flex items-center gap-1"><Clock className="h-3 w-3" /> {s.departureTime} to {s.arrivalTime}</div>
                   <div><span className="text-muted-foreground">Bus:</span> {s.bus.busNumber}{s.bus.company ? ` (${s.bus.company.name})` : ""}</div>
                   <div><span className="text-muted-foreground">Fare:</span> {formatCurrency(Number(s.fare))}</div>
                 </div>

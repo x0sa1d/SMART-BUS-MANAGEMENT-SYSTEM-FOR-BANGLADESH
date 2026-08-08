@@ -98,7 +98,7 @@ export function LoginForm() {
           <CardDescription>Sign in to {APP_NAME}</CardDescription>
           {isDemo && (
             <Badge className="mx-auto bg-primary/10 text-primary hover:bg-primary/10 border-primary/20">
-              Demo mode — signing in automatically…
+              Demo mode. Signing in automatically…
             </Badge>
           )}
         </CardHeader>

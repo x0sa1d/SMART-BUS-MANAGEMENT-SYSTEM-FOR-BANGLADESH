@@ -1,7 +1,7 @@
 export const APP_NAME = "Smart Bus Management";
-export const APP_TAGLINE = "Bangladesh's #1 Digital Platform for Bus Operators, Routes & Online Ticketing";
+export const APP_TAGLINE = "Book seats, manage fleets, and track buses across Bangladesh.";
 export const APP_DESCRIPTION =
-  "Nationwide bus management platform for 486+ operators across 64 districts — fleet tracking, online booking, bKash/Nagad payments, and real-time analytics.";
+  "Bus management for operators and passengers: routes, online booking, bKash and Nagad payments, and live tracking across 64 districts.";
 
 export { FARE_PER_KM_BDT } from "./operators";
 
@@ -16,6 +16,8 @@ export const ADMIN_NAV_ITEMS = [
   { title: "Passengers", href: "/dashboard/passengers", icon: "Users" },
   { title: "Bookings", href: "/dashboard/bookings", icon: "Ticket" },
   { title: "Ticket Verification", href: "/dashboard/ticket-verification", icon: "ScanLine" },
+  { title: "SOS Alerts", href: "/dashboard/sos", icon: "Siren" },
+  { title: "Lost & Found", href: "/dashboard/lost-found", icon: "PackageSearch" },
   { title: "Payments", href: "/dashboard/payments", icon: "CreditCard" },
   { title: "Maintenance", href: "/dashboard/maintenance", icon: "Wrench" },
   { title: "Reports", href: "/dashboard/reports", icon: "BarChart3" },
@@ -77,7 +79,8 @@ export const PASSENGER_NAV_ITEMS = [
   { title: "Search Buses", href: "/passenger/search", icon: "Search" },
   { title: "Destinations", href: "/passenger/destinations", icon: "MapPin" },
   { title: "My Bookings", href: "/passenger/bookings", icon: "Ticket" },
-  { title: "Track Bus", href: "/passenger/track", icon: "MapPin" },
+  { title: "Track Bus", href: "/passenger/track", icon: "Navigation" },
+  { title: "Lost & Found", href: "/passenger/lost-found", icon: "PackageSearch" },
   { title: "Profile", href: "/passenger/profile", icon: "User" },
 ] as const;
 
@@ -131,9 +134,11 @@ export const PRICING_PLANS = [
     description: "For large transportation companies",
     features: [
       "Unlimited buses",
-      "AI demand prediction",
-      "Multi-language support",
-      "Custom branding",
+      "AI seat recommendation",
+      "Smart delay prediction",
+      "SOS emergency alerts",
+      "Lost & found system",
+      "Live Google Maps tracking",
       "Priority support",
       "API access",
     ],

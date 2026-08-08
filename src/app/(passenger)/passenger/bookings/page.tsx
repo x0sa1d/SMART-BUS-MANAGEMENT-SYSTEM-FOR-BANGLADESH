@@ -85,7 +85,7 @@ export default async function PassengerBookingsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold">My Bookings</h1>
-          <p className="text-muted-foreground">E-tickets with QR codes — download after payment</p>
+          <p className="text-muted-foreground">E-tickets with QR codes. Download after payment</p>
         </div>
         <Button variant="gradient" asChild>
           <Link href="/passenger/search"><Search className="h-4 w-4" /> Book New Ticket</Link>

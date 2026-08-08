@@ -5,6 +5,8 @@ import Link from "next/link";
 import { APP_NAME } from "@/constants";
 import { ArrowLeft } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function RegisterCompanyPage() {
   const divisions = await getDivisions();
 

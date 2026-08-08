@@ -36,7 +36,7 @@ export function ProfileForm({
       <CardHeader><CardTitle>My Profile</CardTitle></CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">
-          You can update your display name. Email and password cannot be changed by administrators — only you can manage those through account settings.
+          You can update your display name. Email and password cannot be changed by administrators. Only you can manage those through account settings.
         </p>
         <form action={handleSubmit} className="space-y-4">
           <div className="space-y-2">

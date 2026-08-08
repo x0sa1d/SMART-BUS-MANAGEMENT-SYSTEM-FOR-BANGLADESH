@@ -7,11 +7,37 @@ import { MAJOR_OPERATORS } from "@/constants/operators";
 import { OperatorsSearchList } from "@/features/operators/operators-search-list";
 import { ArrowLeft } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function PublicOperatorsPage() {
-  const [{ items, total }, stats] = await Promise.all([
-    getCompanies(1, 50),
-    getCompanyStats(),
-  ]);
+  let items: Awaited<ReturnType<typeof getCompanies>>["items"] = [];
+  let total = 0;
+  let stats = { total: 0, active: 0, national: 0, pending: 0, rejected: 0 };
+  let dbOk = true;
+
+  try {
+    const [companies, companyStats] = await Promise.all([
+      getCompanies(1, 50),
+      getCompanyStats(),
+    ]);
+    items = companies.items;
+    total = companies.total;
+    stats = companyStats;
+  } catch {
+    dbOk = false;
+  }
+
+  // Fallback marketing list when DB is offline / not configured
+  const fallback =
+    items.length === 0
+      ? MAJOR_OPERATORS.map((name, i) => ({
+          id: `fallback-${i}`,
+          name,
+          rating: 4.5,
+          fleetSize: 0,
+          district: null,
+        }))
+      : items;
 
   return (
     <div className="min-h-screen mesh-bg">
@@ -30,14 +56,21 @@ export default async function PublicOperatorsPage() {
       <main className="container mx-auto px-4 py-10 space-y-8">
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold">486+ Bus Operators</h1>
-          <p className="text-muted-foreground">{stats.total.toLocaleString()} registered operators across Bangladesh</p>
+          <p className="text-muted-foreground">
+            {(stats.total || MAJOR_OPERATORS.length).toLocaleString()} operators across Bangladesh
+          </p>
+          {!dbOk && (
+            <p className="text-sm text-amber-600">
+              Database not connected. Add your Supabase DB password to `.env` to load live data.
+            </p>
+          )}
         </div>
         <div className="flex flex-wrap justify-center gap-2">
           {MAJOR_OPERATORS.map((name) => (
             <Badge key={name} variant="outline">{name}</Badge>
           ))}
         </div>
-        <OperatorsSearchList initial={items} total={total} />
+        <OperatorsSearchList initial={fallback} total={total || fallback.length} />
         <p className="text-center text-sm text-muted-foreground">
           <Link href="/register-company" className="text-primary hover:underline">Join as an operator</Link>
         </p>

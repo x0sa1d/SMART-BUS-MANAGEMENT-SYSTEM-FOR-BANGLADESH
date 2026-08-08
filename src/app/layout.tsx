@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@teispace/next-themes";
 import { getTheme, getThemeScript } from "@teispace/next-themes/server";
 import { QueryProvider } from "@/components/providers/query-provider";
@@ -7,12 +7,16 @@ import { Toaster } from "@/components/ui/sonner";
 import { APP_NAME, APP_DESCRIPTION } from "@/constants";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 const themeProviderConfig = {
   attribute: "class" as const,
-  defaultTheme: "system",
+  defaultTheme: "light",
   enableSystem: true,
   disableTransitionOnChange: true,
 };
@@ -36,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${plusJakarta.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider {...themeProviderConfig} initialTheme={initialTheme ?? undefined} noScript>
           <QueryProvider>
             {children}

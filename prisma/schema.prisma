@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
@@ -107,6 +108,32 @@ enum NotificationType {
   DELAY_ALERT
   PAYMENT_CONFIRMATION
   MAINTENANCE_ALERT
+  SOS_ALERT
+  LOST_FOUND
+}
+
+enum SosStatus {
+  ACTIVE
+  ACKNOWLEDGED
+  RESOLVED
+  FALSE_ALARM
+}
+
+enum SosReporterType {
+  PASSENGER
+  DRIVER
+}
+
+enum LostFoundType {
+  LOST
+  FOUND
+}
+
+enum LostFoundStatus {
+  REPORTED
+  CLAIMED
+  RETURNED
+  CLOSED
 }
 
 enum NotificationChannel {
@@ -249,6 +276,8 @@ model Passenger {
 
   bookings            Booking[]
   loyaltyTransactions LoyaltyTransaction[]
+  sosAlerts           SosAlert[]
+  lostFoundItems      LostFoundItem[]
 
   @@index([email])
   @@index([phone])
@@ -282,6 +311,7 @@ model Driver {
   maintenances    Maintenance[]
   performances    DriverPerformance[]
   documents       DriverDocument[]
+  sosAlerts       SosAlert[]
 
   @@index([licenseNumber])
   @@index([isActive])
@@ -507,26 +537,31 @@ model Schedule {
 }
 
 model Trip {
-  id          String     @id @default(uuid())
-  scheduleId  String
-  schedule    Schedule   @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
-  busId       String
-  bus         Bus        @relation(fields: [busId], references: [id], onDelete: Cascade)
-  driverId    String
-  driver      Driver     @relation(fields: [driverId], references: [id], onDelete: Cascade)
-  tripDate    DateTime   @db.Date
-  status      TripStatus @default(SCHEDULED)
-  currentLat  Float?
-  currentLng  Float?
-  eta         DateTime?
-  startedAt   DateTime?
-  completedAt DateTime?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  deletedAt   DateTime?
+  id                    String     @id @default(uuid())
+  scheduleId            String
+  schedule              Schedule   @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  busId                 String
+  bus                   Bus        @relation(fields: [busId], references: [id], onDelete: Cascade)
+  driverId              String
+  driver                Driver     @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  tripDate              DateTime   @db.Date
+  status                TripStatus @default(SCHEDULED)
+  currentLat            Float?
+  currentLng            Float?
+  eta                   DateTime?
+  predictedDelayMinutes Int?
+  delayReason           String?
+  delayUpdatedAt        DateTime?
+  startedAt             DateTime?
+  completedAt           DateTime?
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+  deletedAt             DateTime?
 
-  bookings  Booking[]
-  locations TripLocation[]
+  bookings       Booking[]
+  locations      TripLocation[]
+  sosAlerts      SosAlert[]
+  lostFoundItems LostFoundItem[]
 
   @@index([tripDate])
   @@index([status])
@@ -890,4 +925,60 @@ model RolePermission {
   @@unique([role, permissionId])
   @@index([role])
   @@map("role_permissions")
+}
+
+model SosAlert {
+  id           String          @id @default(uuid())
+  tripId       String?
+  trip         Trip?           @relation(fields: [tripId], references: [id], onDelete: SetNull)
+  passengerId  String?
+  passenger    Passenger?      @relation(fields: [passengerId], references: [id], onDelete: SetNull)
+  driverId     String?
+  driver       Driver?         @relation(fields: [driverId], references: [id], onDelete: SetNull)
+  reporterType SosReporterType
+  latitude     Float?
+  longitude    Float?
+  message      String?
+  status       SosStatus       @default(ACTIVE)
+  acknowledgedAt DateTime?
+  resolvedAt   DateTime?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([status])
+  @@index([tripId])
+  @@index([passengerId])
+  @@index([driverId])
+  @@index([createdAt])
+  @@map("sos_alerts")
+}
+
+model LostFoundItem {
+  id           String          @id @default(uuid())
+  type         LostFoundType
+  status       LostFoundStatus @default(REPORTED)
+  title        String
+  description  String
+  category     String?
+  location     String?
+  tripId       String?
+  trip         Trip?           @relation(fields: [tripId], references: [id], onDelete: SetNull)
+  passengerId  String?
+  passenger    Passenger?      @relation(fields: [passengerId], references: [id], onDelete: SetNull)
+  contactPhone String?
+  contactEmail String?
+  imageUrl     String?
+  claimedBy    String?
+  claimedAt    DateTime?
+  returnedAt   DateTime?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  deletedAt    DateTime?
+
+  @@index([type])
+  @@index([status])
+  @@index([tripId])
+  @@index([passengerId])
+  @@index([createdAt])
+  @@map("lost_found_items")
 }

@@ -126,7 +126,7 @@ export function DashboardChartsInner({
                 </PieChart>
               ) : (
                 <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-                  No booking data yet — routes will appear after first bookings
+                  No booking data yet. Routes will appear after first bookings
                 </div>
               )}
             </ResponsiveContainer>

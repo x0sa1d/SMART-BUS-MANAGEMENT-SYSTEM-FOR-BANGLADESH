@@ -2,7 +2,7 @@
 
 import { revalidateSystem } from "@/lib/revalidate-system";
 import { hashPassword } from "better-auth/crypto";
-import { db, excludeDeleted } from "@/lib/db";
+import { db, excludeDeleted, isDatabaseConfigured } from "@/lib/db";
 import { requireSuperAdmin } from "@/lib/auth-server";
 import { success, failure, getErrorMessage } from "@/lib/action-utils";
 import {
@@ -22,58 +22,70 @@ function slugifyCode(name: string) {
 }
 
 export async function searchActiveCompanies(query?: string) {
-  const where = {
-    ...excludeDeleted(),
-    status: "ACTIVE" as const,
-    ...(query?.trim()
-      ? { name: { contains: query.trim(), mode: "insensitive" as const } }
-      : {}),
-  };
+  if (!isDatabaseConfigured()) return [];
+  try {
+    const where = {
+      ...excludeDeleted(),
+      status: "ACTIVE" as const,
+      ...(query?.trim()
+        ? { name: { contains: query.trim(), mode: "insensitive" as const } }
+        : {}),
+    };
 
-  return db.busCompany.findMany({
-    where,
-    select: { id: true, name: true, code: true, rating: true, fleetSize: true },
-    orderBy: [{ isNational: "desc" }, { name: "asc" }],
-    take: query?.trim() ? 50 : 100,
-  });
+    return await db.busCompany.findMany({
+      where,
+      select: { id: true, name: true, code: true, rating: true, fleetSize: true },
+      orderBy: [{ isNational: "desc" }, { name: "asc" }],
+      take: query?.trim() ? 50 : 100,
+    });
+  } catch {
+    return [];
+  }
 }
 
 export async function getCompanies(page = 1, pageSize = 20, search?: string, status?: string) {
-  const where = {
-    ...excludeDeleted(),
-    ...(status ? { status: status as "ACTIVE" | "PENDING" | "SUSPENDED" | "REJECTED" } : {}),
-    ...(search
-      ? {
-          OR: [
-            { name: { contains: search, mode: "insensitive" as const } },
-            { code: { contains: search, mode: "insensitive" as const } },
-          ],
-        }
-      : {}),
-  };
+  if (!isDatabaseConfigured()) {
+    return { items: [], total: 0, page, pageSize, totalPages: 0 };
+  }
+  try {
+    const where = {
+      ...excludeDeleted(),
+      ...(status ? { status: status as "ACTIVE" | "PENDING" | "SUSPENDED" | "REJECTED" } : {}),
+      ...(search
+        ? {
+            OR: [
+              { name: { contains: search, mode: "insensitive" as const } },
+              { code: { contains: search, mode: "insensitive" as const } },
+            ],
+          }
+        : {}),
+    };
 
-  const [items, total] = await Promise.all([
-    db.busCompany.findMany({
-      where,
-      include: {
-        district: { include: { division: true } },
-        _count: { select: { buses: true, drivers: true, users: true } },
-        users: { where: { deletedAt: null }, select: { id: true, name: true, email: true }, take: 1 },
-      },
-      orderBy: [{ status: "asc" }, { isNational: "desc" }, { fleetSize: "desc" }],
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-    }),
-    db.busCompany.count({ where }),
-  ]);
+    const [items, total] = await Promise.all([
+      db.busCompany.findMany({
+        where,
+        include: {
+          district: { include: { division: true } },
+          _count: { select: { buses: true, drivers: true, users: true } },
+          users: { where: { deletedAt: null }, select: { id: true, name: true, email: true }, take: 1 },
+        },
+        orderBy: [{ status: "asc" }, { isNational: "desc" }, { fleetSize: "desc" }],
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+      }),
+      db.busCompany.count({ where }),
+    ]);
 
-  return {
-    items,
-    total,
-    page,
-    pageSize,
-    totalPages: Math.ceil(total / pageSize),
-  };
+    return {
+      items,
+      total,
+      page,
+      pageSize,
+      totalPages: Math.ceil(total / pageSize),
+    };
+  } catch {
+    return { items: [], total: 0, page, pageSize, totalPages: 0 };
+  }
 }
 
 export async function getPendingApplications() {
@@ -90,14 +102,21 @@ export async function getPendingApplications() {
 }
 
 export async function getCompanyStats() {
-  const [total, active, national, pending, rejected] = await Promise.all([
-    db.busCompany.count({ where: excludeDeleted() }),
-    db.busCompany.count({ where: { ...excludeDeleted(), status: "ACTIVE" } }),
-    db.busCompany.count({ where: { ...excludeDeleted(), isNational: true } }),
-    db.busCompany.count({ where: { ...excludeDeleted(), status: "PENDING" } }),
-    db.busCompany.count({ where: { ...excludeDeleted(), status: "REJECTED" } }),
-  ]);
-  return { total, active, national, pending, rejected };
+  if (!isDatabaseConfigured()) {
+    return { total: 0, active: 0, national: 0, pending: 0, rejected: 0 };
+  }
+  try {
+    const [total, active, national, pending, rejected] = await Promise.all([
+      db.busCompany.count({ where: excludeDeleted() }),
+      db.busCompany.count({ where: { ...excludeDeleted(), status: "ACTIVE" } }),
+      db.busCompany.count({ where: { ...excludeDeleted(), isNational: true } }),
+      db.busCompany.count({ where: { ...excludeDeleted(), status: "PENDING" } }),
+      db.busCompany.count({ where: { ...excludeDeleted(), status: "REJECTED" } }),
+    ]);
+    return { total, active, national, pending, rejected };
+  } catch {
+    return { total: 0, active: 0, national: 0, pending: 0, rejected: 0 };
+  }
 }
 
 export async function submitCompanyApplication(formData: FormData) {

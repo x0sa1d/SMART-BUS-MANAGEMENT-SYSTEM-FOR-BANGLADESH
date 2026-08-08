@@ -18,16 +18,23 @@ export function OperatorsSearchList({ initial, total }: { initial: Company[]; to
   const [query, setQuery] = useState("");
   const [items, setItems] = useState(initial);
   const [pending, startTransition] = useTransition();
+  const [dbUnavailable, setDbUnavailable] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       startTransition(async () => {
-        const results = await searchActiveCompanies(query || undefined);
-        setItems(results);
+        try {
+          const results = await searchActiveCompanies(query || undefined);
+          setItems(results);
+          setDbUnavailable(false);
+        } catch {
+          setDbUnavailable(true);
+          if (!query) setItems(initial);
+        }
       });
     }, 300);
     return () => clearTimeout(timer);
-  }, [query]);
+  }, [query, initial]);
 
   return (
     <div className="space-y-6">
@@ -40,26 +47,39 @@ export function OperatorsSearchList({ initial, total }: { initial: Company[]; to
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
+      {dbUnavailable && (
+        <p className="text-center text-sm text-amber-600">
+          Database is not connected yet. Showing available list only.
+        </p>
+      )}
       <div className="grid gap-3 max-w-3xl mx-auto">
-        {items.map((company) => (
-          <Card key={company.id} className="card-elevated">
-            <CardContent className="p-4 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="h-10 w-10 rounded-xl gradient-primary text-white flex items-center justify-center font-bold shrink-0">
-                  {company.name.charAt(0)}
-                </div>
-                <div className="min-w-0">
-                  <p className="font-semibold truncate">{company.name}</p>
-                  <p className="text-xs text-muted-foreground">{company.fleetSize} buses</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1 text-sm shrink-0">
-                <Star className="h-3 w-3 text-[#FFB703]" />
-                {company.rating.toFixed(1)}
-              </div>
+        {items.length === 0 ? (
+          <Card>
+            <CardContent className="p-8 text-center text-sm text-muted-foreground">
+              No operators found. Connect the database and seed data to load companies.
             </CardContent>
           </Card>
-        ))}
+        ) : (
+          items.map((company) => (
+            <Card key={company.id} className="card-elevated">
+              <CardContent className="p-4 flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="h-10 w-10 rounded-xl gradient-primary text-white flex items-center justify-center font-bold shrink-0">
+                    {company.name.charAt(0)}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-semibold truncate">{company.name}</p>
+                    <p className="text-xs text-muted-foreground">{company.fleetSize} buses</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1 text-sm shrink-0">
+                  <Star className="h-3 w-3 text-[#FFB703]" />
+                  {Number(company.rating || 0).toFixed(1)}
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        )}
       </div>
       <p className="text-center text-sm text-muted-foreground">
         {pending ? "Searching..." : `Showing ${items.length} of ${total.toLocaleString()} operators`}

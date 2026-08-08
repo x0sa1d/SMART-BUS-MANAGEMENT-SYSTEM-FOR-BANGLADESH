@@ -15,10 +15,14 @@ import { useSession } from "@/lib/auth-client";
 import { PAYMENT_METHODS, SEAT_COLORS, FARE_PER_KM_BDT } from "@/constants";
 import { formatCurrency, cn, formatDate } from "@/lib/utils";
 import { toast } from "sonner";
-import { Search, Bus, Clock, MapPin, Ticket, CreditCard, Loader2, ShoppingBag } from "lucide-react";
+import { Search, Bus, Clock, MapPin, Ticket, CreditCard, Loader2, ShoppingBag, Sparkles } from "lucide-react";
 import { useTicketCart } from "./use-ticket-cart";
 import { TicketCartPanel } from "./ticket-cart-panel";
 import type { BusCategory } from "@/types";
+import {
+  recommendSeatBlock,
+  type SeatPreference,
+} from "@/lib/seat-recommendation";
 
 const BUS_CATEGORIES: { value: BusCategory; label: string }[] = [
   { value: "ALL", label: "All Buses" },
@@ -36,6 +40,8 @@ type TripSeat = {
   id: string;
   seatNumber: string;
   seatType: string;
+  row: number;
+  column: number;
   isAvailable: boolean;
 };
 
@@ -84,6 +90,8 @@ export function SearchBusesContent({
   const [fallbackDates, setFallbackDates] = useState<string[]>([]);
   const [selectedTrip, setSelectedTrip] = useState<TripResult | null>(null);
   const [selectedSeatIds, setSelectedSeatIds] = useState<Set<string>>(new Set());
+  const [seatPreference, setSeatPreference] = useState<SeatPreference>("any");
+  const [aiReasons, setAiReasons] = useState<string[]>([]);
   const [paymentMethod, setPaymentMethod] = useState<string>("BKASH");
   const [phone, setPhone] = useState("");
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -142,7 +150,7 @@ export function SearchBusesContent({
 
   useEffect(() => {
     runSearch(true);
-    // Initial load only — further updates require clicking Search
+    // Initial load only: further updates require clicking Search
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -174,7 +182,31 @@ export function SearchBusesContent({
       else next.add(seat.id);
       return next;
     });
+    setAiReasons([]);
   }, []);
+
+  const applyAiRecommendation = useCallback((count = 1) => {
+    if (!selectedTrip) return;
+    const picks = recommendSeatBlock(
+      selectedTrip.seats.map((s) => ({
+        id: s.id,
+        seatNumber: s.seatNumber,
+        seatType: s.seatType,
+        row: s.row ?? 1,
+        column: s.column ?? 1,
+        isAvailable: s.isAvailable,
+      })),
+      count,
+      seatPreference
+    );
+    if (picks.length === 0) {
+      toast.error("No available seats to recommend");
+      return;
+    }
+    setSelectedSeatIds(new Set(picks.map((p) => p.seatId)));
+    setAiReasons(picks.flatMap((p) => p.reasons.map((r) => `${p.seatNumber}: ${r}`)));
+    toast.success(`AI recommended ${picks.map((p) => p.seatNumber).join(", ")}`);
+  }, [selectedTrip, seatPreference]);
   const tripsByDate = useMemo(() => {
     const groups = new Map<string, TripResult[]>();
     for (const trip of trips) {
@@ -420,7 +452,7 @@ export function SearchBusesContent({
                         <p className="text-sm text-primary font-medium">{trip.schedule.company.name}</p>
                       )}
                       <div className="flex flex-wrap gap-3 mt-1 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {trip.schedule.departureTime} – {trip.schedule.arrivalTime}</span>
+                        <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {trip.schedule.departureTime} to {trip.schedule.arrivalTime}</span>
                         <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {trip.schedule.route.distance} km</span>
                         <span>Bus {trip.schedule.bus.busNumber} • {trip.schedule.bus.busType}{trip.schedule.bus.isAC ? " • AC" : ""}</span>
                         {usedFallback && (
@@ -464,7 +496,39 @@ export function SearchBusesContent({
               <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-green-500" /> Available</span>
               <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-primary" /> Selected</span>
               <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-red-500" /> Booked</span>
+              <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-amber-400" /> AI pick</span>
             </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <div className="space-y-2 flex-1">
+                <Label className="flex items-center gap-1.5">
+                  <Sparkles className="h-3.5 w-3.5 text-primary" /> AI Seat Preference
+                </Label>
+                <Select value={seatPreference} onValueChange={(v) => setSeatPreference(v as SeatPreference)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="any">Best overall</SelectItem>
+                    <SelectItem value="window">Window</SelectItem>
+                    <SelectItem value="aisle">Aisle</SelectItem>
+                    <SelectItem value="front">Front / quick exit</SelectItem>
+                    <SelectItem value="back">Quiet rear</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button type="button" variant="outline" onClick={() => applyAiRecommendation(1)}>
+                <Sparkles className="h-4 w-4" /> Recommend 1
+              </Button>
+              <Button type="button" variant="gradient" onClick={() => applyAiRecommendation(2)}>
+                <Sparkles className="h-4 w-4" /> Recommend 2 together
+              </Button>
+            </div>
+            {aiReasons.length > 0 && (
+              <ul className="text-xs text-muted-foreground list-disc pl-5 space-y-1">
+                {aiReasons.slice(0, 6).map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+            )}
 
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 max-w-lg">
               {selectedTrip.seats.map((seat) => (
@@ -479,7 +543,9 @@ export function SearchBusesContent({
                     !seat.isAvailable
                       ? `${SEAT_COLORS.BOOKED.bg} text-white cursor-not-allowed border-transparent`
                       : selectedSeatIds.has(seat.id)
-                        ? `${SEAT_COLORS.SELECTED.bg} text-white border-transparent`
+                        ? aiReasons.some((r) => r.startsWith(seat.seatNumber))
+                          ? "bg-amber-500 text-white border-transparent ring-2 ring-amber-300"
+                          : `${SEAT_COLORS.SELECTED.bg} text-white border-transparent`
                         : "bg-green-100 hover:bg-green-200 dark:bg-green-900/30 border-green-300"
                   )}
                 >
@@ -543,7 +609,7 @@ export function SearchBusesContent({
           {selectedTrip && selectedSeats.length > 0 && (
             <div className="space-y-4">
               <div className="rounded-lg bg-muted/50 p-4 space-y-2 text-sm">
-                <p><span className="text-muted-foreground">Operator:</span> {selectedTrip.schedule.company?.name ?? "—"}</p>
+                <p><span className="text-muted-foreground">Operator:</span> {selectedTrip.schedule.company?.name ?? "-"}</p>
                 <p><span className="text-muted-foreground">Route:</span> {selectedTrip.schedule.route.source} → {selectedTrip.schedule.route.destination}</p>
                 <p><span className="text-muted-foreground">Date:</span> {formatDate(selectedTrip.tripDate)}</p>
                 <p><span className="text-muted-foreground">Seats:</span> {selectedSeats.map((s) => s.seatNumber).join(", ")}</p>

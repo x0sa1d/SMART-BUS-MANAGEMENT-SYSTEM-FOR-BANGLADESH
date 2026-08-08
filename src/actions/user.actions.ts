@@ -161,7 +161,7 @@ export async function createUser(formData: FormData) {
   }
 }
 
-/** Update role assignment only — never changes email, password, or name. */
+/** Update role assignment only. Never changes email, password, or name. */
 export async function updateUserRole(formData: FormData) {
   try {
     await requireUserManagement();

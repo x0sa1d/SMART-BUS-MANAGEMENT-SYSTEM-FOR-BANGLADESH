@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard, Users, Bus, Route, Calendar, UserCog, Ticket, CreditCard,
   Wrench, BarChart3, TrendingUp, Settings, ChevronLeft, ChevronRight,
-  Search, MapPin, User, Building2, UsersRound, ShieldCheck, ScanLine, type LucideIcon,
+  Search, MapPin, User, Building2, UsersRound, ShieldCheck, ScanLine, Siren, PackageSearch, Navigation, Shield, type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { APP_NAME } from "@/constants";
@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 const iconMap: Record<string, LucideIcon> = {
   LayoutDashboard, Users, Bus, Route, Calendar, UserCog, Ticket, CreditCard,
   Wrench, BarChart3, TrendingUp, Settings, Search, MapPin, User, Building2, UsersRound, ShieldCheck, ScanLine,
+  Siren, PackageSearch, Navigation, Shield,
 };
 
 interface NavItem { title: string; href: string; icon: string; }
@@ -39,8 +40,8 @@ export function Sidebar({ items, collapsed, onToggle }: SidebarProps) {
         <AnimatePresence mode="wait">
           {!collapsed && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-primary text-white text-sm font-bold">SBM</div>
-              <span className="font-semibold text-sm">{APP_NAME}</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-white text-sm font-bold">B</div>
+              <span className="font-semibold text-sm tracking-tight">{APP_NAME}</span>
             </motion.div>
           )}
         </AnimatePresence>

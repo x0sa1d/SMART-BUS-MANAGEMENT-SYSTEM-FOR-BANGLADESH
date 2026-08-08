@@ -47,7 +47,14 @@ export default async function PublicSearchPage({
           </div>
         </div>
       </header>
-      <main className="container mx-auto px-4 py-8 page-enter">
+      <main className="container mx-auto px-4 py-8 page-enter space-y-4">
+        {!process.env.DATABASE_URL ||
+        process.env.DATABASE_URL.includes("[YOUR-PASSWORD]") ? (
+          <div className="rounded-lg border border-amber-300 bg-amber-50 text-amber-900 px-4 py-3 text-sm">
+            Database password is not set yet. Add your Supabase DB password to{" "}
+            <code className="font-mono">.env</code> to enable live search and booking.
+          </div>
+        ) : null}
         <Suspense fallback={<SearchSkeleton />}>
           <SearchContent
             initialDestination={params.destination}

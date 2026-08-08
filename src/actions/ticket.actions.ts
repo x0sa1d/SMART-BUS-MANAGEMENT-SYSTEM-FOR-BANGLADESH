@@ -152,7 +152,7 @@ export async function verifyTicket(input: string) {
     if (!ticket) return failure("Ticket not found");
 
     if (ticket.status === "VERIFIED") {
-      return failure("Ticket already verified — duplicate use prevented");
+      return failure("Ticket already verified. Duplicate use prevented");
     }
     if (ticket.status === "CANCELLED") {
       return failure("Ticket has been cancelled");

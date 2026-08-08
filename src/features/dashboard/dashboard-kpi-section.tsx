@@ -20,7 +20,7 @@ export async function DashboardKpiSection() {
           </Badge>
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Operations Dashboard</h1>
           <p className="text-muted-foreground mt-1">
-            Live overview — {stats.totalCompanies.toLocaleString()} operators · {stats.totalRoutes} routes · {stats.totalTerminals} terminals · {stats.totalUpazilas} upazilas
+            Live overview: {stats.totalCompanies.toLocaleString()} operators, {stats.totalRoutes} routes, {stats.totalTerminals} terminals, {stats.totalUpazilas} upazilas
           </p>
         </div>
       </div>

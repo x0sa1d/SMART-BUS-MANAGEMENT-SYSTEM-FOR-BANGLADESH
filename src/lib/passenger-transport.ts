@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import type { BusCategory } from "@/types";
-import { db, excludeDeleted } from "@/lib/db";
+import { db, excludeDeleted, isDatabaseConfigured } from "@/lib/db";
 import { calculateFare } from "@/lib/geo";
 import { buildPassengerRouteFilter, addDaysUtc, formatDateKey } from "@/lib/district-search";
 import { materializeTripsFromSchedules } from "@/lib/trip-ensure";
@@ -147,8 +147,10 @@ export async function fetchPassengerTrips({
   busCategory = "ALL",
   now = new Date(),
 }: FetchPassengerTripsParams): Promise<PassengerTrip[]> {
+  if (!isDatabaseConfigured()) return [];
   if (!destination || dates.length === 0) return [];
 
+  try {
   const sortedDates = [...dates].sort((a, b) => a.getTime() - b.getTime());
   await materializeTripsFromSchedules(
     destination,
@@ -185,6 +187,9 @@ export async function fetchPassengerTrips({
   return rawTrips
     .map((trip) => mapTripForPassenger(trip, now))
     .filter((trip): trip is PassengerTrip => trip !== null);
+  } catch {
+    return [];
+  }
 }
 
 export function dayAbbrevForDate(date: Date): string {

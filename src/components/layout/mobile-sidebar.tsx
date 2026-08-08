@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Users, Bus, Route, Calendar, UserCog, Ticket, CreditCard,
-  Wrench, BarChart3, TrendingUp, Settings, Search, MapPin, User, Menu, Building2, UsersRound, ShieldCheck, ScanLine, type LucideIcon,
+  Wrench, BarChart3, TrendingUp, Settings, Search, MapPin, User, Menu, Building2, UsersRound, ShieldCheck, ScanLine, Siren, PackageSearch, Navigation, Shield, type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { APP_NAME } from "@/constants";
@@ -14,6 +14,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 const iconMap: Record<string, LucideIcon> = {
   LayoutDashboard, Users, Bus, Route, Calendar, UserCog, Ticket, CreditCard,
   Wrench, BarChart3, TrendingUp, Settings, Search, MapPin, User, Building2, UsersRound, ShieldCheck, ScanLine,
+  Siren, PackageSearch, Navigation, Shield,
 };
 
 interface NavItem { title: string; href: string; icon: string; }
@@ -28,7 +29,7 @@ export function MobileSidebar({ items }: { items: readonly NavItem[] }) {
       <SheetContent side="left" className="w-72 p-0">
         <SheetHeader className="border-b p-4">
           <SheetTitle className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-primary text-white text-sm font-bold">SBM</div>
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-white text-sm font-bold">B</div>
             {APP_NAME}
           </SheetTitle>
         </SheetHeader>

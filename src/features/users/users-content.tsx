@@ -191,7 +191,7 @@ export function UsersContent({
                     </Button>
                   )}
                   {isPlatformAdmin && !isSuperAdmin && (
-                    <span className="text-xs text-muted-foreground">Admin — Super Admin only removal</span>
+                    <span className="text-xs text-muted-foreground">Admin (Super Admin only removal)</span>
                   )}
                 </div>
               </CardContent>

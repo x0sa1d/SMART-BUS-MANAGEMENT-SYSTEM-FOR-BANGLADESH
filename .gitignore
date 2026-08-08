@@ -7,6 +7,13 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.tools
+.corepack
+.pnpm
+.pnpm-store
+
+# local tooling
+.cursor
 
 # testing
 /coverage

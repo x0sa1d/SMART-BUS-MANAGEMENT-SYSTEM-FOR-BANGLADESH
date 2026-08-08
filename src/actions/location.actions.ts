@@ -1,53 +1,65 @@
 "use server";
 
-import { unstable_cache } from "next/cache";
-import { db, excludeDeleted } from "@/lib/db";
-
-async function fetchDivisions() {
-  return db.division.findMany({
-    include: {
-      districts: {
-        where: excludeDeleted(),
-        orderBy: { name: "asc" },
-      },
-    },
-    orderBy: { name: "asc" },
-  });
-}
-
-const getCachedDivisions = unstable_cache(fetchDivisions, ["bangladesh-divisions"], {
-  revalidate: 3600,
-  tags: ["locations"],
-});
+import { db, excludeDeleted, isDatabaseConfigured } from "@/lib/db";
 
 export async function getDivisions() {
-  return getCachedDivisions();
+  if (!isDatabaseConfigured()) return [];
+  try {
+    return await db.division.findMany({
+      include: {
+        districts: {
+          where: excludeDeleted(),
+          orderBy: { name: "asc" },
+        },
+      },
+      orderBy: { name: "asc" },
+    });
+  } catch {
+    return [];
+  }
 }
 
 export async function getDistricts(divisionId?: string) {
-  return db.district.findMany({
-    where: {
-      ...excludeDeleted(),
-      ...(divisionId ? { divisionId } : {}),
-    },
-    include: { division: true },
-    orderBy: { name: "asc" },
-  });
+  if (!isDatabaseConfigured()) return [];
+  try {
+    return await db.district.findMany({
+      where: {
+        ...excludeDeleted(),
+        ...(divisionId ? { divisionId } : {}),
+      },
+      include: { division: true },
+      orderBy: { name: "asc" },
+    });
+  } catch {
+    return [];
+  }
 }
 
 export async function getDistrictById(id: string) {
-  return db.district.findFirst({
-    where: { id, deletedAt: null },
-    include: { division: true },
-  });
+  if (!isDatabaseConfigured()) return null;
+  try {
+    return await db.district.findFirst({
+      where: { id, deletedAt: null },
+      include: { division: true },
+    });
+  } catch {
+    return null;
+  }
 }
 
 export async function getLocationStats() {
-  const [divisions, districts, routes, stops] = await Promise.all([
-    db.division.count(),
-    db.district.count({ where: excludeDeleted() }),
-    db.route.count({ where: excludeDeleted() }),
-    db.stop.count({ where: excludeDeleted() }),
-  ]);
-  return { divisions, districts, routes, stops };
+  if (!isDatabaseConfigured()) {
+    return { divisions: 0, districts: 0, routes: 0, stops: 0 };
+  }
+  try {
+    const [divisions, districts, routes, stops] = await Promise.all([
+      db.division.count(),
+      db.district.count({ where: excludeDeleted() }),
+      db.route.count({ where: excludeDeleted() }),
+      db.stop.count({ where: excludeDeleted() }),
+    ]);
+    return { divisions, districts, routes, stops };
+  } catch {
+    return { divisions: 0, districts: 0, routes: 0, stops: 0 };
+  }
 }
