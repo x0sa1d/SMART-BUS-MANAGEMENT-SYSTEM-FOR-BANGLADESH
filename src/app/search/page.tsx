@@ -10,12 +10,25 @@ import { ArrowLeft } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
+function firstParam(value: string | string[] | undefined): string {
+  if (Array.isArray(value)) return value[0] ?? "";
+  return value ?? "";
+}
+
+function normalizeCity(value: string): string {
+  return value.trim();
+}
+
 async function SearchContent({
   initialDestination,
   initialSource,
+  initialDate,
+  initialPassengers,
 }: {
   initialDestination?: string;
   initialSource?: string;
+  initialDate?: string;
+  initialPassengers?: number;
 }) {
   const divisions = await getDivisions();
   return (
@@ -23,6 +36,8 @@ async function SearchContent({
       divisions={serializeForClient(divisions)}
       initialDestination={initialDestination}
       initialSource={initialSource}
+      initialDate={initialDate}
+      initialPassengers={initialPassengers}
     />
   );
 }
@@ -30,24 +45,32 @@ async function SearchContent({
 export default async function PublicSearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ destination?: string; source?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = await searchParams;
+  const source = normalizeCity(firstParam(params.source) || firstParam(params.from));
+  const destination = normalizeCity(firstParam(params.destination) || firstParam(params.to));
+  const date = firstParam(params.date).trim();
+  const passengersRaw = Number(firstParam(params.passengers) || "1");
+  const passengers = Number.isFinite(passengersRaw)
+    ? Math.min(10, Math.max(1, Math.floor(passengersRaw)))
+    : 1;
+
   return (
-    <div className="min-h-screen mesh-bg">
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2 font-semibold text-sm hover:opacity-80">
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 bg-brand-green text-white shadow-soft">
+        <div className="container mx-auto flex h-14 items-center justify-between px-4">
+          <Link href="/" className="flex items-center gap-2 font-semibold text-sm text-white hover:opacity-90">
             <ArrowLeft className="h-4 w-4" />
             {APP_NAME}
           </Link>
           <div className="flex items-center gap-2">
-            <LinkButton href="/login" variant="ghost">Sign in</LinkButton>
-            <LinkButton href="/register" variant="gradient">Get Started</LinkButton>
+            <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border-0">Sign in</LinkButton>
+            <LinkButton href="/register" className="bg-primary text-white hover:bg-primary/90 border-0">Get Started</LinkButton>
           </div>
         </div>
       </header>
-      <main className="container mx-auto px-4 py-8 page-enter space-y-4">
+      <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 page-enter space-y-4">
         {!process.env.DATABASE_URL ||
         process.env.DATABASE_URL.includes("[YOUR-PASSWORD]") ? (
           <div className="rounded-lg border border-amber-300 bg-amber-50 text-amber-900 px-4 py-3 text-sm">
@@ -57,8 +80,10 @@ export default async function PublicSearchPage({
         ) : null}
         <Suspense fallback={<SearchSkeleton />}>
           <SearchContent
-            initialDestination={params.destination}
-            initialSource={params.source}
+            initialDestination={destination}
+            initialSource={source}
+            initialDate={date || undefined}
+            initialPassengers={passengers}
           />
         </Suspense>
         <p className="text-center text-sm text-muted-foreground mt-8">

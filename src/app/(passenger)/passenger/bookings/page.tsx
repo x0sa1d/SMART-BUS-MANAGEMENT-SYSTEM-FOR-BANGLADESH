@@ -63,6 +63,11 @@ async function BookingsList() {
                 </div>
                 <span className="font-bold text-primary">{formatCurrency(Number(b.fare))}</span>
                 <div className="flex gap-2">
+                  <Button variant="default" size="sm" asChild>
+                    <Link href={`/passenger/tickets/${encodeURIComponent(b.ticketNumber)}`}>
+                      <Ticket className="h-3.5 w-3.5" /> View Ticket
+                    </Link>
+                  </Button>
                   <DownloadTicketButton ticketNumber={b.ticketNumber} />
                   <Button variant="ghost" size="sm" asChild>
                     <Link href="/passenger/track"><MapPin className="h-3.5 w-3.5" /> Track</Link>
@@ -85,7 +90,7 @@ export default async function PassengerBookingsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold">My Bookings</h1>
-          <p className="text-muted-foreground">E-tickets with QR codes. Download after payment</p>
+          <p className="text-muted-foreground">Open your orange bus ticket, show the QR, or download/print it.</p>
         </div>
         <Button variant="gradient" asChild>
           <Link href="/passenger/search"><Search className="h-4 w-4" /> Book New Ticket</Link>

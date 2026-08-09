@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidateSystem } from "@/lib/revalidate-system";
-import { hashPassword } from "better-auth/crypto";
+import { hashPassword, verifyPassword } from "better-auth/crypto";
 import { db, excludeDeleted } from "@/lib/db";
 import {
   requireSuperAdmin,
@@ -14,6 +14,19 @@ import { adminSchema, createUserSchema, profileSchema, updateUserRoleSchema } fr
 import { ROLE_LABELS, isRemovableUserRole } from "@/lib/permissions";
 import { ensureDriverProfileForUser, unlinkDriverProfile } from "@/lib/user-profiles";
 import type { Role } from "@prisma/client";
+
+const MAX_PROFILE_IMAGE_BYTES = 900_000;
+
+async function fileToDataUrl(file: File): Promise<string> {
+  if (!file.type.startsWith("image/")) {
+    throw new Error("Profile picture must be an image file");
+  }
+  if (file.size > MAX_PROFILE_IMAGE_BYTES) {
+    throw new Error("Profile picture must be under 900KB");
+  }
+  const buffer = Buffer.from(await file.arrayBuffer());
+  return `data:${file.type};base64,${buffer.toString("base64")}`;
+}
 
 export async function getUsers() {
   await requireUserManagement();
@@ -270,13 +283,102 @@ export async function removeUser(userId: string) {
 export async function updateMyProfile(formData: FormData) {
   try {
     const session = await requireAuth();
-    const parsed = profileSchema.safeParse(Object.fromEntries(formData));
+    const raw = Object.fromEntries(formData.entries());
+    const parsed = profileSchema.safeParse({
+      name: raw.name,
+      username: raw.username,
+      email: raw.email,
+      phone: raw.phone,
+      currentPassword: raw.currentPassword,
+      newPassword: raw.newPassword,
+      confirmPassword: raw.confirmPassword,
+      removeImage: raw.removeImage === "true" ? "true" : "false",
+    });
     if (!parsed.success) return failure(parsed.error.errors[0].message);
+
+    const email = parsed.data.email.trim().toLowerCase();
+    const username = parsed.data.username?.trim() ? parsed.data.username.trim().toLowerCase() : null;
+    const phone = parsed.data.phone?.trim() ? parsed.data.phone.trim() : null;
+
+    if (email !== session.user.email.toLowerCase()) {
+      const emailTaken = await db.user.findFirst({
+        where: { email, id: { not: session.user.id }, deletedAt: null },
+        select: { id: true },
+      });
+      if (emailTaken) return failure("That email is already in use");
+    }
+
+    if (username) {
+      const usernameTaken = await db.user.findFirst({
+        where: { username, id: { not: session.user.id }, deletedAt: null },
+        select: { id: true },
+      });
+      if (usernameTaken) return failure("That username is already taken");
+    }
+
+    const imageFile = formData.get("image");
+    let nextImage: string | null | undefined = undefined;
+    if (parsed.data.removeImage === "true") {
+      nextImage = null;
+    } else if (imageFile instanceof File && imageFile.size > 0) {
+      nextImage = await fileToDataUrl(imageFile);
+    }
+
+    const wantsPasswordChange = Boolean(parsed.data.newPassword);
+    if (wantsPasswordChange) {
+      const credential = await db.account.findFirst({
+        where: { userId: session.user.id, providerId: "credential" },
+      });
+      if (!credential?.password) {
+        return failure("Password login is not available for this account");
+      }
+      const valid = await verifyPassword({
+        hash: credential.password,
+        password: parsed.data.currentPassword || "",
+      });
+      if (!valid) return failure("Current password is incorrect");
+
+      const hashed = await hashPassword(parsed.data.newPassword!);
+      await db.account.update({
+        where: { id: credential.id },
+        data: { password: hashed },
+      });
+    }
 
     await db.user.update({
       where: { id: session.user.id },
-      data: { name: parsed.data.name },
+      data: {
+        name: parsed.data.name.trim(),
+        username,
+        email,
+        phone,
+        ...(nextImage !== undefined ? { image: nextImage } : {}),
+      },
     });
+
+    const passenger = await db.passenger.findFirst({ where: { userId: session.user.id } });
+    if (passenger) {
+      await db.passenger.update({
+        where: { id: passenger.id },
+        data: {
+          fullName: parsed.data.name.trim(),
+          email,
+          ...(phone ? { phone } : {}),
+        },
+      });
+    }
+
+    const driver = await db.driver.findFirst({ where: { userId: session.user.id } });
+    if (driver) {
+      await db.driver.update({
+        where: { id: driver.id },
+        data: {
+          fullName: parsed.data.name.trim(),
+          email,
+          ...(phone ? { phone } : {}),
+        },
+      });
+    }
 
     revalidateSystem();
     return success(null);

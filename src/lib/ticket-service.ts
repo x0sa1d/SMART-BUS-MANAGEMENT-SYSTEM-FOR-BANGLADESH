@@ -19,6 +19,13 @@ export function generateVerificationId(): string {
   return `VRF-${stamp}-${rand}`;
 }
 
+/** Classic ticket serial shown under QR (e.g. 123 45678 90123). */
+export function formatTicketSerial(ticketNumber: string, verificationId: string): string {
+  const digits = `${ticketNumber}${verificationId}`.replace(/\D/g, "");
+  const seed = (digits || "0").padStart(13, "0").slice(-13);
+  return `${seed.slice(0, 3)} ${seed.slice(3, 8)} ${seed.slice(8)}`;
+}
+
 export function buildTicketQrPayload(input: {
   verificationId: string;
   ticketNumber: string;
@@ -54,12 +61,18 @@ export function parseTicketQrInput(raw: string): { verificationId: string; ticke
       return { verificationId: parsed.verificationId, ticketNumber: parsed.ticketNumber };
     }
   } catch {
-    // plain verification ID
+    // plain ID / serial
   }
-  if (trimmed.startsWith("VRF-") || trimmed.startsWith("SBM-")) {
-    return trimmed.startsWith("VRF-")
-      ? { verificationId: trimmed }
-      : { verificationId: "", ticketNumber: trimmed };
+  const compact = trimmed.replace(/\s+/g, "");
+  if (compact.startsWith("VRF-") || trimmed.startsWith("VRF-")) {
+    return { verificationId: trimmed.startsWith("VRF-") ? trimmed : compact };
+  }
+  if (compact.startsWith("SBM-") || trimmed.startsWith("SBM-")) {
+    return { verificationId: "", ticketNumber: trimmed.startsWith("SBM-") ? trimmed : compact };
+  }
+  // Serial digits only — match via ticket number suffix search handled in action
+  if (/^\d{10,16}$/.test(compact)) {
+    return { verificationId: "", ticketNumber: compact };
   }
   return { verificationId: trimmed };
 }

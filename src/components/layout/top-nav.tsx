@@ -30,9 +30,9 @@ export function TopNav({ navItems, title, profileHref = "/dashboard/settings" }:
   };
 
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-border/60 bg-background/80 backdrop-blur-xl px-4 md:px-6">
+    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-border/70 bg-background/85 backdrop-blur-xl px-4 md:px-6">
       <MobileSidebar items={navItems} />
-      {title && <h1 className="text-lg font-semibold hidden sm:block">{title}</h1>}
+      {title && <h1 className="text-lg font-bold text-ink hidden sm:block">{title}</h1>}
       {(isSuperAdmin || isAdmin) && (
         <Badge variant={isSuperAdmin ? "default" : "secondary"} className="hidden sm:inline-flex">
           {roleLabel}
@@ -54,6 +54,7 @@ export function TopNav({ navItems, title, profileHref = "/dashboard/settings" }:
           <DropdownMenuContent className="w-56" align="end">
             <div className="flex items-center gap-2 p-2">
               <Avatar className="h-8 w-8">
+                <AvatarImage src={session?.user?.image || undefined} />
                 <AvatarFallback className="bg-primary/10 text-primary text-xs">{getInitials(session?.user?.name || "U")}</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">

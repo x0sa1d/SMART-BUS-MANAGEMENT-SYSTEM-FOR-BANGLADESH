@@ -161,7 +161,7 @@ export function LiveMap({
             icon: {
               path: g.SymbolPath.FORWARD_CLOSED_ARROW,
               scale: 6,
-              fillColor: "#1F4FD8",
+              fillColor: "#0F766E",
               fillOpacity: 1,
               strokeWeight: 2,
               strokeColor: "#ffffff",
@@ -174,7 +174,7 @@ export function LiveMap({
           new g.Polyline({
             path: trail,
             geodesic: true,
-            strokeColor: "#1F4FD8",
+            strokeColor: "#0F766E",
             strokeOpacity: 0.7,
             strokeWeight: 4,
             map,

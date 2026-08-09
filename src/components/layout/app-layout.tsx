@@ -9,7 +9,7 @@ import { ReadOnlyBanner } from "@/components/shared/read-only-banner";
 type LayoutType = "admin" | "driver" | "passenger";
 
 const navMap = { admin: ADMIN_NAV_ITEMS, driver: DRIVER_NAV_ITEMS, passenger: PASSENGER_NAV_ITEMS };
-const profileMap = { admin: "/dashboard/settings", driver: "/driver/profile", passenger: "/passenger/profile" };
+const profileMap = { admin: "/dashboard/profile", driver: "/driver/profile", passenger: "/passenger/profile" };
 
 export function AppLayoutClient({
   children,

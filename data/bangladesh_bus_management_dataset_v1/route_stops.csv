@@ -1,0 +1,1519 @@
+route_stop_id,route_id,stop_sequence,district,stop_name,stop_type,estimated_dwell_min,verification_status
+RS00001,R0001,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00002,R0001,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00003,R0001,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00004,R0001,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00005,R0002,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00006,R0002,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00007,R0002,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00008,R0002,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00009,R0003,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00010,R0003,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00011,R0003,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00012,R0003,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00013,R0004,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00014,R0004,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00015,R0004,3,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00016,R0004,4,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00017,R0005,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00018,R0005,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00019,R0005,3,Narsingdi,Madhabdi,intermediate,5,CURATED_STOP_VERIFY
+RS00020,R0005,4,Narsingdi,Narsingdi Sadar,destination,5,CURATED_STOP_VERIFY
+RS00021,R0006,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00022,R0006,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00023,R0006,3,Faridpur,Bhanga,intermediate,5,CURATED_STOP_VERIFY
+RS00024,R0006,4,Faridpur,Faridpur,destination,5,CURATED_STOP_VERIFY
+RS00025,R0007,1,Faridpur,Bhanga,origin,0,CURATED_STOP_VERIFY
+RS00026,R0007,2,Faridpur,Faridpur,intermediate,5,CURATED_STOP_VERIFY
+RS00027,R0007,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00028,R0007,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00029,R0007,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00030,R0007,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00031,R0008,1,Faridpur,Bhanga,origin,0,CURATED_STOP_VERIFY
+RS00032,R0008,2,Faridpur,Faridpur,intermediate,5,CURATED_STOP_VERIFY
+RS00033,R0008,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00034,R0008,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00035,R0008,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00036,R0008,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00037,R0009,1,Faridpur,Bhanga,origin,0,CURATED_STOP_VERIFY
+RS00038,R0009,2,Faridpur,Faridpur,intermediate,5,CURATED_STOP_VERIFY
+RS00039,R0009,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00040,R0009,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00041,R0009,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00042,R0009,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00043,R0010,1,Faridpur,Bhanga,origin,0,CURATED_STOP_VERIFY
+RS00044,R0010,2,Faridpur,Faridpur,intermediate,5,CURATED_STOP_VERIFY
+RS00045,R0010,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00046,R0010,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00047,R0010,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00048,R0010,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00049,R0011,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00050,R0011,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00051,R0011,3,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00052,R0011,4,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00053,R0012,1,Gazipur,Joydebpur,origin,0,CURATED_STOP_VERIFY
+RS00054,R0012,2,Gazipur,Chandra,intermediate,5,CURATED_STOP_VERIFY
+RS00055,R0012,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00056,R0012,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00057,R0012,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00058,R0012,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00059,R0013,1,Gazipur,Joydebpur,origin,0,CURATED_STOP_VERIFY
+RS00060,R0013,2,Gazipur,Chandra,intermediate,5,CURATED_STOP_VERIFY
+RS00061,R0013,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00062,R0013,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00063,R0013,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00064,R0013,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00065,R0014,1,Gazipur,Joydebpur,origin,0,CURATED_STOP_VERIFY
+RS00066,R0014,2,Gazipur,Chandra,intermediate,5,CURATED_STOP_VERIFY
+RS00067,R0014,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00068,R0014,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00069,R0014,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00070,R0014,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00071,R0015,1,Gazipur,Joydebpur,origin,0,CURATED_STOP_VERIFY
+RS00072,R0015,2,Gazipur,Chandra,intermediate,5,CURATED_STOP_VERIFY
+RS00073,R0015,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00074,R0015,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00075,R0015,5,Narsingdi,Madhabdi,intermediate,5,CURATED_STOP_VERIFY
+RS00076,R0015,6,Narsingdi,Narsingdi Sadar,destination,5,CURATED_STOP_VERIFY
+RS00077,R0016,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00078,R0016,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00079,R0016,3,Gopalganj,Muksudpur,intermediate,5,CURATED_STOP_VERIFY
+RS00080,R0016,4,Gopalganj,Gopalganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00081,R0017,1,Gopalganj,Muksudpur,origin,0,CURATED_STOP_VERIFY
+RS00082,R0017,2,Gopalganj,Gopalganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00083,R0017,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00084,R0017,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00085,R0017,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00086,R0017,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00087,R0018,1,Gopalganj,Muksudpur,origin,0,CURATED_STOP_VERIFY
+RS00088,R0018,2,Gopalganj,Gopalganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00089,R0018,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00090,R0018,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00091,R0018,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00092,R0018,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00093,R0019,1,Gopalganj,Muksudpur,origin,0,CURATED_STOP_VERIFY
+RS00094,R0019,2,Gopalganj,Gopalganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00095,R0019,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00096,R0019,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00097,R0019,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00098,R0019,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00099,R0020,1,Gopalganj,Muksudpur,origin,0,CURATED_STOP_VERIFY
+RS00100,R0020,2,Gopalganj,Gopalganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00101,R0020,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00102,R0020,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00103,R0020,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00104,R0020,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00105,R0021,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00106,R0021,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00107,R0021,3,Kishoreganj,Bhairab,intermediate,5,CURATED_STOP_VERIFY
+RS00108,R0021,4,Kishoreganj,Kishoreganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00109,R0022,1,Kishoreganj,Bhairab,origin,0,CURATED_STOP_VERIFY
+RS00110,R0022,2,Kishoreganj,Kishoreganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00111,R0022,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00112,R0022,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00113,R0022,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00114,R0022,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00115,R0023,1,Kishoreganj,Bhairab,origin,0,CURATED_STOP_VERIFY
+RS00116,R0023,2,Kishoreganj,Kishoreganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00117,R0023,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00118,R0023,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00119,R0023,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00120,R0023,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00121,R0024,1,Kishoreganj,Bhairab,origin,0,CURATED_STOP_VERIFY
+RS00122,R0024,2,Kishoreganj,Kishoreganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00123,R0024,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00124,R0024,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00125,R0024,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00126,R0024,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00127,R0025,1,Kishoreganj,Bhairab,origin,0,CURATED_STOP_VERIFY
+RS00128,R0025,2,Kishoreganj,Kishoreganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00129,R0025,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00130,R0025,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00131,R0025,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00132,R0025,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00133,R0026,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00134,R0026,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00135,R0026,3,Madaripur,Madaripur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00136,R0027,1,Madaripur,Madaripur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00137,R0027,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00138,R0027,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00139,R0027,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00140,R0027,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00141,R0028,1,Madaripur,Madaripur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00142,R0028,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00143,R0028,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00144,R0028,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00145,R0028,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00146,R0029,1,Madaripur,Madaripur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00147,R0029,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00148,R0029,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00149,R0029,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00150,R0029,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00151,R0030,1,Madaripur,Madaripur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00152,R0030,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00153,R0030,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00154,R0030,4,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00155,R0030,5,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00156,R0031,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00157,R0031,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00158,R0031,3,Manikganj,Paturia,intermediate,5,CURATED_STOP_VERIFY
+RS00159,R0031,4,Manikganj,Manikganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00160,R0032,1,Manikganj,Paturia,origin,0,CURATED_STOP_VERIFY
+RS00161,R0032,2,Manikganj,Manikganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00162,R0032,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00163,R0032,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00164,R0032,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00165,R0032,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00166,R0033,1,Manikganj,Paturia,origin,0,CURATED_STOP_VERIFY
+RS00167,R0033,2,Manikganj,Manikganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00168,R0033,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00169,R0033,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00170,R0033,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00171,R0033,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00172,R0034,1,Manikganj,Paturia,origin,0,CURATED_STOP_VERIFY
+RS00173,R0034,2,Manikganj,Manikganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00174,R0034,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00175,R0034,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00176,R0034,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00177,R0034,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00178,R0035,1,Manikganj,Paturia,origin,0,CURATED_STOP_VERIFY
+RS00179,R0035,2,Manikganj,Manikganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00180,R0035,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00181,R0035,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00182,R0035,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00183,R0035,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00184,R0036,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00185,R0036,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00186,R0036,3,Munshiganj,Mawa,intermediate,5,CURATED_STOP_VERIFY
+RS00187,R0036,4,Munshiganj,Munshiganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00188,R0037,1,Munshiganj,Mawa,origin,0,CURATED_STOP_VERIFY
+RS00189,R0037,2,Munshiganj,Munshiganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00190,R0037,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00191,R0037,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00192,R0037,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00193,R0037,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00194,R0038,1,Munshiganj,Mawa,origin,0,CURATED_STOP_VERIFY
+RS00195,R0038,2,Munshiganj,Munshiganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00196,R0038,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00197,R0038,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00198,R0038,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00199,R0038,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00200,R0039,1,Munshiganj,Mawa,origin,0,CURATED_STOP_VERIFY
+RS00201,R0039,2,Munshiganj,Munshiganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00202,R0039,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00203,R0039,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00204,R0039,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00205,R0039,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00206,R0040,1,Munshiganj,Mawa,origin,0,CURATED_STOP_VERIFY
+RS00207,R0040,2,Munshiganj,Munshiganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00208,R0040,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00209,R0040,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00210,R0040,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00211,R0040,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00212,R0041,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00213,R0041,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00214,R0041,3,Narayanganj,Kanchpur,intermediate,5,CURATED_STOP_VERIFY
+RS00215,R0041,4,Narayanganj,Signboard,destination,5,CURATED_STOP_VERIFY
+RS00216,R0042,1,Narayanganj,Kanchpur,origin,0,CURATED_STOP_VERIFY
+RS00217,R0042,2,Narayanganj,Signboard,intermediate,5,CURATED_STOP_VERIFY
+RS00218,R0042,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00219,R0042,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00220,R0042,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00221,R0042,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00222,R0043,1,Narayanganj,Kanchpur,origin,0,CURATED_STOP_VERIFY
+RS00223,R0043,2,Narayanganj,Signboard,intermediate,5,CURATED_STOP_VERIFY
+RS00224,R0043,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00225,R0043,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00226,R0043,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00227,R0043,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00228,R0044,1,Narayanganj,Kanchpur,origin,0,CURATED_STOP_VERIFY
+RS00229,R0044,2,Narayanganj,Signboard,intermediate,5,CURATED_STOP_VERIFY
+RS00230,R0044,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00231,R0044,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00232,R0044,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00233,R0044,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00234,R0045,1,Narayanganj,Kanchpur,origin,0,CURATED_STOP_VERIFY
+RS00235,R0045,2,Narayanganj,Signboard,intermediate,5,CURATED_STOP_VERIFY
+RS00236,R0045,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00237,R0045,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00238,R0045,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00239,R0045,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00240,R0046,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00241,R0046,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00242,R0046,3,Narsingdi,Madhabdi,intermediate,5,CURATED_STOP_VERIFY
+RS00243,R0046,4,Narsingdi,Narsingdi Sadar,destination,5,CURATED_STOP_VERIFY
+RS00244,R0047,1,Narsingdi,Madhabdi,origin,0,CURATED_STOP_VERIFY
+RS00245,R0047,2,Narsingdi,Narsingdi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00246,R0047,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00247,R0047,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00248,R0047,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00249,R0047,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00250,R0048,1,Narsingdi,Madhabdi,origin,0,CURATED_STOP_VERIFY
+RS00251,R0048,2,Narsingdi,Narsingdi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00252,R0048,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00253,R0048,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00254,R0048,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00255,R0048,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00256,R0049,1,Narsingdi,Madhabdi,origin,0,CURATED_STOP_VERIFY
+RS00257,R0049,2,Narsingdi,Narsingdi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00258,R0049,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00259,R0049,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00260,R0049,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00261,R0049,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00262,R0050,1,Narsingdi,Madhabdi,origin,0,CURATED_STOP_VERIFY
+RS00263,R0050,2,Narsingdi,Narsingdi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00264,R0050,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00265,R0050,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00266,R0050,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00267,R0050,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00268,R0051,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00269,R0051,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00270,R0051,3,Rajbari,Goalanda,intermediate,5,CURATED_STOP_VERIFY
+RS00271,R0051,4,Rajbari,Rajbari Sadar,destination,5,CURATED_STOP_VERIFY
+RS00272,R0052,1,Rajbari,Goalanda,origin,0,CURATED_STOP_VERIFY
+RS00273,R0052,2,Rajbari,Rajbari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00274,R0052,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00275,R0052,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00276,R0052,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00277,R0052,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00278,R0053,1,Rajbari,Goalanda,origin,0,CURATED_STOP_VERIFY
+RS00279,R0053,2,Rajbari,Rajbari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00280,R0053,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00281,R0053,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00282,R0053,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00283,R0053,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00284,R0054,1,Rajbari,Goalanda,origin,0,CURATED_STOP_VERIFY
+RS00285,R0054,2,Rajbari,Rajbari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00286,R0054,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00287,R0054,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00288,R0054,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00289,R0054,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00290,R0055,1,Rajbari,Goalanda,origin,0,CURATED_STOP_VERIFY
+RS00291,R0055,2,Rajbari,Rajbari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00292,R0055,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00293,R0055,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00294,R0055,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00295,R0055,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00296,R0056,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00297,R0056,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00298,R0056,3,Shariatpur,Shariatpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00299,R0057,1,Shariatpur,Shariatpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00300,R0057,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00301,R0057,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00302,R0057,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00303,R0057,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00304,R0058,1,Shariatpur,Shariatpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00305,R0058,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00306,R0058,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00307,R0058,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00308,R0058,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00309,R0059,1,Shariatpur,Shariatpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00310,R0059,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00311,R0059,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00312,R0059,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00313,R0059,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00314,R0060,1,Shariatpur,Shariatpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00315,R0060,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00316,R0060,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00317,R0060,4,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00318,R0060,5,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00319,R0061,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00320,R0061,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00321,R0061,3,Tangail,Mirzapur,intermediate,5,CURATED_STOP_VERIFY
+RS00322,R0061,4,Tangail,Tangail Sadar,destination,5,CURATED_STOP_VERIFY
+RS00323,R0062,1,Tangail,Mirzapur,origin,0,CURATED_STOP_VERIFY
+RS00324,R0062,2,Tangail,Tangail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00325,R0062,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00326,R0062,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00327,R0062,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00328,R0062,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00329,R0063,1,Tangail,Mirzapur,origin,0,CURATED_STOP_VERIFY
+RS00330,R0063,2,Tangail,Tangail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00331,R0063,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00332,R0063,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00333,R0063,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00334,R0063,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00335,R0064,1,Tangail,Mirzapur,origin,0,CURATED_STOP_VERIFY
+RS00336,R0064,2,Tangail,Tangail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00337,R0064,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00338,R0064,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00339,R0064,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00340,R0064,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00341,R0065,1,Tangail,Mirzapur,origin,0,CURATED_STOP_VERIFY
+RS00342,R0065,2,Tangail,Tangail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00343,R0065,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00344,R0065,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00345,R0065,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00346,R0065,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00347,R0066,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00348,R0066,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00349,R0066,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00350,R0066,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00351,R0066,5,Bandarban,Bandarban Sadar,destination,5,CURATED_STOP_VERIFY
+RS00352,R0067,1,Bandarban,Bandarban Sadar,origin,0,CURATED_STOP_VERIFY
+RS00353,R0067,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00354,R0067,3,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00355,R0068,1,Bandarban,Bandarban Sadar,origin,0,CURATED_STOP_VERIFY
+RS00356,R0068,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00357,R0068,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00358,R0068,4,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00359,R0068,5,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00360,R0069,1,Bandarban,Bandarban Sadar,origin,0,CURATED_STOP_VERIFY
+RS00361,R0069,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00362,R0069,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00363,R0069,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00364,R0069,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00365,R0070,1,Bandarban,Bandarban Sadar,origin,0,CURATED_STOP_VERIFY
+RS00366,R0070,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00367,R0070,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00368,R0070,4,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00369,R0070,5,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00370,R0071,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00371,R0071,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00372,R0071,3,Brahmanbaria,Ashuganj,intermediate,5,CURATED_STOP_VERIFY
+RS00373,R0071,4,Brahmanbaria,Brahmanbaria Sadar,destination,5,CURATED_STOP_VERIFY
+RS00374,R0072,1,Brahmanbaria,Ashuganj,origin,0,CURATED_STOP_VERIFY
+RS00375,R0072,2,Brahmanbaria,Brahmanbaria Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00376,R0072,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00377,R0072,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00378,R0073,1,Brahmanbaria,Ashuganj,origin,0,CURATED_STOP_VERIFY
+RS00379,R0073,2,Brahmanbaria,Brahmanbaria Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00380,R0073,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00381,R0073,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00382,R0073,5,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00383,R0073,6,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00384,R0074,1,Brahmanbaria,Ashuganj,origin,0,CURATED_STOP_VERIFY
+RS00385,R0074,2,Brahmanbaria,Brahmanbaria Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00386,R0074,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00387,R0074,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00388,R0074,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00389,R0074,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00390,R0075,1,Brahmanbaria,Ashuganj,origin,0,CURATED_STOP_VERIFY
+RS00391,R0075,2,Brahmanbaria,Brahmanbaria Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00392,R0075,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00393,R0075,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00394,R0075,5,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00395,R0075,6,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00396,R0076,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00397,R0076,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00398,R0076,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00399,R0076,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00400,R0076,5,Chandpur,Chandpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00401,R0077,1,Chandpur,Chandpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00402,R0077,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00403,R0077,3,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00404,R0078,1,Chandpur,Chandpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00405,R0078,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00406,R0078,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00407,R0078,4,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00408,R0078,5,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00409,R0079,1,Chandpur,Chandpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00410,R0079,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00411,R0079,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00412,R0079,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00413,R0079,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00414,R0080,1,Chandpur,Chandpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00415,R0080,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00416,R0080,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00417,R0080,4,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00418,R0080,5,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00419,R0081,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00420,R0081,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00421,R0081,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00422,R0081,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00423,R0082,1,Chattogram,AK Khan,origin,0,CURATED_STOP_VERIFY
+RS00424,R0082,2,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00425,R0082,3,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00426,R0082,4,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00427,R0083,1,Chattogram,AK Khan,origin,0,CURATED_STOP_VERIFY
+RS00428,R0083,2,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00429,R0083,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00430,R0083,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00431,R0083,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00432,R0083,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00433,R0084,1,Chattogram,AK Khan,origin,0,CURATED_STOP_VERIFY
+RS00434,R0084,2,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00435,R0084,3,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00436,R0084,4,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00437,R0085,1,Chattogram,AK Khan,origin,0,CURATED_STOP_VERIFY
+RS00438,R0085,2,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00439,R0085,3,Cumilla,Daudkandi,intermediate,5,CURATED_STOP_VERIFY
+RS00440,R0085,4,Cumilla,Comilla Cantonment,destination,5,CURATED_STOP_VERIFY
+RS00441,R0086,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00442,R0086,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00443,R0086,3,Cumilla,Daudkandi,intermediate,5,CURATED_STOP_VERIFY
+RS00444,R0086,4,Cumilla,Comilla Cantonment,destination,5,CURATED_STOP_VERIFY
+RS00445,R0087,1,Cumilla,Daudkandi,origin,0,CURATED_STOP_VERIFY
+RS00446,R0087,2,Cumilla,Comilla Cantonment,intermediate,5,CURATED_STOP_VERIFY
+RS00447,R0087,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00448,R0087,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00449,R0088,1,Cumilla,Daudkandi,origin,0,CURATED_STOP_VERIFY
+RS00450,R0088,2,Cumilla,Comilla Cantonment,intermediate,5,CURATED_STOP_VERIFY
+RS00451,R0088,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00452,R0088,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00453,R0088,5,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00454,R0088,6,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00455,R0089,1,Cumilla,Daudkandi,origin,0,CURATED_STOP_VERIFY
+RS00456,R0089,2,Cumilla,Comilla Cantonment,intermediate,5,CURATED_STOP_VERIFY
+RS00457,R0089,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00458,R0089,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00459,R0089,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00460,R0089,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00461,R0090,1,Cumilla,Daudkandi,origin,0,CURATED_STOP_VERIFY
+RS00462,R0090,2,Cumilla,Comilla Cantonment,intermediate,5,CURATED_STOP_VERIFY
+RS00463,R0090,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00464,R0090,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00465,R0090,5,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00466,R0090,6,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00467,R0091,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00468,R0091,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00469,R0091,3,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00470,R0091,4,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00471,R0092,1,Cox's Bazar,Chakaria,origin,0,CURATED_STOP_VERIFY
+RS00472,R0092,2,Cox's Bazar,Cox's Bazar,intermediate,5,CURATED_STOP_VERIFY
+RS00473,R0092,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00474,R0092,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00475,R0093,1,Cox's Bazar,Chakaria,origin,0,CURATED_STOP_VERIFY
+RS00476,R0093,2,Cox's Bazar,Cox's Bazar,intermediate,5,CURATED_STOP_VERIFY
+RS00477,R0093,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00478,R0093,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00479,R0093,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00480,R0093,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00481,R0094,1,Cox's Bazar,Chakaria,origin,0,CURATED_STOP_VERIFY
+RS00482,R0094,2,Cox's Bazar,Cox's Bazar,intermediate,5,CURATED_STOP_VERIFY
+RS00483,R0094,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00484,R0094,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00485,R0094,5,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00486,R0094,6,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00487,R0095,1,Cox's Bazar,Chakaria,origin,0,CURATED_STOP_VERIFY
+RS00488,R0095,2,Cox's Bazar,Cox's Bazar,intermediate,5,CURATED_STOP_VERIFY
+RS00489,R0095,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00490,R0095,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00491,R0095,5,Cumilla,Daudkandi,intermediate,5,CURATED_STOP_VERIFY
+RS00492,R0095,6,Cumilla,Comilla Cantonment,destination,5,CURATED_STOP_VERIFY
+RS00493,R0096,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00494,R0096,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00495,R0096,3,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00496,R0096,4,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00497,R0097,1,Feni,Feni Sadar,origin,0,CURATED_STOP_VERIFY
+RS00498,R0097,2,Feni,Mahipal,intermediate,5,CURATED_STOP_VERIFY
+RS00499,R0097,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00500,R0097,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00501,R0098,1,Feni,Feni Sadar,origin,0,CURATED_STOP_VERIFY
+RS00502,R0098,2,Feni,Mahipal,intermediate,5,CURATED_STOP_VERIFY
+RS00503,R0098,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00504,R0098,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00505,R0098,5,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00506,R0098,6,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00507,R0099,1,Feni,Feni Sadar,origin,0,CURATED_STOP_VERIFY
+RS00508,R0099,2,Feni,Mahipal,intermediate,5,CURATED_STOP_VERIFY
+RS00509,R0099,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00510,R0099,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00511,R0099,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00512,R0099,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00513,R0100,1,Feni,Feni Sadar,origin,0,CURATED_STOP_VERIFY
+RS00514,R0100,2,Feni,Mahipal,intermediate,5,CURATED_STOP_VERIFY
+RS00515,R0100,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00516,R0100,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00517,R0100,5,Cumilla,Daudkandi,intermediate,5,CURATED_STOP_VERIFY
+RS00518,R0100,6,Cumilla,Comilla Cantonment,destination,5,CURATED_STOP_VERIFY
+RS00519,R0101,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00520,R0101,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00521,R0101,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00522,R0101,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00523,R0101,5,Khagrachhari,Khagrachhari Sadar,destination,5,CURATED_STOP_VERIFY
+RS00524,R0102,1,Khagrachhari,Khagrachhari Sadar,origin,0,CURATED_STOP_VERIFY
+RS00525,R0102,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00526,R0102,3,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00527,R0103,1,Khagrachhari,Khagrachhari Sadar,origin,0,CURATED_STOP_VERIFY
+RS00528,R0103,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00529,R0103,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00530,R0103,4,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00531,R0103,5,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00532,R0104,1,Khagrachhari,Khagrachhari Sadar,origin,0,CURATED_STOP_VERIFY
+RS00533,R0104,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00534,R0104,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00535,R0104,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00536,R0104,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00537,R0105,1,Khagrachhari,Khagrachhari Sadar,origin,0,CURATED_STOP_VERIFY
+RS00538,R0105,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00539,R0105,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00540,R0105,4,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00541,R0105,5,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00542,R0106,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00543,R0106,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00544,R0106,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00545,R0106,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00546,R0106,5,Lakshmipur,Lakshmipur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00547,R0107,1,Lakshmipur,Lakshmipur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00548,R0107,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00549,R0107,3,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00550,R0108,1,Lakshmipur,Lakshmipur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00551,R0108,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00552,R0108,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00553,R0108,4,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00554,R0108,5,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00555,R0109,1,Lakshmipur,Lakshmipur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00556,R0109,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00557,R0109,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00558,R0109,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00559,R0109,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00560,R0110,1,Lakshmipur,Lakshmipur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00561,R0110,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00562,R0110,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00563,R0110,4,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00564,R0110,5,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00565,R0111,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00566,R0111,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00567,R0111,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00568,R0111,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00569,R0111,5,Noakhali,Maijdee,intermediate,5,CURATED_STOP_VERIFY
+RS00570,R0111,6,Noakhali,Sonapur,destination,5,CURATED_STOP_VERIFY
+RS00571,R0112,1,Noakhali,Maijdee,origin,0,CURATED_STOP_VERIFY
+RS00572,R0112,2,Noakhali,Sonapur,intermediate,5,CURATED_STOP_VERIFY
+RS00573,R0112,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00574,R0112,4,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00575,R0113,1,Noakhali,Maijdee,origin,0,CURATED_STOP_VERIFY
+RS00576,R0113,2,Noakhali,Sonapur,intermediate,5,CURATED_STOP_VERIFY
+RS00577,R0113,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00578,R0113,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00579,R0113,5,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00580,R0113,6,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00581,R0114,1,Noakhali,Maijdee,origin,0,CURATED_STOP_VERIFY
+RS00582,R0114,2,Noakhali,Sonapur,intermediate,5,CURATED_STOP_VERIFY
+RS00583,R0114,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00584,R0114,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00585,R0114,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00586,R0114,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00587,R0115,1,Noakhali,Maijdee,origin,0,CURATED_STOP_VERIFY
+RS00588,R0115,2,Noakhali,Sonapur,intermediate,5,CURATED_STOP_VERIFY
+RS00589,R0115,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00590,R0115,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00591,R0115,5,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00592,R0115,6,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00593,R0116,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00594,R0116,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00595,R0116,3,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00596,R0116,4,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00597,R0116,5,Rangamati,Rangamati Sadar,destination,5,CURATED_STOP_VERIFY
+RS00598,R0117,1,Rangamati,Rangamati Sadar,origin,0,CURATED_STOP_VERIFY
+RS00599,R0117,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00600,R0117,3,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00601,R0118,1,Rangamati,Rangamati Sadar,origin,0,CURATED_STOP_VERIFY
+RS00602,R0118,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00603,R0118,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00604,R0118,4,Cox's Bazar,Chakaria,intermediate,5,CURATED_STOP_VERIFY
+RS00605,R0118,5,Cox's Bazar,Cox's Bazar,destination,5,CURATED_STOP_VERIFY
+RS00606,R0119,1,Rangamati,Rangamati Sadar,origin,0,CURATED_STOP_VERIFY
+RS00607,R0119,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00608,R0119,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00609,R0119,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00610,R0119,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00611,R0120,1,Rangamati,Rangamati Sadar,origin,0,CURATED_STOP_VERIFY
+RS00612,R0120,2,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00613,R0120,3,Chattogram,Oxygen,intermediate,5,CURATED_STOP_VERIFY
+RS00614,R0120,4,Feni,Feni Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00615,R0120,5,Feni,Mahipal,destination,5,CURATED_STOP_VERIFY
+RS00616,R0121,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00617,R0121,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00618,R0121,3,Habiganj,Shaistaganj,intermediate,5,CURATED_STOP_VERIFY
+RS00619,R0121,4,Habiganj,Habiganj,destination,5,CURATED_STOP_VERIFY
+RS00620,R0122,1,Habiganj,Shaistaganj,origin,0,CURATED_STOP_VERIFY
+RS00621,R0122,2,Habiganj,Habiganj,intermediate,5,CURATED_STOP_VERIFY
+RS00622,R0122,3,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00623,R0122,4,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00624,R0123,1,Habiganj,Shaistaganj,origin,0,CURATED_STOP_VERIFY
+RS00625,R0123,2,Habiganj,Habiganj,intermediate,5,CURATED_STOP_VERIFY
+RS00626,R0123,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00627,R0123,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00628,R0123,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00629,R0123,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00630,R0124,1,Habiganj,Shaistaganj,origin,0,CURATED_STOP_VERIFY
+RS00631,R0124,2,Habiganj,Habiganj,intermediate,5,CURATED_STOP_VERIFY
+RS00632,R0124,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00633,R0124,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00634,R0124,5,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00635,R0124,6,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00636,R0125,1,Habiganj,Shaistaganj,origin,0,CURATED_STOP_VERIFY
+RS00637,R0125,2,Habiganj,Habiganj,intermediate,5,CURATED_STOP_VERIFY
+RS00638,R0125,3,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00639,R0125,4,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00640,R0125,5,Moulvibazar,Sreemangal,intermediate,5,CURATED_STOP_VERIFY
+RS00641,R0125,6,Moulvibazar,Moulvibazar,destination,5,CURATED_STOP_VERIFY
+RS00642,R0126,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00643,R0126,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00644,R0126,3,Moulvibazar,Sreemangal,intermediate,5,CURATED_STOP_VERIFY
+RS00645,R0126,4,Moulvibazar,Moulvibazar,destination,5,CURATED_STOP_VERIFY
+RS00646,R0127,1,Moulvibazar,Sreemangal,origin,0,CURATED_STOP_VERIFY
+RS00647,R0127,2,Moulvibazar,Moulvibazar,intermediate,5,CURATED_STOP_VERIFY
+RS00648,R0127,3,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00649,R0127,4,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00650,R0128,1,Moulvibazar,Sreemangal,origin,0,CURATED_STOP_VERIFY
+RS00651,R0128,2,Moulvibazar,Moulvibazar,intermediate,5,CURATED_STOP_VERIFY
+RS00652,R0128,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00653,R0128,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00654,R0128,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00655,R0128,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00656,R0129,1,Moulvibazar,Sreemangal,origin,0,CURATED_STOP_VERIFY
+RS00657,R0129,2,Moulvibazar,Moulvibazar,intermediate,5,CURATED_STOP_VERIFY
+RS00658,R0129,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00659,R0129,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00660,R0129,5,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00661,R0129,6,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00662,R0130,1,Moulvibazar,Sreemangal,origin,0,CURATED_STOP_VERIFY
+RS00663,R0130,2,Moulvibazar,Moulvibazar,intermediate,5,CURATED_STOP_VERIFY
+RS00664,R0130,3,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00665,R0130,4,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00666,R0130,5,Habiganj,Shaistaganj,intermediate,5,CURATED_STOP_VERIFY
+RS00667,R0130,6,Habiganj,Habiganj,destination,5,CURATED_STOP_VERIFY
+RS00668,R0131,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00669,R0131,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00670,R0131,3,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00671,R0131,4,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00672,R0131,5,Sunamganj,Sunamganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00673,R0132,1,Sunamganj,Sunamganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00674,R0132,2,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00675,R0132,3,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00676,R0133,1,Sunamganj,Sunamganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00677,R0133,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00678,R0133,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00679,R0133,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00680,R0133,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00681,R0134,1,Sunamganj,Sunamganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00682,R0134,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00683,R0134,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00684,R0134,4,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00685,R0134,5,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00686,R0135,1,Sunamganj,Sunamganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00687,R0135,2,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00688,R0135,3,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00689,R0135,4,Habiganj,Shaistaganj,intermediate,5,CURATED_STOP_VERIFY
+RS00690,R0135,5,Habiganj,Habiganj,destination,5,CURATED_STOP_VERIFY
+RS00691,R0136,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00692,R0136,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00693,R0136,3,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00694,R0136,4,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00695,R0137,1,Sylhet,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00696,R0137,2,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00697,R0137,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00698,R0137,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00699,R0137,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS00700,R0137,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS00701,R0138,1,Sylhet,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00702,R0138,2,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00703,R0138,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00704,R0138,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00705,R0138,5,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00706,R0138,6,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00707,R0139,1,Sylhet,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00708,R0139,2,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00709,R0139,3,Habiganj,Shaistaganj,intermediate,5,CURATED_STOP_VERIFY
+RS00710,R0139,4,Habiganj,Habiganj,destination,5,CURATED_STOP_VERIFY
+RS00711,R0140,1,Sylhet,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00712,R0140,2,Sylhet,Sylhet Ambarkhana,intermediate,5,CURATED_STOP_VERIFY
+RS00713,R0140,3,Moulvibazar,Sreemangal,intermediate,5,CURATED_STOP_VERIFY
+RS00714,R0140,4,Moulvibazar,Moulvibazar,destination,5,CURATED_STOP_VERIFY
+RS00715,R0141,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00716,R0141,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00717,R0141,3,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00718,R0141,4,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00719,R0141,5,Jamalpur,Jamalpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00720,R0142,1,Jamalpur,Jamalpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00721,R0142,2,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00722,R0142,3,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00723,R0143,1,Jamalpur,Jamalpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00724,R0143,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00725,R0143,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00726,R0143,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00727,R0143,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00728,R0144,1,Jamalpur,Jamalpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00729,R0144,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00730,R0144,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00731,R0144,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00732,R0144,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00733,R0145,1,Jamalpur,Jamalpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00734,R0145,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00735,R0145,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00736,R0145,4,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00737,R0145,5,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00738,R0146,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00739,R0146,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00740,R0146,3,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00741,R0146,4,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00742,R0147,1,Mymensingh,Bhaluka,origin,0,CURATED_STOP_VERIFY
+RS00743,R0147,2,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00744,R0147,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00745,R0147,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00746,R0147,5,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00747,R0147,6,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00748,R0148,1,Mymensingh,Bhaluka,origin,0,CURATED_STOP_VERIFY
+RS00749,R0148,2,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00750,R0148,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00751,R0148,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00752,R0148,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00753,R0148,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00754,R0149,1,Mymensingh,Bhaluka,origin,0,CURATED_STOP_VERIFY
+RS00755,R0149,2,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00756,R0149,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00757,R0149,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00758,R0149,5,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00759,R0149,6,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00760,R0150,1,Mymensingh,Bhaluka,origin,0,CURATED_STOP_VERIFY
+RS00761,R0150,2,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00762,R0150,3,Jamalpur,Jamalpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00763,R0151,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00764,R0151,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00765,R0151,3,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00766,R0151,4,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00767,R0151,5,Netrokona,Netrokona Sadar,destination,5,CURATED_STOP_VERIFY
+RS00768,R0152,1,Netrokona,Netrokona Sadar,origin,0,CURATED_STOP_VERIFY
+RS00769,R0152,2,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00770,R0152,3,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00771,R0153,1,Netrokona,Netrokona Sadar,origin,0,CURATED_STOP_VERIFY
+RS00772,R0153,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00773,R0153,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00774,R0153,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00775,R0153,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00776,R0154,1,Netrokona,Netrokona Sadar,origin,0,CURATED_STOP_VERIFY
+RS00777,R0154,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00778,R0154,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00779,R0154,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00780,R0154,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00781,R0155,1,Netrokona,Netrokona Sadar,origin,0,CURATED_STOP_VERIFY
+RS00782,R0155,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00783,R0155,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00784,R0155,4,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00785,R0155,5,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00786,R0156,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00787,R0156,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00788,R0156,3,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00789,R0156,4,Mymensingh,Mymensingh,intermediate,5,CURATED_STOP_VERIFY
+RS00790,R0156,5,Sherpur,Sherpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00791,R0157,1,Sherpur,Sherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00792,R0157,2,Mymensingh,Bhaluka,intermediate,5,CURATED_STOP_VERIFY
+RS00793,R0157,3,Mymensingh,Mymensingh,destination,5,CURATED_STOP_VERIFY
+RS00794,R0158,1,Sherpur,Sherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00795,R0158,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00796,R0158,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00797,R0158,4,Sylhet,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00798,R0158,5,Sylhet,Sylhet Ambarkhana,destination,5,CURATED_STOP_VERIFY
+RS00799,R0159,1,Sherpur,Sherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00800,R0159,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00801,R0159,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00802,R0159,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00803,R0159,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00804,R0160,1,Sherpur,Sherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00805,R0160,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00806,R0160,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00807,R0160,4,Gazipur,Joydebpur,intermediate,5,CURATED_STOP_VERIFY
+RS00808,R0160,5,Gazipur,Chandra,destination,5,CURATED_STOP_VERIFY
+RS00809,R0161,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00810,R0161,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00811,R0161,3,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS00812,R0161,4,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS00813,R0162,1,Bogura,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00814,R0162,2,Bogura,Bogura,intermediate,5,CURATED_STOP_VERIFY
+RS00815,R0162,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00816,R0162,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00817,R0163,1,Bogura,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00818,R0163,2,Bogura,Bogura,intermediate,5,CURATED_STOP_VERIFY
+RS00819,R0163,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00820,R0163,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00821,R0163,5,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00822,R0163,6,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00823,R0164,1,Bogura,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00824,R0164,2,Bogura,Bogura,intermediate,5,CURATED_STOP_VERIFY
+RS00825,R0164,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00826,R0164,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00827,R0164,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00828,R0165,1,Bogura,Sherpur,origin,0,CURATED_STOP_VERIFY
+RS00829,R0165,2,Bogura,Bogura,intermediate,5,CURATED_STOP_VERIFY
+RS00830,R0165,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00831,R0165,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00832,R0165,5,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00833,R0166,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00834,R0166,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00835,R0166,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00836,R0166,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00837,R0166,5,Chapainawabganj,Chapai Nawabganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00838,R0167,1,Chapainawabganj,Chapai Nawabganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00839,R0167,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00840,R0167,3,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00841,R0168,1,Chapainawabganj,Chapai Nawabganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00842,R0168,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00843,R0168,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00844,R0168,4,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00845,R0168,5,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00846,R0169,1,Chapainawabganj,Chapai Nawabganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00847,R0169,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00848,R0169,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00849,R0169,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00850,R0170,1,Chapainawabganj,Chapai Nawabganj Sadar,origin,0,CURATED_STOP_VERIFY
+RS00851,R0170,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00852,R0170,3,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00853,R0170,4,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00854,R0171,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00855,R0171,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00856,R0171,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00857,R0171,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00858,R0171,5,Joypurhat,Joypurhat Sadar,destination,5,CURATED_STOP_VERIFY
+RS00859,R0172,1,Joypurhat,Joypurhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS00860,R0172,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00861,R0172,3,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00862,R0173,1,Joypurhat,Joypurhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS00863,R0173,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00864,R0173,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00865,R0173,4,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00866,R0173,5,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00867,R0174,1,Joypurhat,Joypurhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS00868,R0174,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00869,R0174,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00870,R0174,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00871,R0175,1,Joypurhat,Joypurhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS00872,R0175,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00873,R0175,3,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00874,R0175,4,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00875,R0176,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00876,R0176,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00877,R0176,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00878,R0176,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00879,R0176,5,Naogaon,Naogaon Sadar,destination,5,CURATED_STOP_VERIFY
+RS00880,R0177,1,Naogaon,Naogaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS00881,R0177,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00882,R0177,3,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00883,R0178,1,Naogaon,Naogaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS00884,R0178,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00885,R0178,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00886,R0178,4,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00887,R0178,5,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00888,R0179,1,Naogaon,Naogaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS00889,R0179,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00890,R0179,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00891,R0179,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00892,R0180,1,Naogaon,Naogaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS00893,R0180,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00894,R0180,3,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00895,R0180,4,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00896,R0181,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00897,R0181,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00898,R0181,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00899,R0181,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00900,R0181,5,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00901,R0182,1,Natore,Natore Sadar,origin,0,CURATED_STOP_VERIFY
+RS00902,R0182,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00903,R0182,3,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00904,R0183,1,Natore,Natore Sadar,origin,0,CURATED_STOP_VERIFY
+RS00905,R0183,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00906,R0183,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00907,R0183,4,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00908,R0183,5,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00909,R0184,1,Natore,Natore Sadar,origin,0,CURATED_STOP_VERIFY
+RS00910,R0184,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00911,R0184,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00912,R0184,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00913,R0185,1,Natore,Natore Sadar,origin,0,CURATED_STOP_VERIFY
+RS00914,R0185,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00915,R0185,3,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00916,R0185,4,Naogaon,Naogaon Sadar,destination,5,CURATED_STOP_VERIFY
+RS00917,R0186,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00918,R0186,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00919,R0186,3,Pabna,Chatmohar,intermediate,5,CURATED_STOP_VERIFY
+RS00920,R0186,4,Pabna,Pabna Sadar,destination,5,CURATED_STOP_VERIFY
+RS00921,R0187,1,Pabna,Chatmohar,origin,0,CURATED_STOP_VERIFY
+RS00922,R0187,2,Pabna,Pabna Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00923,R0187,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00924,R0187,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00925,R0188,1,Pabna,Chatmohar,origin,0,CURATED_STOP_VERIFY
+RS00926,R0188,2,Pabna,Pabna Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00927,R0188,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00928,R0188,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00929,R0188,5,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00930,R0188,6,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00931,R0189,1,Pabna,Chatmohar,origin,0,CURATED_STOP_VERIFY
+RS00932,R0189,2,Pabna,Pabna Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00933,R0189,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00934,R0189,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00935,R0189,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00936,R0190,1,Pabna,Chatmohar,origin,0,CURATED_STOP_VERIFY
+RS00937,R0190,2,Pabna,Pabna Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00938,R0190,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00939,R0190,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00940,R0190,5,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00941,R0191,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00942,R0191,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00943,R0191,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00944,R0191,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00945,R0192,1,Rajshahi,Baneshwar,origin,0,CURATED_STOP_VERIFY
+RS00946,R0192,2,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00947,R0192,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00948,R0192,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00949,R0192,5,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00950,R0192,6,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00951,R0193,1,Rajshahi,Baneshwar,origin,0,CURATED_STOP_VERIFY
+RS00952,R0193,2,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00953,R0193,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00954,R0193,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00955,R0193,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00956,R0194,1,Rajshahi,Baneshwar,origin,0,CURATED_STOP_VERIFY
+RS00957,R0194,2,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00958,R0194,3,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00959,R0195,1,Rajshahi,Baneshwar,origin,0,CURATED_STOP_VERIFY
+RS00960,R0195,2,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00961,R0195,3,Naogaon,Naogaon Sadar,destination,5,CURATED_STOP_VERIFY
+RS00962,R0196,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00963,R0196,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00964,R0196,3,Sirajganj,Hatikumrul,intermediate,5,CURATED_STOP_VERIFY
+RS00965,R0196,4,Sirajganj,Sirajganj Sadar,destination,5,CURATED_STOP_VERIFY
+RS00966,R0197,1,Sirajganj,Hatikumrul,origin,0,CURATED_STOP_VERIFY
+RS00967,R0197,2,Sirajganj,Sirajganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00968,R0197,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00969,R0197,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00970,R0198,1,Sirajganj,Hatikumrul,origin,0,CURATED_STOP_VERIFY
+RS00971,R0198,2,Sirajganj,Sirajganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00972,R0198,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00973,R0198,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00974,R0198,5,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00975,R0198,6,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00976,R0199,1,Sirajganj,Hatikumrul,origin,0,CURATED_STOP_VERIFY
+RS00977,R0199,2,Sirajganj,Sirajganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00978,R0199,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00979,R0199,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS00980,R0199,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS00981,R0200,1,Sirajganj,Hatikumrul,origin,0,CURATED_STOP_VERIFY
+RS00982,R0200,2,Sirajganj,Sirajganj Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS00983,R0200,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00984,R0200,4,Rajshahi,Rajshahi,intermediate,5,CURATED_STOP_VERIFY
+RS00985,R0200,5,Natore,Natore Sadar,destination,5,CURATED_STOP_VERIFY
+RS00986,R0201,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS00987,R0201,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00988,R0201,3,Dinajpur,Dinajpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS00989,R0202,1,Dinajpur,Dinajpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00990,R0202,2,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS00991,R0202,3,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS00992,R0203,1,Dinajpur,Dinajpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00993,R0203,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00994,R0203,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS00995,R0203,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS00996,R0203,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS00997,R0204,1,Dinajpur,Dinajpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS00998,R0204,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS00999,R0204,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01000,R0204,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01001,R0204,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01002,R0205,1,Dinajpur,Dinajpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01003,R0205,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01004,R0205,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01005,R0205,4,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01006,R0205,5,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01007,R0206,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01008,R0206,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01009,R0206,3,Gaibandha,Gaibandha Sadar,destination,5,CURATED_STOP_VERIFY
+RS01010,R0207,1,Gaibandha,Gaibandha Sadar,origin,0,CURATED_STOP_VERIFY
+RS01011,R0207,2,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01012,R0207,3,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01013,R0208,1,Gaibandha,Gaibandha Sadar,origin,0,CURATED_STOP_VERIFY
+RS01014,R0208,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01015,R0208,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01016,R0208,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01017,R0208,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01018,R0209,1,Gaibandha,Gaibandha Sadar,origin,0,CURATED_STOP_VERIFY
+RS01019,R0209,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01020,R0209,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01021,R0209,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01022,R0209,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01023,R0210,1,Gaibandha,Gaibandha Sadar,origin,0,CURATED_STOP_VERIFY
+RS01024,R0210,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01025,R0210,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01026,R0210,4,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01027,R0210,5,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01028,R0211,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01029,R0211,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01030,R0211,3,Kurigram,Kurigram Sadar,destination,5,CURATED_STOP_VERIFY
+RS01031,R0212,1,Kurigram,Kurigram Sadar,origin,0,CURATED_STOP_VERIFY
+RS01032,R0212,2,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01033,R0212,3,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01034,R0213,1,Kurigram,Kurigram Sadar,origin,0,CURATED_STOP_VERIFY
+RS01035,R0213,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01036,R0213,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01037,R0213,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01038,R0213,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01039,R0214,1,Kurigram,Kurigram Sadar,origin,0,CURATED_STOP_VERIFY
+RS01040,R0214,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01041,R0214,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01042,R0214,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01043,R0214,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01044,R0215,1,Kurigram,Kurigram Sadar,origin,0,CURATED_STOP_VERIFY
+RS01045,R0215,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01046,R0215,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01047,R0215,4,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01048,R0215,5,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01049,R0216,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01050,R0216,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01051,R0216,3,Lalmonirhat,Lalmonirhat Sadar,destination,5,CURATED_STOP_VERIFY
+RS01052,R0217,1,Lalmonirhat,Lalmonirhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS01053,R0217,2,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01054,R0217,3,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01055,R0218,1,Lalmonirhat,Lalmonirhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS01056,R0218,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01057,R0218,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01058,R0218,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01059,R0218,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01060,R0219,1,Lalmonirhat,Lalmonirhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS01061,R0219,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01062,R0219,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01063,R0219,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01064,R0219,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01065,R0220,1,Lalmonirhat,Lalmonirhat Sadar,origin,0,CURATED_STOP_VERIFY
+RS01066,R0220,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01067,R0220,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01068,R0220,4,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01069,R0220,5,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01070,R0221,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01071,R0221,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01072,R0221,3,Nilphamari,Saidpur,intermediate,5,CURATED_STOP_VERIFY
+RS01073,R0221,4,Nilphamari,Nilphamari Sadar,destination,5,CURATED_STOP_VERIFY
+RS01074,R0222,1,Nilphamari,Saidpur,origin,0,CURATED_STOP_VERIFY
+RS01075,R0222,2,Nilphamari,Nilphamari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01076,R0222,3,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01077,R0222,4,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01078,R0223,1,Nilphamari,Saidpur,origin,0,CURATED_STOP_VERIFY
+RS01079,R0223,2,Nilphamari,Nilphamari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01080,R0223,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01081,R0223,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01082,R0223,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01083,R0223,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01084,R0224,1,Nilphamari,Saidpur,origin,0,CURATED_STOP_VERIFY
+RS01085,R0224,2,Nilphamari,Nilphamari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01086,R0224,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01087,R0224,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01088,R0224,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01089,R0224,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01090,R0225,1,Nilphamari,Saidpur,origin,0,CURATED_STOP_VERIFY
+RS01091,R0225,2,Nilphamari,Nilphamari Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01092,R0225,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01093,R0225,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01094,R0225,5,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01095,R0225,6,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01096,R0226,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01097,R0226,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01098,R0226,3,Panchagarh,Boda,intermediate,5,CURATED_STOP_VERIFY
+RS01099,R0226,4,Panchagarh,Panchagarh Sadar,destination,5,CURATED_STOP_VERIFY
+RS01100,R0227,1,Panchagarh,Boda,origin,0,CURATED_STOP_VERIFY
+RS01101,R0227,2,Panchagarh,Panchagarh Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01102,R0227,3,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01103,R0227,4,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01104,R0228,1,Panchagarh,Boda,origin,0,CURATED_STOP_VERIFY
+RS01105,R0228,2,Panchagarh,Panchagarh Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01106,R0228,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01107,R0228,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01108,R0228,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01109,R0228,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01110,R0229,1,Panchagarh,Boda,origin,0,CURATED_STOP_VERIFY
+RS01111,R0229,2,Panchagarh,Panchagarh Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01112,R0229,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01113,R0229,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01114,R0229,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01115,R0229,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01116,R0230,1,Panchagarh,Boda,origin,0,CURATED_STOP_VERIFY
+RS01117,R0230,2,Panchagarh,Panchagarh Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01118,R0230,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01119,R0230,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01120,R0230,5,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01121,R0230,6,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01122,R0231,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01123,R0231,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01124,R0231,3,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01125,R0231,4,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01126,R0232,1,Rangpur,Pirganj,origin,0,CURATED_STOP_VERIFY
+RS01127,R0232,2,Rangpur,Rangpur,intermediate,5,CURATED_STOP_VERIFY
+RS01128,R0232,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01129,R0232,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01130,R0232,5,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01131,R0232,6,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01132,R0233,1,Rangpur,Pirganj,origin,0,CURATED_STOP_VERIFY
+RS01133,R0233,2,Rangpur,Rangpur,intermediate,5,CURATED_STOP_VERIFY
+RS01134,R0233,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01135,R0233,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01136,R0233,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01137,R0233,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01138,R0234,1,Rangpur,Pirganj,origin,0,CURATED_STOP_VERIFY
+RS01139,R0234,2,Rangpur,Rangpur,intermediate,5,CURATED_STOP_VERIFY
+RS01140,R0234,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01141,R0234,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01142,R0234,5,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01143,R0234,6,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01144,R0235,1,Rangpur,Pirganj,origin,0,CURATED_STOP_VERIFY
+RS01145,R0235,2,Rangpur,Rangpur,intermediate,5,CURATED_STOP_VERIFY
+RS01146,R0235,3,Gaibandha,Gaibandha Sadar,destination,5,CURATED_STOP_VERIFY
+RS01147,R0236,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01148,R0236,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01149,R0236,3,Thakurgaon,Thakurgaon Sadar,destination,5,CURATED_STOP_VERIFY
+RS01150,R0237,1,Thakurgaon,Thakurgaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS01151,R0237,2,Rangpur,Pirganj,intermediate,5,CURATED_STOP_VERIFY
+RS01152,R0237,3,Rangpur,Rangpur,destination,5,CURATED_STOP_VERIFY
+RS01153,R0238,1,Thakurgaon,Thakurgaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS01154,R0238,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01155,R0238,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01156,R0238,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01157,R0238,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01158,R0239,1,Thakurgaon,Thakurgaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS01159,R0239,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01160,R0239,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01161,R0239,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01162,R0239,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01163,R0240,1,Thakurgaon,Thakurgaon Sadar,origin,0,CURATED_STOP_VERIFY
+RS01164,R0240,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01165,R0240,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01166,R0240,4,Bogura,Sherpur,intermediate,5,CURATED_STOP_VERIFY
+RS01167,R0240,5,Bogura,Bogura,destination,5,CURATED_STOP_VERIFY
+RS01168,R0241,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01169,R0241,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01170,R0241,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01171,R0241,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01172,R0241,5,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01173,R0241,6,Bagerhat,Bagerhat Sadar,destination,5,CURATED_STOP_VERIFY
+RS01174,R0242,1,Bagerhat,Fakirhat,origin,0,CURATED_STOP_VERIFY
+RS01175,R0242,2,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01176,R0242,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01177,R0242,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01178,R0243,1,Bagerhat,Fakirhat,origin,0,CURATED_STOP_VERIFY
+RS01179,R0243,2,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01180,R0243,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01181,R0243,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01182,R0243,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01183,R0244,1,Bagerhat,Fakirhat,origin,0,CURATED_STOP_VERIFY
+RS01184,R0244,2,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01185,R0244,3,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01186,R0244,4,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01187,R0244,5,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01188,R0245,1,Bagerhat,Fakirhat,origin,0,CURATED_STOP_VERIFY
+RS01189,R0245,2,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01190,R0245,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01191,R0245,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01192,R0245,5,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01193,R0245,6,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01194,R0246,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01195,R0246,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01196,R0246,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01197,R0246,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01198,R0246,5,Chuadanga,Chuadanga Sadar,destination,5,CURATED_STOP_VERIFY
+RS01199,R0247,1,Chuadanga,Chuadanga Sadar,origin,0,CURATED_STOP_VERIFY
+RS01200,R0247,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01201,R0247,3,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01202,R0248,1,Chuadanga,Chuadanga Sadar,origin,0,CURATED_STOP_VERIFY
+RS01203,R0248,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01204,R0248,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01205,R0248,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01206,R0249,1,Chuadanga,Chuadanga Sadar,origin,0,CURATED_STOP_VERIFY
+RS01207,R0249,2,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01208,R0249,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01209,R0249,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01210,R0250,1,Chuadanga,Chuadanga Sadar,origin,0,CURATED_STOP_VERIFY
+RS01211,R0250,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01212,R0250,3,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01213,R0250,4,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01214,R0250,5,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01215,R0251,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01216,R0251,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01217,R0251,3,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01218,R0251,4,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01219,R0252,1,Jashore,Noapara,origin,0,CURATED_STOP_VERIFY
+RS01220,R0252,2,Jashore,Jashore Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01221,R0252,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01222,R0252,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01223,R0253,1,Jashore,Noapara,origin,0,CURATED_STOP_VERIFY
+RS01224,R0253,2,Jashore,Jashore Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01225,R0253,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01226,R0253,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01227,R0253,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01228,R0254,1,Jashore,Noapara,origin,0,CURATED_STOP_VERIFY
+RS01229,R0254,2,Jashore,Jashore Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01230,R0254,3,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01231,R0254,4,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01232,R0254,5,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01233,R0255,1,Jashore,Noapara,origin,0,CURATED_STOP_VERIFY
+RS01234,R0255,2,Jashore,Jashore Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01235,R0255,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01236,R0255,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01237,R0255,5,Satkhira,Satkhira Sadar,destination,5,CURATED_STOP_VERIFY
+RS01238,R0256,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01239,R0256,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01240,R0256,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01241,R0256,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01242,R0256,5,Jhenaidah,Jhenaidah Sadar,destination,5,CURATED_STOP_VERIFY
+RS01243,R0257,1,Jhenaidah,Jhenaidah Sadar,origin,0,CURATED_STOP_VERIFY
+RS01244,R0257,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01245,R0257,3,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01246,R0258,1,Jhenaidah,Jhenaidah Sadar,origin,0,CURATED_STOP_VERIFY
+RS01247,R0258,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01248,R0258,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01249,R0258,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01250,R0259,1,Jhenaidah,Jhenaidah Sadar,origin,0,CURATED_STOP_VERIFY
+RS01251,R0259,2,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01252,R0259,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01253,R0259,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01254,R0260,1,Jhenaidah,Jhenaidah Sadar,origin,0,CURATED_STOP_VERIFY
+RS01255,R0260,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01256,R0260,3,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01257,R0260,4,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01258,R0260,5,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01259,R0261,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01260,R0261,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01261,R0261,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01262,R0261,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01263,R0262,1,Khulna,Phultala,origin,0,CURATED_STOP_VERIFY
+RS01264,R0262,2,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01265,R0262,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01266,R0262,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01267,R0262,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01268,R0263,1,Khulna,Phultala,origin,0,CURATED_STOP_VERIFY
+RS01269,R0263,2,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01270,R0263,3,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01271,R0263,4,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01272,R0263,5,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01273,R0264,1,Khulna,Phultala,origin,0,CURATED_STOP_VERIFY
+RS01274,R0264,2,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01275,R0264,3,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01276,R0264,4,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01277,R0265,1,Khulna,Phultala,origin,0,CURATED_STOP_VERIFY
+RS01278,R0265,2,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01279,R0265,3,Satkhira,Satkhira Sadar,destination,5,CURATED_STOP_VERIFY
+RS01280,R0266,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01281,R0266,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01282,R0266,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01283,R0266,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01284,R0266,5,Kushtia,Kushtia Sadar,destination,5,CURATED_STOP_VERIFY
+RS01285,R0267,1,Kushtia,Kushtia Sadar,origin,0,CURATED_STOP_VERIFY
+RS01286,R0267,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01287,R0267,3,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01288,R0268,1,Kushtia,Kushtia Sadar,origin,0,CURATED_STOP_VERIFY
+RS01289,R0268,2,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01290,R0268,3,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01291,R0269,1,Kushtia,Kushtia Sadar,origin,0,CURATED_STOP_VERIFY
+RS01292,R0269,2,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01293,R0269,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01294,R0269,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01295,R0270,1,Kushtia,Kushtia Sadar,origin,0,CURATED_STOP_VERIFY
+RS01296,R0270,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01297,R0270,3,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01298,R0270,4,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01299,R0270,5,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01300,R0271,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01301,R0271,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01302,R0271,3,Magura,Magura Sadar,destination,5,CURATED_STOP_VERIFY
+RS01303,R0272,1,Magura,Magura Sadar,origin,0,CURATED_STOP_VERIFY
+RS01304,R0272,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01305,R0272,3,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01306,R0273,1,Magura,Magura Sadar,origin,0,CURATED_STOP_VERIFY
+RS01307,R0273,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01308,R0273,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01309,R0273,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01310,R0274,1,Magura,Magura Sadar,origin,0,CURATED_STOP_VERIFY
+RS01311,R0274,2,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01312,R0274,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01313,R0274,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01314,R0275,1,Magura,Magura Sadar,origin,0,CURATED_STOP_VERIFY
+RS01315,R0275,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01316,R0275,3,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01317,R0275,4,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01318,R0275,5,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01319,R0276,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01320,R0276,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01321,R0276,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01322,R0276,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01323,R0276,5,Meherpur,Meherpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS01324,R0277,1,Meherpur,Meherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01325,R0277,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01326,R0277,3,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01327,R0278,1,Meherpur,Meherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01328,R0278,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01329,R0278,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01330,R0278,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01331,R0279,1,Meherpur,Meherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01332,R0279,2,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01333,R0279,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01334,R0279,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01335,R0280,1,Meherpur,Meherpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01336,R0280,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01337,R0280,3,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01338,R0280,4,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01339,R0280,5,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01340,R0281,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01341,R0281,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01342,R0281,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01343,R0281,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01344,R0281,5,Narail,Lohagara,intermediate,5,CURATED_STOP_VERIFY
+RS01345,R0281,6,Narail,Narail Sadar,destination,5,CURATED_STOP_VERIFY
+RS01346,R0282,1,Narail,Lohagara,origin,0,CURATED_STOP_VERIFY
+RS01347,R0282,2,Narail,Narail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01348,R0282,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01349,R0282,4,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01350,R0283,1,Narail,Lohagara,origin,0,CURATED_STOP_VERIFY
+RS01351,R0283,2,Narail,Narail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01352,R0283,3,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01353,R0283,4,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01354,R0283,5,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01355,R0284,1,Narail,Lohagara,origin,0,CURATED_STOP_VERIFY
+RS01356,R0284,2,Narail,Narail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01357,R0284,3,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01358,R0284,4,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01359,R0284,5,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01360,R0285,1,Narail,Lohagara,origin,0,CURATED_STOP_VERIFY
+RS01361,R0285,2,Narail,Narail Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01362,R0285,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01363,R0285,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01364,R0285,5,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01365,R0285,6,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01366,R0286,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01367,R0286,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01368,R0286,3,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01369,R0286,4,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01370,R0286,5,Satkhira,Satkhira Sadar,destination,5,CURATED_STOP_VERIFY
+RS01371,R0287,1,Satkhira,Satkhira Sadar,origin,0,CURATED_STOP_VERIFY
+RS01372,R0287,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01373,R0287,3,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01374,R0288,1,Satkhira,Satkhira Sadar,origin,0,CURATED_STOP_VERIFY
+RS01375,R0288,2,Kushtia,Kushtia Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01376,R0288,3,Rajshahi,Baneshwar,intermediate,5,CURATED_STOP_VERIFY
+RS01377,R0288,4,Rajshahi,Rajshahi,destination,5,CURATED_STOP_VERIFY
+RS01378,R0289,1,Satkhira,Satkhira Sadar,origin,0,CURATED_STOP_VERIFY
+RS01379,R0289,2,Jhalokathi,Jhalokathi Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01380,R0289,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01381,R0289,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01382,R0290,1,Satkhira,Satkhira Sadar,origin,0,CURATED_STOP_VERIFY
+RS01383,R0290,2,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01384,R0290,3,Khulna,Sonadanga,intermediate,5,CURATED_STOP_VERIFY
+RS01385,R0290,4,Jashore,Noapara,intermediate,5,CURATED_STOP_VERIFY
+RS01386,R0290,5,Jashore,Jashore Sadar,destination,5,CURATED_STOP_VERIFY
+RS01387,R0291,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01388,R0291,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01389,R0291,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01390,R0291,4,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01391,R0291,5,Barguna,Barguna Sadar,destination,5,CURATED_STOP_VERIFY
+RS01392,R0292,1,Barguna,Barguna Sadar,origin,0,CURATED_STOP_VERIFY
+RS01393,R0292,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01394,R0292,3,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01395,R0293,1,Barguna,Barguna Sadar,origin,0,CURATED_STOP_VERIFY
+RS01396,R0293,2,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01397,R0293,3,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01398,R0293,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01399,R0293,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01400,R0294,1,Barguna,Barguna Sadar,origin,0,CURATED_STOP_VERIFY
+RS01401,R0294,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01402,R0294,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01403,R0294,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS01404,R0294,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS01405,R0295,1,Barguna,Barguna Sadar,origin,0,CURATED_STOP_VERIFY
+RS01406,R0295,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01407,R0295,3,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01408,R0295,4,Jhalokathi,Jhalokathi Sadar,destination,5,CURATED_STOP_VERIFY
+RS01409,R0296,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01410,R0296,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01411,R0296,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01412,R0296,4,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01413,R0297,1,Barishal,Gournadi,origin,0,CURATED_STOP_VERIFY
+RS01414,R0297,2,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01415,R0297,3,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01416,R0297,4,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01417,R0297,5,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01418,R0297,6,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01419,R0298,1,Barishal,Gournadi,origin,0,CURATED_STOP_VERIFY
+RS01420,R0298,2,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01421,R0298,3,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01422,R0298,4,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01423,R0298,5,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS01424,R0298,6,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS01425,R0299,1,Barishal,Gournadi,origin,0,CURATED_STOP_VERIFY
+RS01426,R0299,2,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01427,R0299,3,Jhalokathi,Jhalokathi Sadar,destination,5,CURATED_STOP_VERIFY
+RS01428,R0300,1,Barishal,Gournadi,origin,0,CURATED_STOP_VERIFY
+RS01429,R0300,2,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01430,R0300,3,Pirojpur,Pirojpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS01431,R0301,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01432,R0301,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01433,R0301,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01434,R0301,4,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01435,R0301,5,Bhola,Bhola Sadar,destination,5,CURATED_STOP_VERIFY
+RS01436,R0302,1,Bhola,Bhola Sadar,origin,0,CURATED_STOP_VERIFY
+RS01437,R0302,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01438,R0302,3,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01439,R0303,1,Bhola,Bhola Sadar,origin,0,CURATED_STOP_VERIFY
+RS01440,R0303,2,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01441,R0303,3,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01442,R0303,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01443,R0303,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01444,R0304,1,Bhola,Bhola Sadar,origin,0,CURATED_STOP_VERIFY
+RS01445,R0304,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01446,R0304,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01447,R0304,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS01448,R0304,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS01449,R0305,1,Bhola,Bhola Sadar,origin,0,CURATED_STOP_VERIFY
+RS01450,R0305,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01451,R0305,3,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01452,R0305,4,Jhalokathi,Jhalokathi Sadar,destination,5,CURATED_STOP_VERIFY
+RS01453,R0306,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01454,R0306,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01455,R0306,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01456,R0306,4,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01457,R0306,5,Jhalokathi,Jhalokathi Sadar,destination,5,CURATED_STOP_VERIFY
+RS01458,R0307,1,Jhalokathi,Jhalokathi Sadar,origin,0,CURATED_STOP_VERIFY
+RS01459,R0307,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01460,R0307,3,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01461,R0308,1,Jhalokathi,Jhalokathi Sadar,origin,0,CURATED_STOP_VERIFY
+RS01462,R0308,2,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01463,R0308,3,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01464,R0308,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01465,R0308,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01466,R0309,1,Jhalokathi,Jhalokathi Sadar,origin,0,CURATED_STOP_VERIFY
+RS01467,R0309,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01468,R0309,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01469,R0309,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS01470,R0309,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS01471,R0310,1,Jhalokathi,Jhalokathi Sadar,origin,0,CURATED_STOP_VERIFY
+RS01472,R0310,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01473,R0310,3,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01474,R0310,4,Pirojpur,Pirojpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS01475,R0311,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01476,R0311,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01477,R0311,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01478,R0311,4,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01479,R0311,5,Patuakhali,Patuakhali Sadar,destination,5,CURATED_STOP_VERIFY
+RS01480,R0312,1,Patuakhali,Patuakhali Sadar,origin,0,CURATED_STOP_VERIFY
+RS01481,R0312,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01482,R0312,3,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01483,R0313,1,Patuakhali,Patuakhali Sadar,origin,0,CURATED_STOP_VERIFY
+RS01484,R0313,2,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01485,R0313,3,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01486,R0313,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01487,R0313,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01488,R0314,1,Patuakhali,Patuakhali Sadar,origin,0,CURATED_STOP_VERIFY
+RS01489,R0314,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01490,R0314,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01491,R0314,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS01492,R0314,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS01493,R0315,1,Patuakhali,Patuakhali Sadar,origin,0,CURATED_STOP_VERIFY
+RS01494,R0315,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01495,R0315,3,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01496,R0315,4,Jhalokathi,Jhalokathi Sadar,destination,5,CURATED_STOP_VERIFY
+RS01497,R0316,1,Dhaka,Gabtoli,origin,0,CURATED_STOP_VERIFY
+RS01498,R0316,2,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01499,R0316,3,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01500,R0316,4,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01501,R0316,5,Pirojpur,Pirojpur Sadar,destination,5,CURATED_STOP_VERIFY
+RS01502,R0317,1,Pirojpur,Pirojpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01503,R0317,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01504,R0317,3,Barishal,Barishal,destination,5,CURATED_STOP_VERIFY
+RS01505,R0318,1,Pirojpur,Pirojpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01506,R0318,2,Bagerhat,Fakirhat,intermediate,5,CURATED_STOP_VERIFY
+RS01507,R0318,3,Bagerhat,Bagerhat Sadar,intermediate,5,CURATED_STOP_VERIFY
+RS01508,R0318,4,Khulna,Phultala,intermediate,5,CURATED_STOP_VERIFY
+RS01509,R0318,5,Khulna,Sonadanga,destination,5,CURATED_STOP_VERIFY
+RS01510,R0319,1,Pirojpur,Pirojpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01511,R0319,2,Dhaka,Gabtoli,intermediate,5,CURATED_STOP_VERIFY
+RS01512,R0319,3,Dhaka,Kallyanpur,intermediate,5,CURATED_STOP_VERIFY
+RS01513,R0319,4,Chattogram,AK Khan,intermediate,5,CURATED_STOP_VERIFY
+RS01514,R0319,5,Chattogram,Oxygen,destination,5,CURATED_STOP_VERIFY
+RS01515,R0320,1,Pirojpur,Pirojpur Sadar,origin,0,CURATED_STOP_VERIFY
+RS01516,R0320,2,Barishal,Gournadi,intermediate,5,CURATED_STOP_VERIFY
+RS01517,R0320,3,Barishal,Barishal,intermediate,5,CURATED_STOP_VERIFY
+RS01518,R0320,4,Jhalokathi,Jhalokathi Sadar,destination,5,CURATED_STOP_VERIFY

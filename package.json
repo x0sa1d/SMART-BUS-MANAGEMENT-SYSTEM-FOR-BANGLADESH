@@ -11,8 +11,10 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
+    "db:seed-dataset-routes": "tsx prisma/seed-dataset-routes-only.ts",
     "db:seed-fleet": "tsx prisma/seed-fleet-only.ts",
     "db:studio": "prisma studio",
+    "db:secure-rls": "prisma db execute --file prisma/sql/enable-rls-lockdown.sql --url \"$DIRECT_URL\"",
     "promote-admin": "tsx scripts/promote-admin.ts",
     "postinstall": "prisma generate"
   },
@@ -48,6 +50,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.16.0",
+    "html5-qrcode": "^2.3.8",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
     "lucide-react": "^0.513.0",

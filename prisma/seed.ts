@@ -1,10 +1,10 @@
 import { db } from "@/lib/db";
 import {
   seedBangladeshLocations,
-  seedBangladeshRoutes,
   seedDistrictStops,
   seedSampleSchedulesAndTrips,
 } from "./seed-bangladesh";
+import { seedDatasetRoutes, seedDatasetServices } from "./seed-dataset-routes";
 import { seedBusCompanies, linkBusesAndDriversToCompanies } from "./seed-companies";
 import { seedFleet, refreshScheduleFares } from "./seed-fleet";
 import { seedUpazilas, upgradeTerminalStops } from "./seed-upazilas";
@@ -121,10 +121,10 @@ async function main() {
 
   await seedDemoAccounts(driver1.id);
 
-  // Bangladesh: 8 divisions, 64 districts, nationwide routes
+  // Bangladesh: 8 divisions, 64 districts, dataset from curated dataset v1
   await seedBangladeshLocations();
   await seedUpazilas();
-  await seedBangladeshRoutes();
+  await seedDatasetRoutes();
   await seedDistrictStops();
   await upgradeTerminalStops();
   await seedBusCompanies();
@@ -133,6 +133,7 @@ async function main() {
     await refreshScheduleFares();
   } else {
     await seedSampleSchedulesAndTrips();
+    await seedDatasetServices();
     await refreshScheduleFares();
   }
   await linkBusesAndDriversToCompanies();

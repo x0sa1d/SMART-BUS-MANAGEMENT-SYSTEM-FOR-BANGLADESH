@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import { Outfit, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@teispace/next-themes";
 import { getTheme, getThemeScript } from "@teispace/next-themes/server";
 import { QueryProvider } from "@/components/providers/query-provider";
@@ -7,8 +7,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { APP_NAME, APP_DESCRIPTION } from "@/constants";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -40,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${plusJakarta.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${outfit.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider {...themeProviderConfig} initialTheme={initialTheme ?? undefined} noScript>
           <QueryProvider>
             {children}

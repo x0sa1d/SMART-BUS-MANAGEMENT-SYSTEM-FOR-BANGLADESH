@@ -20,8 +20,57 @@ export const updateUserRoleSchema = z.object({
   companyId: z.string().optional(),
 });
 
+const optionalText = z.preprocess(
+  (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
+  z.string().optional()
+);
+
 export const profileSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+  username: z.preprocess(
+    (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
+    z
+      .string()
+      .trim()
+      .min(3, "Username must be at least 3 characters")
+      .max(32, "Username must be at most 32 characters")
+      .regex(/^[a-zA-Z0-9._-]+$/, "Username can only use letters, numbers, dots, underscores, and hyphens")
+      .optional()
+  ),
+  email: z.string().email("Invalid email address"),
+  phone: z.preprocess(
+    (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
+    z.string().trim().min(10, "Valid phone number required").max(20, "Phone number is too long").optional()
+  ),
+  currentPassword: optionalText,
+  newPassword: optionalText,
+  confirmPassword: optionalText,
+  removeImage: z.enum(["true", "false"]).optional(),
+}).superRefine((data, ctx) => {
+  const wantsPasswordChange = Boolean(data.newPassword || data.confirmPassword || data.currentPassword);
+  if (!wantsPasswordChange) return;
+
+  if (!data.currentPassword || data.currentPassword.length < 8) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Current password is required to set a new password",
+      path: ["currentPassword"],
+    });
+  }
+  if (!data.newPassword || data.newPassword.length < 8) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "New password must be at least 8 characters",
+      path: ["newPassword"],
+    });
+  }
+  if (data.newPassword !== data.confirmPassword) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Passwords don't match",
+      path: ["confirmPassword"],
+    });
+  }
 });
 
 export const tripDepartureSchema = z.object({

@@ -34,14 +34,14 @@ export function Sidebar({ items, collapsed, onToggle }: SidebarProps) {
       initial={false}
       animate={{ width: collapsed ? 72 : 256 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
-      className="hidden md:flex flex-col border-r border-border/60 bg-card/95 backdrop-blur-sm h-full"
+      className="hidden md:flex flex-col border-r border-border/70 bg-card/95 backdrop-blur-sm h-full shadow-soft"
     >
-      <div className="flex h-16 items-center justify-between px-4 border-b">
+      <div className="flex h-16 items-center justify-between px-4 border-b border-border/70">
         <AnimatePresence mode="wait">
           {!collapsed && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-white text-sm font-bold">B</div>
-              <span className="font-semibold text-sm tracking-tight">{APP_NAME}</span>
+              <div className="flex h-8 w-8 items-center justify-center rounded-md gradient-primary text-white text-sm font-bold shadow-soft">B</div>
+              <span className="font-bold text-sm tracking-tight text-ink">{APP_NAME}</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -56,9 +56,9 @@ export function Sidebar({ items, collapsed, onToggle }: SidebarProps) {
           return (
             <Link key={item.href} href={item.href} title={collapsed ? item.title : undefined}
               className={cn("flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
-                isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                isActive ? "bg-primary text-primary-foreground shadow-soft" : "text-muted-foreground hover:bg-muted hover:text-ink",
                 collapsed && "justify-center px-2")}>
-              <Icon className={cn("h-4 w-4 shrink-0", isActive && "text-primary")} />
+              <Icon className={cn("h-4 w-4 shrink-0", isActive ? "text-primary-foreground" : "")} />
               {!collapsed && <span>{item.title}</span>}
             </Link>
           );

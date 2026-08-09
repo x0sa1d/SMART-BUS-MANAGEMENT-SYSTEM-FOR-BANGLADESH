@@ -5,7 +5,7 @@ import type { LucideIcon } from "lucide-react";
 const ACCENT_STYLES = {
   green: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#00a67e]",
   emerald: "from-[#00875f]/20 to-[#00875f]/5 text-[#00875f] dark:text-[#00a67e]",
-  teal: "from-[#2A9D8F]/20 to-[#2A9D8F]/5 text-[#2A9D8F]",
+  teal: "from-[#e11d48]/20 to-[#e11d48]/5 text-[#e11d48]",
   navy: "from-[#1D3557]/20 to-[#1D3557]/5 text-[#1D3557] dark:text-[#457B9D]",
   blue: "from-[#457B9D]/20 to-[#457B9D]/5 text-[#457B9D]",
   indigo: "from-[#1D3557]/20 to-[#457B9D]/5 text-[#1D3557] dark:text-[#457B9D]",

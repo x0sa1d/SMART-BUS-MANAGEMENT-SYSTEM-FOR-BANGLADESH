@@ -4,28 +4,37 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
+  [
+    "ios-btn inline-flex items-center justify-center gap-2 whitespace-nowrap",
+    "rounded-full text-sm font-semibold tracking-[-0.01em]",
+    "transition-all duration-200 ease-out",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2",
+    "disabled:pointer-events-none disabled:opacity-45",
+    "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "cursor-pointer select-none active:scale-[0.97]",
+  ].join(" "),
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md active:scale-[0.98]",
+          "bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_rgba(227,28,35,0.45)] hover:brightness-110 hover:shadow-[0_14px_28px_-12px_rgba(227,28,35,0.55)] border border-white/15",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground shadow-[0_10px_24px_-10px_rgba(200,30,30,0.45)] hover:brightness-110 border border-white/10",
         outline:
-          "border border-input bg-background shadow-sm hover:bg-primary/5 hover:border-primary/30 hover:text-foreground",
+          "border border-border/80 bg-white/70 text-ink backdrop-blur-xl shadow-[0_8px_20px_-14px_rgba(10,64,51,0.2)] hover:bg-white hover:border-brand-green/30 dark:bg-card/55 dark:hover:bg-card/80",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-primary/10 hover:text-primary",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground shadow-[0_10px_24px_-12px_rgba(10,64,51,0.45)] hover:brightness-110 border border-white/10",
+        ghost:
+          "bg-transparent text-foreground hover:bg-brand-green/10 hover:text-brand-green",
+        link: "text-primary underline-offset-4 hover:underline rounded-md px-0 shadow-none border-0",
         gradient:
-          "gradient-primary text-white shadow-md hover:shadow-lg hover:opacity-90 active:scale-[0.98]",
+          "gradient-primary text-white shadow-[0_12px_28px_-12px_rgba(227,28,35,0.5)] hover:brightness-110 border border-white/20",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-12 rounded-lg px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-11 px-5 py-2",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-12 px-8 text-[15px]",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {
