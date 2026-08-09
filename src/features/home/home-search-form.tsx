@@ -153,7 +153,7 @@ export function HomeSearchForm({ destinations }: { destinations: string[] }) {
     <form
       action="/search"
       method="get"
-      className="rounded-xl bg-card p-4 sm:p-5 shadow-soft-lg border border-border"
+      className="search-panel rounded-xl bg-card p-5 sm:p-6"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4">
         <DestinationField

@@ -105,55 +105,57 @@ export default async function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 bg-brand-green text-white shadow-soft">
+      <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-16 md:h-[4.5rem] items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2.5 text-white">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-green shadow-soft">
               <Bus className="h-5 w-5" />
             </div>
-            <span className="font-extrabold tracking-tight text-[1.2rem]">Bugos</span>
+            <span className="font-extrabold tracking-tight text-[1.35rem]">Bugos</span>
           </Link>
-          <nav className="hidden lg:flex items-center gap-8 text-[13px] font-medium uppercase tracking-[0.12em] text-white/90">
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#destinations" className="hover:text-white transition-colors">Destinations</a>
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#fleet" className="hover:text-white transition-colors">Bus</a>
-            <a href="#features" className="hover:text-white transition-colors">Features</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
-            <Link href="/operators" className="hover:text-white transition-colors">Operators</Link>
+          <nav className="hidden lg:flex items-center gap-7 text-[12px] font-semibold uppercase tracking-[0.14em] text-white/85">
+            <a href="#about" className="hover:text-bd-gold transition-colors">About</a>
+            <a href="#destinations" className="hover:text-bd-gold transition-colors">Destinations</a>
+            <a href="#services" className="hover:text-bd-gold transition-colors">Services</a>
+            <a href="#fleet" className="hover:text-bd-gold transition-colors">Bus</a>
+            <a href="#features" className="hover:text-bd-gold transition-colors">Features</a>
+            <a href="#pricing" className="hover:text-bd-gold transition-colors">Pricing</a>
+            <Link href="/operators" className="hover:text-bd-gold transition-colors">Operators</Link>
           </nav>
           <div className="flex items-center gap-2">
-            <LinkButton href="/login" className="bg-white text-brand-green hover:bg-white/90 hidden sm:inline-flex rounded-full">
+            <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border border-white/25 hidden sm:inline-flex rounded-full">
               Sign in
             </LinkButton>
-            <LinkButton href="/register" className="bg-primary text-white hover:bg-primary/90 border-0 rounded-full">
+            <LinkButton href="/register" className="bg-primary text-white hover:bg-primary/90 border-0 rounded-full shadow-soft">
               Contact Us
             </LinkButton>
           </div>
         </div>
       </header>
 
-      <section className="relative min-h-[86vh] flex items-end md:items-center overflow-hidden">
+      <section className="relative min-h-[88vh] flex items-end md:items-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${BUS_IMAGES.hero}')` }}
+          className="absolute inset-0 bg-cover bg-center scale-105 animate-float"
+          style={{ backgroundImage: `url('${BUS_IMAGES.hero}')`, animationDuration: "14s" }}
         />
         <div className="absolute inset-0 hero-overlay" />
         <div className="container relative z-10 mx-auto px-4 pb-28 pt-28 md:py-24">
-          <div className="max-w-xl space-y-5 text-white">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-bd-gold">Bus charter and digital ticketing</p>
-            <h1 className="text-[2.35rem] md:text-[3.4rem] font-extrabold leading-[1.12] tracking-[-0.03em] text-white">
-              Reliable bus charter and rental service
+          <div className="max-w-2xl space-y-5 text-white">
+            <p className="animate-fade-up text-[2.6rem] sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-sm">
+              Bugos
+            </p>
+            <h1 className="animate-fade-up-delay text-[1.55rem] md:text-[2.35rem] font-bold leading-[1.2] tracking-[-0.02em] text-white/95">
+              Reliable bus charter and rental across Bangladesh
             </h1>
-            <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-md">
+            <p className="animate-fade-up-delay text-base md:text-lg text-white/85 leading-relaxed max-w-md">
               {APP_TAGLINE}
             </p>
-            <div className="flex flex-wrap gap-3 pt-1">
-              <LinkButton href="/search" size="lg" className="bg-primary text-white hover:bg-primary/90 border-0 px-7 rounded-full">
-                Get Started <ArrowRight className="h-4 w-4" />
+            <div className="animate-fade-up-delay flex flex-wrap gap-3 pt-1">
+              <LinkButton href="/search" size="lg" className="bg-primary text-white hover:bg-primary/90 border-0 px-7 rounded-full shadow-soft-lg">
+                Book a Ticket <ArrowRight className="h-4 w-4" />
               </LinkButton>
-              <LinkButton href="#fleet" size="lg" className="bg-white text-ink hover:bg-white/90 border-0 px-7 rounded-full">
-                View Fleet
+              <LinkButton href="#destinations" size="lg" className="bg-white text-brand-green hover:bg-white/90 border-0 px-7 rounded-full">
+                Explore Destinations
               </LinkButton>
             </div>
           </div>
@@ -164,46 +166,47 @@ export default async function LandingPage() {
         <HomeSearchForm destinations={destinations} />
       </section>
 
-      <section id="destinations" className="container mx-auto px-4 py-16 md:py-20">
-        <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-3xl md:text-[2.35rem] font-extrabold tracking-tight text-ink">
-            Discover Trending Destinations
-          </h2>
-        </div>
-        <div className="space-y-3 md:space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-            {TRENDING_DESTINATIONS.filter((d) => d.span === "top").map((dest) => (
-              <Link
-                key={dest.name}
-                href={`/search?destination=${encodeURIComponent(dest.name)}`}
-                className="group relative block overflow-hidden rounded-xl aspect-[16/9] sm:aspect-[2/1] shadow-soft"
-              >
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10" />
-                <span className="sr-only">{dest.name}</span>
-              </Link>
-            ))}
+      <section id="destinations" className="bg-white/70 py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8 md:mb-10 space-y-2">
+            <p className="section-label">Popular cities</p>
+            <h2 className="text-3xl md:text-[2.45rem] font-extrabold tracking-tight text-ink">
+              Discover Trending Destinations
+            </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-[1fr_1.35fr_1fr] gap-3 md:gap-4">
-            {TRENDING_DESTINATIONS.filter((d) => d.span === "bottom" || d.span === "bottom-wide").map((dest) => (
-              <Link
-                key={dest.name}
-                href={`/search?destination=${encodeURIComponent(dest.name)}`}
-                className="group relative block overflow-hidden rounded-xl aspect-[4/3] shadow-soft"
-              >
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10" />
-                <span className="sr-only">{dest.name}</span>
-              </Link>
-            ))}
+          <div className="space-y-3 md:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              {TRENDING_DESTINATIONS.filter((d) => d.span === "top").map((dest) => (
+                <Link
+                  key={dest.name}
+                  href={`/search?destination=${encodeURIComponent(dest.name)}`}
+                  className="dest-card aspect-[16/9] sm:aspect-[2/1]"
+                >
+                  <img
+                    src={dest.image}
+                    alt={dest.name}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="sr-only">{dest.name}</span>
+                </Link>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-[1fr_1.35fr_1fr] gap-3 md:gap-4">
+              {TRENDING_DESTINATIONS.filter((d) => d.span === "bottom" || d.span === "bottom-wide").map((dest) => (
+                <Link
+                  key={dest.name}
+                  href={`/search?destination=${encodeURIComponent(dest.name)}`}
+                  className="dest-card aspect-[4/3]"
+                >
+                  <img
+                    src={dest.image}
+                    alt={dest.name}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="sr-only">{dest.name}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -422,7 +425,7 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-brand-green text-white">
+      <footer className="site-footer text-white">
         <div className="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-extrabold text-lg text-white">

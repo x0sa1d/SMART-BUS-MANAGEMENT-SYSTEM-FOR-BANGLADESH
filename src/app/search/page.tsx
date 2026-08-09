@@ -58,7 +58,7 @@ export default async function PublicSearchPage({
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-brand-green text-white shadow-soft">
+      <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2 font-semibold text-sm text-white hover:opacity-90">
             <ArrowLeft className="h-4 w-4" />
