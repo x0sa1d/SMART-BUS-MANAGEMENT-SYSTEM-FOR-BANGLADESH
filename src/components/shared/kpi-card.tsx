@@ -3,19 +3,19 @@ import { cn, formatCurrency } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
 const ACCENT_STYLES = {
-  green: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#00a67e]",
-  emerald: "from-[#00875f]/20 to-[#00875f]/5 text-[#00875f] dark:text-[#00a67e]",
-  teal: "from-[#e11d48]/20 to-[#e11d48]/5 text-[#e11d48]",
-  navy: "from-[#1D3557]/20 to-[#1D3557]/5 text-[#1D3557] dark:text-[#457B9D]",
-  blue: "from-[#457B9D]/20 to-[#457B9D]/5 text-[#457B9D]",
-  indigo: "from-[#1D3557]/20 to-[#457B9D]/5 text-[#1D3557] dark:text-[#457B9D]",
-  violet: "from-[#006A4E]/15 to-[#1D3557]/10 text-[#1D3557] dark:text-[#00a67e]",
-  amber: "from-[#FFB703]/25 to-[#FFB703]/5 text-[#996f00] dark:text-[#FFB703]",
-  rose: "from-[#E63946]/20 to-[#E63946]/5 text-[#E63946] dark:text-[#ff5a67]",
-  cyan: "from-[#00875f]/15 to-[#2A9D8F]/10 text-[#00875f]",
-  orange: "from-[#FFB703]/20 to-[#E63946]/10 text-[#E63946]",
-  lime: "from-[#006A4E]/15 to-[#00875f]/10 text-[#006A4E] dark:text-[#00a67e]",
-  sky: "from-[#457B9D]/15 to-[#1D3557]/10 text-[#457B9D]",
+  green: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
+  emerald: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
+  teal: "from-[#F42A41]/20 to-[#F42A41]/5 text-[#F42A41]",
+  navy: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
+  blue: "from-[#006A4E]/15 to-[#F42A41]/10 text-[#006A4E]",
+  indigo: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
+  violet: "from-[#006A4E]/15 to-[#F42A41]/10 text-[#006A4E] dark:text-[#1a9b74]",
+  amber: "from-[#F42A41]/20 to-[#F42A41]/5 text-[#F42A41]",
+  rose: "from-[#F42A41]/20 to-[#F42A41]/5 text-[#F42A41] dark:text-[#ff5a6b]",
+  cyan: "from-[#006A4E]/15 to-[#006A4E]/10 text-[#006A4E]",
+  orange: "from-[#F42A41]/20 to-[#006A4E]/10 text-[#F42A41]",
+  lime: "from-[#006A4E]/15 to-[#006A4E]/10 text-[#006A4E] dark:text-[#1a9b74]",
+  sky: "from-[#006A4E]/15 to-[#F42A41]/10 text-[#006A4E]",
 } as const;
 
 interface KpiCardProps {

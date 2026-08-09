@@ -108,19 +108,19 @@ export default async function LandingPage() {
       <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-16 md:h-[4.5rem] items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2.5 text-white">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-green shadow-soft">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-bd-green shadow-soft">
               <Bus className="h-5 w-5" />
             </div>
             <span className="font-extrabold tracking-tight text-[1.35rem]">Bugos</span>
           </Link>
           <nav className="hidden lg:flex items-center gap-7 text-[12px] font-semibold uppercase tracking-[0.14em] text-white/85">
-            <a href="#about" className="hover:text-bd-gold transition-colors">About</a>
-            <a href="#destinations" className="hover:text-bd-gold transition-colors">Destinations</a>
-            <a href="#services" className="hover:text-bd-gold transition-colors">Services</a>
-            <a href="#fleet" className="hover:text-bd-gold transition-colors">Bus</a>
-            <a href="#features" className="hover:text-bd-gold transition-colors">Features</a>
-            <a href="#pricing" className="hover:text-bd-gold transition-colors">Pricing</a>
-            <Link href="/operators" className="hover:text-bd-gold transition-colors">Operators</Link>
+            <a href="#about" className="hover:text-white transition-colors">About</a>
+            <a href="#destinations" className="hover:text-white transition-colors">Destinations</a>
+            <a href="#services" className="hover:text-white transition-colors">Services</a>
+            <a href="#fleet" className="hover:text-white transition-colors">Bus</a>
+            <a href="#features" className="hover:text-white transition-colors">Features</a>
+            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <Link href="/operators" className="hover:text-white transition-colors">Operators</Link>
           </nav>
           <div className="flex items-center gap-2">
             <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border border-white/25 hidden sm:inline-flex rounded-full">
@@ -224,7 +224,7 @@ export default async function LandingPage() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           {COVERAGE_STATS.map((s) => (
             <div key={s.label} className="rounded-xl bg-card border border-border p-4 text-center shadow-soft">
-              <p className="text-2xl font-extrabold text-brand-green">{s.value}</p>
+              <p className="text-2xl font-extrabold text-bd-green">{s.value}</p>
               <p className="text-xs text-muted-foreground mt-1 leading-snug">{s.label}</p>
             </div>
           ))}
@@ -271,7 +271,7 @@ export default async function LandingPage() {
               </div>
               <div className="p-5 space-y-2.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-bd-gold font-semibold">★ {bus.rating}</span>
+                  <span className="text-bd-red font-semibold">★ {bus.rating}</span>
                   <span className="text-muted-foreground">{bus.seats} seats</span>
                 </div>
                 <h3 className="font-bold text-ink">{bus.name}</h3>

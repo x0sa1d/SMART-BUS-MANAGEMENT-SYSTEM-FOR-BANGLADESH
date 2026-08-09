@@ -61,7 +61,7 @@ function DestinationField({
 
   return (
     <div className="space-y-1.5 min-w-0 relative">
-      <label htmlFor={id} className="text-[11px] font-semibold uppercase tracking-wide text-brand-green">
+      <label htmlFor={id} className="text-[11px] font-semibold uppercase tracking-wide text-bd-green">
         {label}
       </label>
       <div className="relative">
@@ -173,7 +173,7 @@ export function HomeSearchForm({ destinations }: { destinations: string[] }) {
           options={options}
         />
         <div className="space-y-1.5 min-w-0">
-          <label htmlFor="travel-date" className="text-[11px] font-semibold uppercase tracking-wide text-brand-green">
+          <label htmlFor="travel-date" className="text-[11px] font-semibold uppercase tracking-wide text-bd-green">
             Select Date
           </label>
           <input
@@ -187,7 +187,7 @@ export function HomeSearchForm({ destinations }: { destinations: string[] }) {
           />
         </div>
         <div className="space-y-1.5 min-w-0">
-          <label htmlFor="travel-passengers" className="text-[11px] font-semibold uppercase tracking-wide text-brand-green">
+          <label htmlFor="travel-passengers" className="text-[11px] font-semibold uppercase tracking-wide text-bd-green">
             Passengers
           </label>
           <input

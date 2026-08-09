@@ -17,18 +17,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_rgba(255,31,45,0.45)] hover:brightness-110 hover:shadow-[0_14px_28px_-12px_rgba(255,31,45,0.55)] border border-white/15",
+          "bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_rgba(244,42,65,0.45)] hover:brightness-110 hover:shadow-[0_14px_28px_-12px_rgba(244,42,65,0.55)] border border-white/15",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-[0_10px_24px_-10px_rgba(217,26,26,0.45)] hover:brightness-110 border border-white/10",
+          "bg-destructive text-destructive-foreground shadow-[0_10px_24px_-10px_rgba(244,42,65,0.45)] hover:brightness-110 border border-white/10",
         outline:
-          "border border-border/80 bg-white/75 text-ink backdrop-blur-xl shadow-[0_8px_20px_-14px_rgba(5,46,38,0.2)] hover:bg-white hover:border-brand-green/30 dark:bg-card/55 dark:hover:bg-card/80",
+          "border border-border/80 bg-white/75 text-ink backdrop-blur-xl shadow-[0_8px_20px_-14px_rgba(0,106,78,0.2)] hover:bg-white hover:border-bd-green/35 dark:bg-card/55 dark:hover:bg-card/80",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-[0_10px_24px_-12px_rgba(5,46,38,0.45)] hover:brightness-110 border border-white/10",
+          "bg-secondary text-secondary-foreground shadow-[0_10px_24px_-12px_rgba(0,106,78,0.45)] hover:brightness-110 border border-white/10",
         ghost:
-          "bg-transparent text-foreground hover:bg-brand-green/10 hover:text-brand-green",
+          "bg-transparent text-foreground hover:bg-bd-green/10 hover:text-bd-green",
         link: "text-primary underline-offset-4 hover:underline rounded-md px-0 shadow-none border-0",
         gradient:
-          "gradient-primary text-white shadow-[0_12px_28px_-12px_rgba(255,31,45,0.5)] hover:brightness-110 border border-white/20",
+          "gradient-primary text-white shadow-[0_12px_28px_-12px_rgba(244,42,65,0.5)] hover:brightness-110 border border-white/20",
       },
       size: {
         default: "h-11 px-5 py-2",
