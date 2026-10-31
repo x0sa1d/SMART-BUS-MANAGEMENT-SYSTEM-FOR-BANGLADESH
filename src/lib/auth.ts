@@ -3,7 +3,20 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { createAuthMiddleware, APIError } from "better-auth/api";
 import { db } from "./db";
 
-const appUrl = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+function isLocalhostUrl(url: string) {
+  return url.includes("localhost") || url.includes("127.0.0.1");
+}
+
+function resolveAppUrl() {
+  const fromEnv = (process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || "").trim();
+  const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+  if (process.env.VERCEL_ENV && fromEnv && isLocalhostUrl(fromEnv) && vercelUrl) {
+    return vercelUrl;
+  }
+  return fromEnv || vercelUrl || "http://localhost:3000";
+}
+
+const appUrl = resolveAppUrl();
 
 export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
@@ -60,6 +73,8 @@ export const auth = betterAuth({
   trustedOrigins: [
     appUrl,
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "",
+    "https://bus-ebon-nine.vercel.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
   ].filter((origin, index, list) => origin && list.indexOf(origin) === index),

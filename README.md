@@ -11,8 +11,8 @@ Enterprise-grade bus management platform for route planning, online ticket booki
 | Layer | Technology |
 |-------|-----------|
 | Frontend | Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion |
-| Backend | Next.js Server Actions, Prisma ORM |
-| Database | PostgreSQL (Neon recommended) |
+| Backend | Next.js Server Actions, Prisma ORM, `@supabase/ssr` |
+| Database | PostgreSQL on Supabase |
 | Auth | Better Auth (Email + Google OAuth) |
 | Charts | Recharts |
 | Forms | React Hook Form + Zod |
@@ -49,7 +49,7 @@ Enterprise-grade bus management platform for route planning, online ticket booki
 ### Prerequisites
 
 - Node.js 18+
-- PostgreSQL database ([Neon](https://neon.tech) recommended)
+- PostgreSQL database ([Supabase](https://supabase.com) recommended)
 
 ### Setup
 
@@ -59,13 +59,14 @@ npm install
 
 # 2. Configure environment
 cp .env.example .env
-# Edit .env with your DATABASE_URL and BETTER_AUTH_SECRET
+# Edit .env with Supabase URL, publishable/secret keys, DATABASE_URL, DIRECT_URL, and BETTER_AUTH_SECRET
 
 # 3. Push database schema
 npm run db:push
 
-# 4. Seed sample data
+# 4. Seed sample data (locations, operators, demo users, then weekly trips)
 npm run db:seed
+npm run db:seed-weekly-trips
 
 # 5. Start development server
 npm run dev
@@ -117,17 +118,25 @@ prisma/
 3. Add environment variables from `.env.example`
 4. Deploy
 
-### Neon PostgreSQL
+### Supabase PostgreSQL
 
-1. Create project at [neon.tech](https://neon.tech)
-2. Copy connection string to `DATABASE_URL`
-3. Run `npm run db:push && npm run db:seed` against production DB
+1. Create a project at [supabase.com](https://supabase.com)
+2. Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+3. Set `DATABASE_URL` (transaction pooler, port 6543) and `DIRECT_URL` (session pooler, port 5432)
+4. Run `npm run db:push && npm run db:seed && npm run db:seed-weekly-trips`
 
 ### Environment Variables
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `DATABASE_URL` | Yes | PostgreSQL connection string |
+| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Yes | Browser / SSR publishable key |
+| `SUPABASE_URL` | Yes | Server-side Supabase URL |
+| `SUPABASE_PUBLISHABLE_KEY` | Yes | Server-side publishable key |
+| `SUPABASE_SECRET_KEY` | Yes | Server-only secret key |
+| `SUPABASE_JWKS_URL` | Yes | Auth JWKS URL |
+| `DATABASE_URL` | Yes | Postgres transaction-mode pooler URL |
+| `DIRECT_URL` | Yes | Postgres session-mode pooler URL for migrations |
 | `BETTER_AUTH_SECRET` | Yes | 32+ char secret key |
 | `BETTER_AUTH_URL` | Yes | App URL (e.g. https://yourapp.vercel.app) |
 | `NEXT_PUBLIC_APP_URL` | Yes | Public app URL |
@@ -182,7 +191,8 @@ prisma/
 | `npm run dev` | Start dev server |
 | `npm run build` | Production build |
 | `npm run db:push` | Push schema to DB |
-| `npm run db:seed` | Seed sample data |
+| `npm run db:seed` | Seed locations, operators, and demo accounts |
+| `npm run db:seed-weekly-trips` | Seed 8–16 buses per route for today + 7 days |
 | `npm run db:studio` | Open Prisma Studio |
 | `npm run promote-admin` | Promote user to admin |
 

@@ -566,6 +566,7 @@ model Trip {
   sosAlerts      SosAlert[]
   lostFoundItems LostFoundItem[]
 
+  @@unique([scheduleId, tripDate])
   @@index([tripDate])
   @@index([status])
   @@index([scheduleId])

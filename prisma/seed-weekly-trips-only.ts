@@ -1,5 +1,7 @@
 import { db } from "@/lib/db";
 import { addDaysUtc } from "@/lib/district-search";
+import { calendarDateKey } from "@/lib/calendar-date";
+import { parseLocalDate } from "@/lib/utils";
 import {
   seedWeeklyFleetPerRoute,
   refreshScheduleFares,
@@ -17,8 +19,7 @@ async function main() {
   console.log(`Weekly trips seed (${minBuses}-${maxBuses} buses/route, ${tripDays} days)...`);
   await seedWeeklyFleetPerRoute(minBuses, maxBuses);
 
-  const start = new Date();
-  start.setUTCHours(0, 0, 0, 0);
+  const start = parseLocalDate(calendarDateKey());
   const end = addDaysUtc(start, tripDays - 1);
   await materializeAllTripsInWindow(start, end);
 

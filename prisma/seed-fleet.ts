@@ -1,5 +1,7 @@
 import { db, excludeDeleted } from "@/lib/db";
 import { calculateFare, estimateDurationMinutes } from "@/lib/geo";
+import { calendarDateKey } from "@/lib/calendar-date";
+import { parseLocalDate } from "@/lib/utils";
 import type { BusType } from "@prisma/client";
 
 export const BUSES_PER_ROUTE = 100;
@@ -79,8 +81,7 @@ export async function seedRouteFleet(
   companyOffset: number
 ) {
   const fare = calculateFare(route.distance);
-  const baseDate = new Date();
-  baseDate.setUTCHours(0, 0, 0, 0);
+  const baseDate = parseLocalDate(calendarDateKey());
 
   const busRecords: {
     id: string;
@@ -146,36 +147,63 @@ export async function seedRouteFleet(
 
   await createSeatsBatch(busIds);
 
-  for (let i = 0; i < needed; i++) {
-    const departure = nextDepartureTime(i);
-    const arrival = arrivalFromDeparture(departure, route.estimatedDuration || estimateDurationMinutes(route.distance));
+  const scheduleRecords: {
+    id: string;
+    routeId: string;
+    busId: string;
+    driverId: string;
+    departureTime: string;
+    arrivalTime: string;
+    fare: number;
+    daysOfWeek: string[];
+    isActive: true;
+  }[] = [];
+  const tripRows: {
+    scheduleId: string;
+    busId: string;
+    driverId: string;
+    tripDate: Date;
+    status: "SCHEDULED";
+  }[] = [];
 
-    const schedule = await db.schedule.create({
-      data: {
-        routeId: route.id,
-        busId: busIds[i],
-        driverId: driverIds[i],
-        departureTime: departure,
-        arrivalTime: arrival,
-        fare,
-        daysOfWeek: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        isActive: true,
-      },
+  for (let i = 0; i < needed; i++) {
+    const scheduleId = crypto.randomUUID();
+    const departure = nextDepartureTime(i);
+    const arrival = arrivalFromDeparture(
+      departure,
+      route.estimatedDuration || estimateDurationMinutes(route.distance)
+    );
+
+    scheduleRecords.push({
+      id: scheduleId,
+      routeId: route.id,
+      busId: busIds[i],
+      driverId: driverIds[i],
+      departureTime: departure,
+      arrivalTime: arrival,
+      fare,
+      daysOfWeek: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      isActive: true,
     });
 
-    const tripRows = [];
     for (let dayOffset = 0; dayOffset < TRIP_DAYS; dayOffset++) {
       const tripDate = new Date(baseDate);
       tripDate.setUTCDate(tripDate.getUTCDate() + dayOffset);
       tripRows.push({
-        scheduleId: schedule.id,
+        scheduleId,
         busId: busIds[i],
         driverId: driverIds[i],
         tripDate,
-        status: "SCHEDULED" as const,
+        status: "SCHEDULED",
       });
     }
-    await db.trip.createMany({ data: tripRows, skipDuplicates: true });
+  }
+
+  for (let i = 0; i < scheduleRecords.length; i += 100) {
+    await db.schedule.createMany({ data: scheduleRecords.slice(i, i + 100), skipDuplicates: true });
+  }
+  for (let i = 0; i < tripRows.length; i += 500) {
+    await db.trip.createMany({ data: tripRows.slice(i, i + 500), skipDuplicates: true });
   }
 }
 

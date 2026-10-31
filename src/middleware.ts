@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { HOME_PATH_COOKIE } from "@/lib/redirect";
+import { updateSupabaseSession } from "@/lib/supabase/middleware";
 
 const publicRoutes = ["/", "/start", "/login", "/register", "/register-company", "/forgot-password", "/reset-password", "/unauthorized", "/search", "/operators"];
 const authRoutes = ["/login", "/register", "/register-company", "/forgot-password", "/reset-password"];
@@ -11,7 +12,7 @@ function safeNextPath(next: string | null): string | null {
   return next;
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const sessionToken =
     request.cookies.get("better-auth.session_token")?.value ||
@@ -22,30 +23,31 @@ export function middleware(request: NextRequest) {
   );
   const isAuthRoute = authRoutes.some((route) => pathname === route);
 
+  let response = NextResponse.next({ request });
+
   if (sessionToken && isAuthRoute) {
     const nextParam = safeNextPath(request.nextUrl.searchParams.get("next"));
     if (nextParam) {
-      return NextResponse.redirect(new URL(nextParam, request.url));
+      response = NextResponse.redirect(new URL(nextParam, request.url));
+    } else {
+      const homeCookie = request.cookies.get(HOME_PATH_COOKIE)?.value;
+      const home = homeCookie ? decodeURIComponent(homeCookie) : null;
+      if (home && allowedHomePaths.some((p) => home === p || home.startsWith(`${p}/`))) {
+        response = NextResponse.redirect(new URL(home, request.url));
+      } else {
+        response = NextResponse.redirect(new URL("/start", request.url));
+      }
     }
-
-    const homeCookie = request.cookies.get(HOME_PATH_COOKIE)?.value;
-    const home = homeCookie ? decodeURIComponent(homeCookie) : null;
-    if (home && allowedHomePaths.some((p) => home === p || home.startsWith(`${p}/`))) {
-      return NextResponse.redirect(new URL(home, request.url));
-    }
-    return NextResponse.redirect(new URL("/start", request.url));
-  }
-
-  if (!sessionToken && !isPublicRoute && !pathname.startsWith("/api/")) {
+  } else if (!sessionToken && !isPublicRoute && !pathname.startsWith("/api/")) {
     const loginUrl = new URL("/login", request.url);
     const returnPath = `${pathname}${request.nextUrl.search}`;
     if (returnPath !== "/login") {
       loginUrl.searchParams.set("next", returnPath);
     }
-    return NextResponse.redirect(loginUrl);
+    response = NextResponse.redirect(loginUrl);
   }
 
-  return NextResponse.next();
+  return updateSupabaseSession(request, response);
 }
 
 export const config = {

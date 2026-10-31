@@ -10,9 +10,10 @@ const LEGACY_DESTINATION_NAMES: Record<string, string> = {
 };
 
 const DAY_ABBREV = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
+let legacyNamesNormalized = false;
 
 export async function normalizeLegacyRouteNames() {
-  if (!isDatabaseConfigured()) return;
+  if (!isDatabaseConfigured() || legacyNamesNormalized) return;
   for (const [legacy, current] of Object.entries(LEGACY_DESTINATION_NAMES)) {
     await db.route.updateMany({
       where: { destination: legacy, deletedAt: null },
@@ -23,6 +24,7 @@ export async function normalizeLegacyRouteNames() {
       data: { source: current },
     });
   }
+  legacyNamesNormalized = true;
 }
 
 function scheduleRunsOnDate(daysOfWeek: string[], date: Date): boolean {

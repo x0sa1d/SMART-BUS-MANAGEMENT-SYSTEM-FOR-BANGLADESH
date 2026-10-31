@@ -12,6 +12,7 @@ import { parseLocalDate } from "@/lib/utils";
 import { isDatabaseConfigured } from "@/lib/db";
 import {
   fetchPassengerTrips,
+  fetchPassengerTripSeats,
   PASSENGER_BROWSE_DAYS,
 } from "@/lib/passenger-transport";
 import type { BusCategory } from "@/types";
@@ -98,5 +99,15 @@ export async function searchAvailableBuses({
       fallbackDates: [] as string[],
       error: "unavailable" as const,
     };
+  }
+}
+
+export async function getPassengerTripSeats(tripId: string) {
+  noStore();
+  if (!tripId || !isDatabaseConfigured()) return [];
+  try {
+    return await fetchPassengerTripSeats(tripId);
+  } catch {
+    return [];
   }
 }

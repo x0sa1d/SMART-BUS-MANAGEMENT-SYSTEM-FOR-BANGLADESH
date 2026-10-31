@@ -14,6 +14,7 @@
     "db:seed-dataset-routes": "tsx prisma/seed-dataset-routes-only.ts",
     "db:seed-fleet": "tsx prisma/seed-fleet-only.ts",
     "db:seed-weekly-trips": "tsx prisma/seed-weekly-trips-only.ts",
+    "db:materialize-trips": "tsx prisma/materialize-current-week.ts",
     "db:studio": "prisma studio",
     "db:secure-rls": "prisma db execute --file prisma/sql/enable-rls-lockdown.sql --url \"$DIRECT_URL\"",
     "promote-admin": "tsx scripts/promote-admin.ts",

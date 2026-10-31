@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { searchAvailableBuses } from "@/actions/passenger-search.actions";
+import { getPassengerTripSeats, searchAvailableBuses } from "@/actions/passenger-search.actions";
 import { createMultiSeatBooking, checkoutCart } from "@/actions/booking.actions";
 import { useSession } from "@/lib/auth-client";
 import { PAYMENT_METHODS, SEAT_COLORS } from "@/constants";
@@ -582,6 +582,12 @@ export function SearchBusesContent({
     setSelectedSeatIds(new Set());
     setAiReasons([]);
     setTimeout(() => seatSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+    if (trip.seats.length > 0) return;
+    startTransition(async () => {
+      const seats = await getPassengerTripSeats(trip.id);
+      setTrips((current) => current.map((item) => (item.id === trip.id ? { ...item, seats } : item)));
+      setSelectedTrip((current) => (current?.id === trip.id ? { ...current, seats } : current));
+    });
   };
 
   return (
@@ -1020,9 +1026,16 @@ export function SearchBusesContent({
                         type="button"
                         className="rounded-lg bg-primary hover:bg-primary/90 text-white border-0 min-w-[120px]"
                         onClick={() => viewSeats(trip)}
-                        disabled={trip.availableCount === 0}
+                        disabled={trip.availableCount === 0 || (pending && selectedTrip?.id === trip.id)}
                       >
-                        View Seats
+                        {pending && selectedTrip?.id === trip.id ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Loading...
+                          </>
+                        ) : (
+                          "View Seats"
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -1091,6 +1104,12 @@ export function SearchBusesContent({
                 )}
 
                 <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 max-w-lg">
+                  {selectedTrip.seats.length === 0 && (
+                    <div className="col-span-full flex items-center gap-2 text-sm text-muted-foreground">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Loading seats...
+                    </div>
+                  )}
                   {selectedTrip.seats.map((seat) => (
                     <button
                       key={seat.id}

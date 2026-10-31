@@ -51,22 +51,30 @@ const passengerTripIncludeDef = {
   schedule: {
     include: {
       route: {
-        include: {
-          sourceDistrict: { include: { division: true } },
-          destinationDistrict: { include: { division: true } },
+        select: {
+          name: true,
+          source: true,
+          destination: true,
+          distance: true,
+          estimatedDuration: true,
         },
       },
-      bus: { include: { company: { select: { id: true, name: true } } } },
-      driver: true,
+      bus: {
+        select: {
+          busNumber: true,
+          busType: true,
+          isAC: true,
+          company: { select: { id: true, name: true } },
+        },
+      },
+      driver: { select: { fullName: true } },
     },
   },
   bus: {
-    include: {
+    select: {
+      capacity: true,
       company: { select: { id: true, name: true } },
-      seats: {
-        where: excludeDeleted(),
-        orderBy: [{ row: "asc" as const }, { column: "asc" as const }],
-      },
+      _count: { select: { seats: true } },
     },
   },
   bookings: {
@@ -90,15 +98,8 @@ export function mapTripForPassenger(trip: TripWithRelations, now = new Date()) {
   }
 
   const bookedSeatIds = new Set(trip.bookings.map((b) => b.seatId));
-  const seats = trip.bus.seats.map((seat) => ({
-    id: seat.id,
-    seatNumber: seat.seatNumber,
-    seatType: seat.seatType,
-    row: seat.row,
-    column: seat.column,
-    isAvailable: !bookedSeatIds.has(seat.id),
-  }));
-  const availableCount = seats.filter((s) => s.isAvailable).length;
+  const totalSeats = trip.bus._count.seats || trip.bus.capacity || 0;
+  const availableCount = Math.max(0, totalSeats - bookedSeatIds.size);
   const fare = resolveTripFare(trip.schedule);
   const company = trip.bus.company ?? trip.schedule.bus.company;
 
@@ -125,10 +126,58 @@ export function mapTripForPassenger(trip: TripWithRelations, now = new Date()) {
       company: company ? { id: company.id, name: company.name } : null,
       driver: { fullName: trip.schedule.driver.fullName },
     },
-    seats,
+    seats: [] as Array<{
+      id: string;
+      seatNumber: string;
+      seatType: string;
+      row: number;
+      column: number;
+      isAvailable: boolean;
+    }>,
     availableCount,
-    totalSeats: seats.length,
+    totalSeats,
   };
+}
+
+export async function fetchPassengerTripSeats(tripId: string) {
+  const trip = await db.trip.findFirst({
+    where: { id: tripId, deletedAt: null },
+    select: {
+      bus: {
+        select: {
+          seats: {
+            where: excludeDeleted(),
+            orderBy: [{ row: "asc" }, { column: "asc" }],
+            select: {
+              id: true,
+              seatNumber: true,
+              seatType: true,
+              row: true,
+              column: true,
+            },
+          },
+        },
+      },
+      bookings: {
+        where: {
+          deletedAt: null,
+          status: { in: [...ACTIVE_BOOKING_STATUSES] },
+        },
+        select: { seatId: true },
+      },
+    },
+  });
+  if (!trip) return [];
+
+  const bookedSeatIds = new Set(trip.bookings.map((booking) => booking.seatId));
+  return trip.bus.seats.map((seat) => ({
+    id: seat.id,
+    seatNumber: seat.seatNumber,
+    seatType: seat.seatType,
+    row: seat.row,
+    column: seat.column,
+    isAvailable: !bookedSeatIds.has(seat.id),
+  }));
 }
 
 export type PassengerTrip = NonNullable<ReturnType<typeof mapTripForPassenger>>;
