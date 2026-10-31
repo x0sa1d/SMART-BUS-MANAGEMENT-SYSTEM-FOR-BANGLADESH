@@ -1,4 +1,6 @@
-# Smart Bus Management System
+# Smart Bus Management System for Bangladesh
+
+A comprehensive web-based platform for route search, seat booking, QR tickets, fleet management, lost & found, and operator tools across Bangladesh.
 
 **Digitize Your Bus Operations — Routes, Tickets & Fleet in One Place**
 
@@ -186,5 +188,4 @@ prisma/
 
 ## License
 
-Private — All rights reserved.
-# test
+Apache License 2.0. See `LICENSE`.
