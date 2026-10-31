@@ -3,6 +3,7 @@
 import { db, excludeDeleted } from "@/lib/db";
 import { calculateFare } from "@/lib/geo";
 import { buildPassengerRouteFilter, formatDateKey } from "@/lib/district-search";
+import { calendarDateKey } from "@/lib/calendar-date";
 import { parseLocalDate } from "@/lib/utils";
 import {
   buildPassengerDateWindow,
@@ -18,7 +19,7 @@ export async function browseTransportNetwork(
   busCategory: BusCategory = "ALL"
 ) {
   const now = new Date();
-  const today = parseLocalDate(formatDateKey(now));
+  const today = parseLocalDate(calendarDateKey(now));
   const endDate = buildPassengerDateWindow(today, PASSENGER_BROWSE_DAYS).at(-1)!;
   const dest = destination?.trim();
 
@@ -57,7 +58,7 @@ export async function browseTransportNetwork(
           dates: buildPassengerDateWindow(today, PASSENGER_BROWSE_DAYS),
           busCategory,
           now,
-        })
+        }).catch(() => [])
       : Promise.resolve([]),
   ]);
 

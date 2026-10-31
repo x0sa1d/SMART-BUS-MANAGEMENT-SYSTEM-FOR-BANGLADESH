@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { APP_NAME } from "@/constants";
 import { toast } from "sonner";
-import { Loader2, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { Loader2, Mail, Lock, Eye, EyeOff, Bus } from "lucide-react";
 
 export function LoginForm() {
   const router = useRouter();
@@ -57,10 +57,12 @@ export function LoginForm() {
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
-      <Card className="border-0 shadow-soft-lg">
+    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }} className="w-full max-w-md">
+      <Card className="border border-border shadow-soft-lg overflow-hidden">
         <CardHeader className="text-center space-y-2">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white font-extrabold shadow-soft">SBM</div>
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-bd-green text-white shadow-soft">
+            <Bus className="h-6 w-6" />
+          </div>
           <CardTitle className="text-2xl text-ink">Welcome back</CardTitle>
           <CardDescription className="text-muted-foreground">Sign in to {APP_NAME}</CardDescription>
         </CardHeader>
@@ -92,7 +94,7 @@ export function LoginForm() {
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center text-muted-foreground hover:text-foreground"
                   onClick={() => setShowPassword((value) => !value)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >

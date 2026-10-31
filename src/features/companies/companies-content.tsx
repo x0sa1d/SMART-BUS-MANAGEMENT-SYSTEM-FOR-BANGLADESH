@@ -267,7 +267,7 @@ export function CompaniesContent({ initial, pending, stats, isSuperAdmin, divisi
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="font-semibold">{company.name}</h3>
-                        {company.isNational && <Badge className="bg-[#FFB703]/20 text-[#996f00]">National</Badge>}
+                        {company.isNational && <Badge variant="warning">National</Badge>}
                         {statusBadge(company.status)}
                       </div>
                       <p className="text-sm text-muted-foreground">

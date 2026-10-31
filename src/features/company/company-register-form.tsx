@@ -65,9 +65,9 @@ export function CompanyRegisterForm({ divisions }: { divisions: Division[] }) {
   };
 
   return (
-    <Card className="border-0 shadow-soft-lg max-w-2xl mx-auto">
+    <Card className="border border-border shadow-soft-lg max-w-2xl mx-auto overflow-hidden">
       <CardHeader className="text-center space-y-2">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-bd-green text-white">
           <Building2 className="h-6 w-6" />
         </div>
         <CardTitle className="text-2xl">Register Bus Company</CardTitle>

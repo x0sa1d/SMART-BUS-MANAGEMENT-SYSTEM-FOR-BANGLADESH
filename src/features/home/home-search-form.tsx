@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { MapPin } from "lucide-react";
+import { CalendarDays, Loader2, MapPin } from "lucide-react";
+import { addCalendarDays } from "@/lib/calendar-date";
+import { isSameCity } from "@/lib/district-search";
 
 type DestinationOption = {
   name: string;
@@ -32,18 +34,19 @@ function DestinationField({
   id,
   name,
   label,
-  defaultValue,
+  value,
   placeholder,
   options,
+  onChange,
 }: {
   id: string;
   name: string;
   label: string;
-  defaultValue: string;
+  value: string;
   placeholder: string;
   options: DestinationOption[];
+  onChange: (value: string) => void;
 }) {
-  const [value, setValue] = useState(defaultValue);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const blurTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -54,7 +57,7 @@ function DestinationField({
   }, [options, value]);
 
   const selectSuggestion = (next: string) => {
-    setValue(next);
+    onChange(next);
     setOpen(false);
     setActiveIndex(0);
   };
@@ -77,7 +80,7 @@ function DestinationField({
           aria-expanded={open}
           aria-controls={`${id}-suggestions`}
           aria-autocomplete="list"
-          className="w-full min-h-11 rounded-xl bg-input pl-9 pr-3 py-2.5 text-sm text-ink outline-none focus:ring-2 focus:ring-primary/25"
+          className="w-full min-h-12 rounded-[10px] border border-border bg-input pl-9 pr-3 py-2.5 text-sm text-ink outline-none focus:ring-2 focus:ring-primary/25"
           onFocus={() => {
             if (blurTimer.current) clearTimeout(blurTimer.current);
             setOpen(true);
@@ -86,7 +89,7 @@ function DestinationField({
             blurTimer.current = setTimeout(() => setOpen(false), 120);
           }}
           onChange={(event) => {
-            setValue(event.target.value);
+            onChange(event.target.value);
             setOpen(true);
             setActiveIndex(0);
           }}
@@ -99,8 +102,11 @@ function DestinationField({
               event.preventDefault();
               setActiveIndex((index) => (index - 1 + suggestions.length) % suggestions.length);
             } else if (event.key === "Enter" && suggestions[activeIndex]) {
-              event.preventDefault();
-              selectSuggestion(suggestions[activeIndex].name);
+              const selected = suggestions[activeIndex].name;
+              if (value.trim().toLowerCase() !== selected.toLowerCase()) {
+                event.preventDefault();
+                selectSuggestion(selected);
+              }
             } else if (event.key === "Escape") {
               setOpen(false);
             }
@@ -120,7 +126,7 @@ function DestinationField({
                 type="button"
                 role="option"
                 aria-selected={index === activeIndex}
-                className={`flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm transition-colors ${
+                className={`flex min-h-11 w-full items-center gap-2 px-3 py-2.5 text-left text-sm transition-colors ${
                   index === activeIndex ? "bg-primary/10 text-primary" : "text-ink hover:bg-muted"
                 }`}
                 onMouseDown={(event) => event.preventDefault()}
@@ -137,7 +143,12 @@ function DestinationField({
   );
 }
 
-export function HomeSearchForm({ destinations }: { destinations: string[] }) {
+export function HomeSearchForm({ destinations, today }: { destinations: string[]; today: string }) {
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [error, setError] = useState("");
+  const [pending, setPending] = useState(false);
+  const lastDate = addCalendarDays(today, 7);
   const options = useMemo<DestinationOption[]>(
     () =>
       destinations.map((name) => ({
@@ -147,69 +158,108 @@ export function HomeSearchForm({ destinations }: { destinations: string[] }) {
     [destinations]
   );
 
-  const today = new Date().toISOString().slice(0, 10);
-
   return (
     <form
       action="/search"
       method="get"
-      className="search-panel rounded-xl bg-card p-5 sm:p-6"
+      className="search-panel overflow-visible rounded-xl bg-card p-5 sm:p-6"
+      onSubmit={(event) => {
+        const source = from.trim();
+        const destination = to.trim();
+        const passengers = Number(String(new FormData(event.currentTarget).get("passengers") ?? "1"));
+        if (!source || !destination) {
+          event.preventDefault();
+          setError("Select both Travel From and Travel To");
+          return;
+        }
+        if (isSameCity(source, destination)) {
+          event.preventDefault();
+          setError("Origin and destination must be different");
+          setPending(false);
+          return;
+        }
+        if (!Number.isFinite(passengers) || passengers < 1 || passengers > 10) {
+          event.preventDefault();
+          setError("Passengers must be between 1 and 10");
+          setPending(false);
+          return;
+        }
+        setError("");
+        setPending(true);
+      }}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4">
         <DestinationField
           id="travel-from"
           name="source"
           label="Travel From"
-          defaultValue=""
+          value={from}
           placeholder="Type a City"
           options={options}
+          onChange={setFrom}
         />
         <DestinationField
           id="travel-to"
           name="destination"
           label="Travel To"
-          defaultValue=""
+          value={to}
           placeholder="Type a City"
           options={options}
+          onChange={setTo}
         />
         <div className="space-y-1.5 min-w-0">
           <label htmlFor="travel-date" className="text-[11px] font-semibold uppercase tracking-wide text-bd-green">
             Select Date
           </label>
-          <input
-            id="travel-date"
-            name="date"
-            type="date"
-            required
-            min={today}
-            defaultValue={today}
-            className="w-full min-h-11 rounded-xl bg-input px-3 py-2.5 text-sm text-ink outline-none focus:ring-2 focus:ring-primary/25"
-          />
+          <div className="relative">
+            <CalendarDays className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-primary/70" />
+            <input
+              id="travel-date"
+              name="date"
+              type="date"
+              required
+              min={today}
+              max={lastDate}
+              defaultValue={today}
+              className="w-full min-h-12 rounded-[10px] border border-border bg-input pl-9 pr-3 py-2.5 text-sm text-ink outline-none focus:ring-2 focus:ring-primary/25"
+            />
+          </div>
         </div>
         <div className="space-y-1.5 min-w-0">
           <label htmlFor="travel-passengers" className="text-[11px] font-semibold uppercase tracking-wide text-bd-green">
             Passengers
           </label>
-          <input
+          <select
             id="travel-passengers"
             name="passengers"
-            type="number"
-            min={1}
-            max={10}
             required
             defaultValue={1}
-            className="w-full min-h-11 rounded-xl bg-input px-3 py-2.5 text-sm text-ink outline-none focus:ring-2 focus:ring-primary/25"
-          />
+            className="w-full min-h-12 rounded-[10px] border border-border bg-input px-3 py-2.5 text-sm text-ink outline-none focus:ring-2 focus:ring-primary/25"
+          >
+            {Array.from({ length: 10 }, (_, i) => i + 1).map((count) => (
+              <option key={count} value={count}>
+                {count}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="sm:col-span-2 xl:col-span-1 flex items-end">
           <button
             type="submit"
-            className="w-full min-h-11 rounded-full gradient-primary text-white font-semibold py-2.5 hover:opacity-95 transition-all shadow-soft"
+            disabled={pending}
+            aria-busy={pending}
+            className="w-full min-h-12 rounded-[10px] gradient-primary text-white font-semibold py-3 hover:opacity-95 transition-all shadow-soft disabled:opacity-70 inline-flex items-center justify-center gap-2"
           >
-            Book Now
+            {pending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : null}
+            {pending ? "Searching…" : "Book Now"}
           </button>
         </div>
       </div>
+      {error ? (
+        <p className="mt-3 text-sm font-medium text-destructive" role="alert">
+          {error}
+        </p>
+      ) : null}
     </form>
   );
 }

@@ -3,9 +3,11 @@ import type { BusCategory } from "@/types";
 import { db, excludeDeleted, isDatabaseConfigured } from "@/lib/db";
 import { calculateFare } from "@/lib/geo";
 import { buildPassengerRouteFilter, addDaysUtc, formatDateKey } from "@/lib/district-search";
+import { calendarDateKey, calendarTimeParts } from "@/lib/calendar-date";
 import { materializeTripsFromSchedules } from "@/lib/trip-ensure";
 
-export const PASSENGER_BROWSE_DAYS = 5;
+/** Inclusive window: today + this many upcoming days (7 → 8 calendar days). */
+export const PASSENGER_BROWSE_DAYS = 7;
 export const ACTIVE_BOOKING_STATUSES = ["CONFIRMED", "PENDING"] as const;
 export const ACTIVE_TRIP_STATUSES = ["SCHEDULED", "BOARDING"] as const;
 export const BOOKABLE_BUS_STATUSES = ["ACTIVE", "AVAILABLE", "RUNNING"] as const;
@@ -26,15 +28,16 @@ export function buildPassengerBusFilter(category: BusCategory): Prisma.BusWhereI
 
 export function isUpcomingDeparture(tripDate: Date, departureTime: string, now = new Date()): boolean {
   const tripKey = formatDateKey(tripDate);
-  const todayKey = formatDateKey(now);
+  const todayKey = calendarDateKey(now);
   if (tripKey > todayKey) return true;
   if (tripKey < todayKey) return false;
 
   const [hours, minutes] = departureTime.split(":").map(Number);
   if (Number.isNaN(hours) || Number.isNaN(minutes)) return true;
 
+  const clock = calendarTimeParts(now);
   const departureMinutes = hours * 60 + minutes;
-  const nowMinutes = now.getHours() * 60 + now.getMinutes();
+  const nowMinutes = clock.hours * 60 + clock.minutes;
   return departureMinutes > nowMinutes;
 }
 
@@ -151,44 +154,45 @@ export async function fetchPassengerTrips({
   if (!destination || dates.length === 0) return [];
 
   try {
-  const sortedDates = [...dates].sort((a, b) => a.getTime() - b.getTime());
-  await materializeTripsFromSchedules(
-    destination,
-    sortedDates[0],
-    sortedDates[sortedDates.length - 1],
-    source
-  );
+    const sortedDates = [...dates].sort((a, b) => a.getTime() - b.getTime());
+    await materializeTripsFromSchedules(
+      destination,
+      sortedDates[0],
+      sortedDates[sortedDates.length - 1],
+      source
+    );
 
-  const routeFilter = buildPassengerRouteFilter(destination, source);
-  const busFilter = buildPassengerBusFilter(busCategory);
+    const routeFilter = buildPassengerRouteFilter(destination, source);
+    const busFilter = buildPassengerBusFilter(busCategory);
 
-  const rawTrips = await db.trip.findMany({
-    where: {
-      deletedAt: null,
-      tripDate: dates.length === 1 ? dates[0] : { in: dates },
-      status: { in: [...ACTIVE_TRIP_STATUSES] },
-      schedule: {
+    const rawTrips = await db.trip.findMany({
+      where: {
         deletedAt: null,
-        isActive: true,
-        route: { ...routeFilter, isActive: true },
-        bus: {
+        tripDate: dates.length === 1 ? dates[0] : { in: dates },
+        status: { in: [...ACTIVE_TRIP_STATUSES] },
+        schedule: {
           deletedAt: null,
-          status: { in: [...BOOKABLE_BUS_STATUSES] },
-          ...(companyId ? { companyId } : {}),
-          ...(busFilter ?? {}),
+          isActive: true,
+          route: { ...routeFilter, isActive: true },
+          bus: {
+            deletedAt: null,
+            status: { in: [...BOOKABLE_BUS_STATUSES] },
+            ...(companyId ? { companyId } : {}),
+            ...(busFilter ?? {}),
+          },
         },
       },
-    },
-    include: passengerTripIncludeDef,
-    orderBy: [{ tripDate: "asc" }, { schedule: { departureTime: "asc" } }],
-    take: 300,
-  }) as TripWithRelations[];
+      include: passengerTripIncludeDef,
+      orderBy: [{ tripDate: "asc" }, { schedule: { departureTime: "asc" } }],
+      take: 500,
+    }) as TripWithRelations[];
 
-  return rawTrips
-    .map((trip) => mapTripForPassenger(trip, now))
-    .filter((trip): trip is PassengerTrip => trip !== null);
-  } catch {
-    return [];
+    return rawTrips
+      .map((trip) => mapTripForPassenger(trip, now))
+      .filter((trip): trip is PassengerTrip => trip !== null);
+  } catch (error) {
+    console.error("fetchPassengerTrips failed");
+    throw error;
   }
 }
 

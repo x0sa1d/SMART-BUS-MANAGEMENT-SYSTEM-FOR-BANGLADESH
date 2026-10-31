@@ -6,7 +6,8 @@
  * Passengers can view availability here; only booking actions write to the DB.
  */
 import { unstable_noStore as noStore } from "next/cache";
-import { addDaysUtc, formatDateKey } from "@/lib/district-search";
+import { addDaysUtc, formatDateKey, isSameCity } from "@/lib/district-search";
+import { calendarDateKey } from "@/lib/calendar-date";
 import { parseLocalDate } from "@/lib/utils";
 import { isDatabaseConfigured } from "@/lib/db";
 import {
@@ -32,7 +33,11 @@ export async function searchAvailableBuses({
 }: SearchAvailableBusesParams) {
   noStore();
   if (!destination?.trim() || !date) {
-    return { trips: [], requestedDate: date, usedFallback: false, fallbackDates: [] as string[] };
+    return { trips: [], requestedDate: date, usedFallback: false, fallbackDates: [] as string[], error: null };
+  }
+
+  if (source?.trim() && isSameCity(source, destination)) {
+    return { trips: [], requestedDate: date, usedFallback: false, fallbackDates: [] as string[], error: null };
   }
 
   if (!isDatabaseConfigured()) {
@@ -41,13 +46,14 @@ export async function searchAvailableBuses({
       requestedDate: date,
       usedFallback: false,
       fallbackDates: [] as string[],
+      error: "unavailable" as const,
     };
   }
 
   try {
     const dest = destination.trim();
     const now = new Date();
-    const today = parseLocalDate(formatDateKey(now));
+    const today = parseLocalDate(calendarDateKey(now));
     const requestedDate = parseLocalDate(date);
     const isPastDate = requestedDate < today;
 
@@ -66,11 +72,6 @@ export async function searchAvailableBuses({
     let trips =
       dates.length > 0 ? await fetchPassengerTrips({ ...fetchParams, dates }) : [];
 
-    if (trips.length === 0 && !isPastDate) {
-      dates = [requestedDate];
-      trips = await fetchPassengerTrips({ ...fetchParams, dates });
-    }
-
     if (trips.length === 0) {
       usedFallback = true;
       const startFallback = isPastDate ? today : addDaysUtc(requestedDate, 1);
@@ -87,6 +88,7 @@ export async function searchAvailableBuses({
       requestedDate: formatDateKey(requestedDate),
       usedFallback: usedFallback || isPastDate,
       fallbackDates,
+      error: null,
     };
   } catch {
     return {
@@ -94,6 +96,7 @@ export async function searchAvailableBuses({
       requestedDate: date,
       usedFallback: false,
       fallbackDates: [] as string[],
+      error: "unavailable" as const,
     };
   }
 }

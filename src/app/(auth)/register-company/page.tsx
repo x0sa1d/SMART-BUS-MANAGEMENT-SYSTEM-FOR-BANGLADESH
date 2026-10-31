@@ -11,10 +11,10 @@ export default async function RegisterCompanyPage() {
   const divisions = await getDivisions();
 
   return (
-    <div className="min-h-screen auth-shell flex flex-col">
-      <header className="border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-14 items-center px-4">
-          <Link href="/" className="flex items-center gap-2 text-sm font-medium hover:opacity-80">
+          <Link href="/" className="flex items-center gap-2 text-sm font-medium text-white hover:opacity-90">
             <ArrowLeft className="h-4 w-4" />
             {APP_NAME}
           </Link>

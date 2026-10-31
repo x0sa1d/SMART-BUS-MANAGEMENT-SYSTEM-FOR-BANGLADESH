@@ -12,8 +12,10 @@ function LoginFallback() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<LoginFallback />}>
-      <LoginForm />
-    </Suspense>
+    <div className="auth-shell">
+      <Suspense fallback={<LoginFallback />}>
+        <LoginForm />
+      </Suspense>
+    </div>
   );
 }

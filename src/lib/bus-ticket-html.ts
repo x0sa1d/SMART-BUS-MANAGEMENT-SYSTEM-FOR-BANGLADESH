@@ -46,24 +46,24 @@ export function buildBusTicketHtml(t: BusTicketHtmlData): string {
     * { box-sizing: border-box; }
     body {
       margin: 0; padding: 24px;
-      background: #f3f4f6;
-      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-      color: #1f2937;
+      background: #F7F3E9;
+      font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
+      color: #292B26;
     }
     .ticket {
       max-width: 860px;
       margin: 0 auto;
       display: flex;
-      background: #f8f9fa;
-      border: 2px solid #ff8c42;
+      background: #ffffff;
+      border: 2px solid #F28C28;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 12px 32px -16px rgba(255, 140, 66, 0.45);
+      box-shadow: 0 12px 32px -16px rgba(242, 140, 40, 0.4);
     }
     .main { flex: 1 1 72%; min-width: 0; }
     .stub {
       flex: 0 0 28%;
-      border-left: 2px dashed #ff8c42;
+      border-left: 2px dashed #F28C28;
       position: relative;
     }
     .stub::before, .stub::after {
@@ -71,13 +71,13 @@ export function buildBusTicketHtml(t: BusTicketHtmlData): string {
       position: absolute;
       left: -9px;
       width: 16px; height: 16px;
-      background: #f3f4f6;
+      background: #F7F3E9;
       border-radius: 999px;
     }
     .stub::before { top: -8px; }
     .stub::after { bottom: -8px; }
     .bar {
-      background: #ff8c42;
+      background: #F28C28;
       color: #fff;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -104,10 +104,10 @@ export function buildBusTicketHtml(t: BusTicketHtmlData): string {
     .fields { display: grid; gap: 8px; }
     .row { display: grid; grid-template-columns: 64px 1fr; gap: 8px; align-items: center; }
     .label {
-      font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: #374151;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: #292B26;
     }
     .box {
-      border: 1px solid #d1d5db;
+      border: 1px solid #E8E2D5;
       border-radius: 4px;
       background: #fff;
       min-height: 30px;
@@ -120,13 +120,13 @@ export function buildBusTicketHtml(t: BusTicketHtmlData): string {
       gap: 10px;
     }
     .meta-box {
-      border: 1px solid #d1d5db;
+      border: 1px solid #E8E2D5;
       border-radius: 6px;
       background: #fff;
       padding: 8px 10px;
     }
     .meta-box .k {
-      font-size: 11px; font-weight: 800; color: #6b7280; letter-spacing: 0.04em;
+      font-size: 11px; font-weight: 800; color: #92938B; letter-spacing: 0.04em;
     }
     .meta-box .v {
       font-size: 18px; font-weight: 800; margin-top: 2px;
@@ -139,13 +139,14 @@ export function buildBusTicketHtml(t: BusTicketHtmlData): string {
       letter-spacing: 0.04em;
       margin-top: 4px;
       font-family: ui-monospace, monospace;
+      color: #5C3D1E;
     }
     .stub-body { padding: 12px 14px; font-size: 12px; }
     .stub-line {
       display: flex; justify-content: space-between; gap: 8px;
-      padding: 5px 0; border-bottom: 1px solid #e5e7eb;
+      padding: 5px 0; border-bottom: 1px solid #E8E2D5;
     }
-    .stub-line span:first-child { font-weight: 800; color: #4b5563; }
+    .stub-line span:first-child { font-weight: 800; color: #92938B; }
     .stub-line span:last-child { font-weight: 700; text-align: right; }
     .stub-qr { text-align: center; margin-top: 12px; }
     .stub-qr img { width: 96px; height: 96px; }

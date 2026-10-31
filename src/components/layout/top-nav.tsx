@@ -30,7 +30,7 @@ export function TopNav({ navItems, title, profileHref = "/dashboard/settings" }:
   };
 
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-border/70 bg-background/85 backdrop-blur-xl px-4 md:px-6">
+    <header className="sticky top-0 z-40 flex h-16 items-center gap-4 border-b border-border bg-card/95 backdrop-blur-xl px-4 md:px-6">
       <MobileSidebar items={navItems} />
       {title && <h1 className="text-lg font-bold text-ink hidden sm:block">{title}</h1>}
       {(isSuperAdmin || isAdmin) && (

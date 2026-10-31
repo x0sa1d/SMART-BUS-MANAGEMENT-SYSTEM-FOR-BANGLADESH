@@ -1,3 +1,20 @@
+/** Cities passengers can still pick when the district table is unreachable. */
+export const FALLBACK_PASSENGER_CITIES = [
+  "Dhaka",
+  "Chittagong",
+  "Chattogram",
+  "Sylhet",
+  "Rajshahi",
+  "Khulna",
+  "Barishal",
+  "Rangpur",
+  "Mymensingh",
+  "Cox's Bazar",
+  "Cumilla",
+  "Jessore",
+  "Bogura",
+] as const;
+
 /** Alternate spellings and legacy names for district search matching. */
 const DISTRICT_ALIASES: Record<string, string[]> = {
   chattogram: ["Chittagong", "Chattogram", "CTG"],
@@ -22,6 +39,38 @@ export function getDistrictSearchVariants(name: string): string[] {
   const aliases = DISTRICT_ALIASES[key] ?? [];
   const variants = new Set<string>([trimmed, ...aliases]);
   return Array.from(variants);
+}
+
+const CANONICAL_CITY_KEY: Record<string, string> = {
+  chittagong: "chattogram",
+  chattogram: "chattogram",
+  ctg: "chattogram",
+  "cox's bazar": "cox's bazar",
+  "coxs bazar": "cox's bazar",
+  jessore: "jashore",
+  jashore: "jashore",
+  barisal: "barishal",
+  barishal: "barishal",
+  bogra: "bogura",
+  bogura: "bogura",
+  comilla: "cumilla",
+  cumilla: "cumilla",
+  maulvibazar: "moulvibazar",
+  moulvibazar: "moulvibazar",
+  "chapai nawabganj": "chapainawabganj",
+  chapainawabganj: "chapainawabganj",
+};
+
+/** Canonical key so Chittagong / Chattogram (and similar aliases) count as one city. */
+export function canonicalCityKey(name: string): string {
+  const key = name.trim().toLowerCase().replace(/['']/g, "'");
+  return CANONICAL_CITY_KEY[key] ?? key;
+}
+
+export function isSameCity(a: string, b: string): boolean {
+  const left = canonicalCityKey(a);
+  const right = canonicalCityKey(b);
+  return Boolean(left) && left === right;
 }
 
 export function buildDistrictFieldFilter(field: "source" | "destination", name: string) {

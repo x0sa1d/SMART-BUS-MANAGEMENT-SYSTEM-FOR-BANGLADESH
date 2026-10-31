@@ -8,7 +8,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell, AreaChart, Area,
 } from "recharts";
-const CHART_COLORS = ["#006A4E", "#E63946", "#FFB703", "#1D3557", "#457B9D", "#2A9D8F"];
+const CHART_COLORS = ["#174D3A", "#F28C28", "#27845B", "#E9A23B", "#3979B7", "#D94B45"];
 
 const chartProps = { isAnimationActive: false };
 
@@ -41,15 +41,15 @@ export function DashboardChartsInner({
               <AreaChart data={revenueTrend}>
                 <defs>
                   <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#006A4E" stopOpacity={0.3} />
-                    <stop offset="100%" stopColor="#006A4E" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#174D3A" stopOpacity={0.3} />
+                    <stop offset="100%" stopColor="#174D3A" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                 <XAxis dataKey="name" className="text-xs" />
                 <YAxis className="text-xs" tickFormatter={(v) => `৳${v}`} />
                 <Tooltip formatter={(v: number) => formatCurrency(v)} />
-                <Area type="monotone" dataKey="value" stroke="#006A4E" fill="url(#revenueGrad)" strokeWidth={2} {...chartProps} />
+                <Area type="monotone" dataKey="value" stroke="#174D3A" fill="url(#revenueGrad)" strokeWidth={2} {...chartProps} />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
@@ -142,7 +142,7 @@ export function DashboardChartsInner({
                 <XAxis type="number" className="text-xs" />
                 <YAxis type="category" dataKey="name" className="text-xs" width={70} />
                 <Tooltip />
-                <Bar dataKey="value" fill="#006A4E" radius={[0, 4, 4, 0]} {...chartProps} />
+                <Bar dataKey="value" fill="#174D3A" radius={[0, 4, 4, 0]} {...chartProps} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>

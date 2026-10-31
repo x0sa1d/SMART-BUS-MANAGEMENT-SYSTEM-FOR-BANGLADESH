@@ -24,12 +24,12 @@ export function MobileSidebar({ items }: { items: readonly NavItem[] }) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden"><Menu className="h-5 w-5" /></Button>
+        <Button variant="ghost" size="icon" className="md:hidden min-h-11 min-w-11" aria-label="Open menu"><Menu className="h-5 w-5" /></Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-72 p-0">
-        <SheetHeader className="border-b p-4">
-          <SheetTitle className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-white text-sm font-bold">B</div>
+      <SheetContent side="left" className="w-72 p-0 bg-card">
+        <SheetHeader className="border-b border-white/15 p-4 bg-bd-green text-white">
+          <SheetTitle className="flex items-center gap-2 text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-bd-green text-sm font-bold">B</div>
             {APP_NAME}
           </SheetTitle>
         </SheetHeader>
@@ -39,8 +39,8 @@ export function MobileSidebar({ items }: { items: readonly NavItem[] }) {
             const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
             return (
               <Link key={item.href} href={item.href}
-                className={cn("flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                  isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-muted")}>
+                className={cn("flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors min-h-11",
+                  isActive ? "bg-[#E5EFE9] text-primary" : "text-muted-foreground hover:bg-muted hover:text-ink")}>
                 <Icon className="h-4 w-4" />{item.title}
               </Link>
             );

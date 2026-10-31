@@ -4,27 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { APP_NAME, APP_TAGLINE, PRICING_PLANS } from "@/constants";
 import { MAJOR_OPERATORS, POPULAR_ROUTES, COVERAGE_STATS, PAYMENT_METHODS } from "@/constants/operators";
 import { getDistricts } from "@/actions/location.actions";
+import { calendarDateKey } from "@/lib/calendar-date";
+import { FALLBACK_PASSENGER_CITIES } from "@/lib/district-search";
 import { HomeSearchForm } from "@/features/home/home-search-form";
+import { LandingMobileNav } from "@/features/home/landing-mobile-nav";
 import {
   Bus, Route, Ticket, MapPin, BarChart3, CreditCard, Users,
-  Building2, ArrowRight, CheckCircle2, Shield, Sparkles, Siren, PackageSearch, QrCode, Brain,
+  Building2, ArrowRight, CheckCircle2, Shield, Sparkles, Siren, PackageSearch, QrCode, Brain, Star,
 } from "lucide-react";
-
-const FALLBACK_DESTINATIONS = [
-  "Dhaka",
-  "Chittagong",
-  "Chattogram",
-  "Sylhet",
-  "Rajshahi",
-  "Khulna",
-  "Barishal",
-  "Rangpur",
-  "Mymensingh",
-  "Cox's Bazar",
-  "Cumilla",
-  "Jessore",
-  "Bogura",
-];
 
 const features = [
   {
@@ -60,29 +47,32 @@ const features = [
 ];
 
 const BUS_IMAGES = {
-  hero: "/images/buses/hanif-volvo.jpg",
+  hero: "/images/buses/hanif-volvo.jpg?v=6",
   cta: "/images/buses/greenline-2.jpg",
-  gallery: [
-    "/images/buses/greenline-1.jpg",
-    "/images/buses/hanif-volvo.jpg",
-    "/images/buses/shah-fote-ali.jpg",
-    "/images/buses/greenline-2.jpg",
-  ],
 } as const;
 
 const fleet = [
-  { name: "City Express AC", seats: 40, price: "From ৳450", rating: "4.8", image: "/images/buses/greenline-1.jpg" },
-  { name: "Intercity Deluxe", seats: 36, price: "From ৳650", rating: "4.9", image: "/images/buses/hanif-volvo.jpg" },
-  { name: "Night Coach VIP", seats: 28, price: "From ৳900", rating: "4.7", image: "/images/buses/shah-fote-ali.jpg" },
-  { name: "Non-AC Economy", seats: 44, price: "From ৳320", rating: "4.5", image: "/images/buses/greenline-2.jpg" },
-];
+  { name: "Green Line Paribahan", type: "AC", coach: "Scania", seats: 36, price: "From ৳900", rating: "4.9", image: "/images/buses/greenline-1.jpg?v=6" },
+  { name: "Hanif Enterprise", type: "AC", coach: "Hino", seats: 40, price: "From ৳850", rating: "4.8", image: "/images/buses/hanif-volvo.jpg?v=6" },
+  { name: "Ena Transport", type: "AC", coach: "Hyundai Universe", seats: 40, price: "From ৳780", rating: "4.8", image: "/images/buses/ena.jpg?v=6" },
+  { name: "Desh Travels", type: "AC", coach: "Hyundai Universe", seats: 40, price: "From ৳720", rating: "4.7", image: "/images/buses/desh.jpg?v=6" },
+  { name: "Saint Martin Paribahan", type: "AC", coach: "Hyundai AC", seats: 40, price: "From ৳800", rating: "4.6", image: "/images/buses/saintmartin.jpg?v=6" },
+  { name: "Royal Coach", type: "AC", coach: "Touring AC", seats: 36, price: "From ৳650", rating: "4.6", image: "/images/buses/royal.jpg?v=6" },
+  { name: "Saudia Paribahan", type: "AC", coach: "AC coach", seats: 40, price: "From ৳700", rating: "4.6", image: "/images/buses/saudia.jpg?v=6" },
+  { name: "Shah Fateh Ali Paribahan", type: "AC", coach: "Business Class", seats: 40, price: "From ৳550", rating: "4.5", image: "/images/buses/shah-fote-ali.jpg?v=6" },
+  { name: "Shyamoli Paribahan", type: "AC", coach: "Hyundai", seats: 40, price: "From ৳650", rating: "4.6", image: "/images/buses/shyamoli.jpg?v=6" },
+  { name: "Shohagh Paribahan", type: "AC", coach: "Scania Elite", seats: 36, price: "From ৳850", rating: "4.7", image: "/images/buses/shohagh.jpg?v=6" },
+] as const;
 
 const TRENDING_DESTINATIONS = [
-  { name: "Chittagong", image: "/images/destinations/chittagong.jpg", span: "top" },
-  { name: "Dhaka", image: "/images/destinations/dhaka.jpg", span: "top" },
-  { name: "Rajshahi", image: "/images/destinations/rajshahi.jpg", span: "bottom" },
-  { name: "Rangpur", image: "/images/destinations/rangpur.jpg", span: "bottom-wide" },
-  { name: "Sylhet", image: "/images/destinations/sylhet.jpg", span: "bottom" },
+  { name: "Barishal", spot: "Kuakata Beach", image: "/images/destinations/barishal.jpg?v=8", query: "Barishal" },
+  { name: "Chattogram", spot: "Cox's Bazar", image: "/images/destinations/chattogram.jpg?v=8", query: "Cox's Bazar" },
+  { name: "Dhaka", spot: "Lalbagh Fort", image: "/images/destinations/dhaka.jpg?v=8", query: "Dhaka" },
+  { name: "Khulna", spot: "Sixty Dome Mosque", image: "/images/destinations/khulna.jpg?v=8", query: "Khulna" },
+  { name: "Mymensingh", spot: "Shashi Lodge", image: "/images/destinations/mymensingh.jpg?v=8", query: "Mymensingh" },
+  { name: "Rajshahi", spot: "Puthia Temples", image: "/images/destinations/rajshahi.jpg?v=8", query: "Rajshahi" },
+  { name: "Rangpur", spot: "Tajhat Palace", image: "/images/destinations/rangpur.jpg?v=8", query: "Rangpur" },
+  { name: "Sylhet", spot: "Ratargul Forest", image: "/images/destinations/sylhet.jpg?v=8", query: "Sylhet" },
 ] as const;
 
 const services = [
@@ -99,12 +89,13 @@ export default async function LandingPage() {
   const destinations = Array.from(
     new Set([
       ...districts.map((district) => district.name),
-      ...FALLBACK_DESTINATIONS,
+      ...FALLBACK_PASSENGER_CITIES,
     ])
   ).sort((a, b) => a.localeCompare(b));
+  const today = calendarDateKey();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-16 md:h-[4.5rem] items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2.5 text-white">
@@ -123,10 +114,11 @@ export default async function LandingPage() {
             <Link href="/operators" className="hover:text-white transition-colors">Operators</Link>
           </nav>
           <div className="flex items-center gap-2">
-            <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border border-white/25 hidden sm:inline-flex rounded-full">
+            <LandingMobileNav />
+            <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border border-white/25 hidden sm:inline-flex">
               Sign in
             </LinkButton>
-            <LinkButton href="/register" className="bg-primary text-white hover:bg-primary/90 border-0 rounded-full shadow-soft">
+            <LinkButton href="/register" className="bg-accent text-white hover:bg-accent/90 border-0 shadow-soft text-sm px-4 sm:px-5">
               Contact Us
             </LinkButton>
           </div>
@@ -151,10 +143,10 @@ export default async function LandingPage() {
               {APP_TAGLINE}
             </p>
             <div className="animate-fade-up-delay flex flex-wrap gap-3 pt-1">
-              <LinkButton href="/search" size="lg" className="bg-primary text-white hover:bg-primary/90 border-0 px-7 rounded-full shadow-soft-lg">
+              <LinkButton href="/search" size="lg" className="bg-accent text-white hover:bg-accent/90 border-0 px-7 shadow-soft-lg">
                 Book a Ticket <ArrowRight className="h-4 w-4" />
               </LinkButton>
-              <LinkButton href="#destinations" size="lg" className="bg-white text-brand-green hover:bg-white/90 border-0 px-7 rounded-full">
+              <LinkButton href="#destinations" size="lg" className="bg-white text-bd-green hover:bg-white/90 border-0 px-7">
                 Explore Destinations
               </LinkButton>
             </div>
@@ -163,50 +155,40 @@ export default async function LandingPage() {
       </section>
 
       <section className="relative z-20 container mx-auto px-4 -mt-14 md:-mt-16">
-        <HomeSearchForm destinations={destinations} />
+        <HomeSearchForm destinations={destinations} today={today} />
       </section>
 
-      <section id="destinations" className="bg-white/70 py-16 md:py-20">
+      <section id="destinations" className="bg-card py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-10 space-y-2">
-            <p className="section-label">Popular cities</p>
+            <p className="section-label">Eight divisions</p>
             <h2 className="text-3xl md:text-[2.45rem] font-extrabold tracking-tight text-ink">
               Discover Trending Destinations
             </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-[15px] leading-relaxed">
+              Famous spots across all 8 divisions of Bangladesh — tap a city to search buses.
+            </p>
           </div>
-          <div className="space-y-3 md:space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-              {TRENDING_DESTINATIONS.filter((d) => d.span === "top").map((dest) => (
-                <Link
-                  key={dest.name}
-                  href={`/search?destination=${encodeURIComponent(dest.name)}`}
-                  className="dest-card aspect-[16/9] sm:aspect-[2/1]"
-                >
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="sr-only">{dest.name}</span>
-                </Link>
-              ))}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-[1fr_1.35fr_1fr] gap-3 md:gap-4">
-              {TRENDING_DESTINATIONS.filter((d) => d.span === "bottom" || d.span === "bottom-wide").map((dest) => (
-                <Link
-                  key={dest.name}
-                  href={`/search?destination=${encodeURIComponent(dest.name)}`}
-                  className="dest-card aspect-[4/3]"
-                >
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="sr-only">{dest.name}</span>
-                </Link>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {TRENDING_DESTINATIONS.map((dest) => (
+              <Link
+                key={dest.name}
+                href={`/search?destination=${encodeURIComponent(dest.query)}`}
+                className="dest-card group block aspect-[4/3]"
+              >
+                <img
+                  src={dest.image}
+                  alt={`${dest.spot} in ${dest.name} Division`}
+                  className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-16 p-4">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/80">
+                    {dest.spot}
+                  </p>
+                  <h3 className="text-xl font-bold text-white tracking-tight">{dest.name}</h3>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -239,8 +221,8 @@ export default async function LandingPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((s) => (
-              <div key={s.title} className="rounded-xl bg-background border border-border p-6 space-y-3 shadow-soft transition-all hover:-translate-y-0.5 hover:border-primary/30">
-                <div className="h-10 w-10 rounded-full gradient-primary text-white flex items-center justify-center shadow-soft">
+              <div key={s.title} className="rounded-xl bg-background border border-border p-6 space-y-3 shadow-soft transition-all hover:-translate-y-0.5 hover:border-bd-green/30">
+                <div className="h-10 w-10 rounded-full bg-bd-green text-white flex items-center justify-center shadow-soft">
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="font-bold text-[1.05rem] text-ink">{s.title}</h3>
@@ -257,42 +239,55 @@ export default async function LandingPage() {
       <section id="fleet" className="container mx-auto px-4 py-16 md:py-20">
         <div className="text-center mb-10 space-y-3">
           <p className="section-label">Our Bus</p>
-          <h2 className="text-3xl md:text-[2.35rem] font-extrabold tracking-tight text-ink">Popular bus classes</h2>
+          <h2 className="text-3xl md:text-[2.35rem] font-extrabold tracking-tight text-ink">Popular operators</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-[15px] leading-relaxed">
+            Top AC and Non-AC coaches on Bangladesh highways — Hanif, Ena, Green Line, Shyamoli and more.
+          </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {fleet.map((bus) => (
-            <div key={bus.name} className="rounded-xl border border-border bg-card overflow-hidden shadow-soft transition-all hover:-translate-y-0.5 hover:border-primary/30">
-              <div className="relative h-44 overflow-hidden">
+            <article
+              key={bus.name}
+              className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-soft transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-bd-green/30 hover:shadow-soft-lg"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                 <img
                   src={bus.image}
-                  alt={bus.name}
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  alt={`${bus.name} ${bus.type} coach`}
+                  className="h-full w-full object-cover object-center transition-transform duration-300 ease-out group-hover:scale-[1.04]"
                 />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-ink/5"
+                  aria-hidden
+                />
+                <span
+                  className={`absolute left-3 top-3 inline-flex min-h-6 min-w-11 items-center justify-center rounded-full px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] ${
+                    bus.type === "AC"
+                      ? "bg-primary text-white"
+                      : "bg-white text-ink"
+                  }`}
+                >
+                  {bus.type}
+                </span>
               </div>
-              <div className="p-5 space-y-2.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-bd-red font-semibold">★ {bus.rating}</span>
+              <div className="flex flex-1 flex-col p-4">
+                <div className="mb-2 flex items-center justify-between text-xs">
+                  <span className="inline-flex items-center gap-1 font-semibold text-accent">
+                    <Star className="h-3.5 w-3.5 fill-current" aria-hidden />
+                    {bus.rating}
+                  </span>
                   <span className="text-muted-foreground">{bus.seats} seats</span>
                 </div>
-                <h3 className="font-bold text-ink">{bus.name}</h3>
-                <p className="text-primary font-extrabold">{bus.price}</p>
-                <LinkButton href="/search" className="w-full gradient-primary text-white hover:opacity-95 border-0 rounded-full">
-                  Book Now
-                </LinkButton>
+                <h3 className="min-h-[2.6rem] font-bold leading-snug text-ink line-clamp-2">{bus.name}</h3>
+                <p className="mt-1 text-xs text-muted-foreground">{bus.coach}</p>
+                <p className="mt-2 text-accent font-extrabold">{bus.price}</p>
+                <div className="mt-auto pt-3">
+                  <LinkButton href="/search" className="w-full min-h-12">
+                    Book Now
+                  </LinkButton>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3">
-          {BUS_IMAGES.gallery.map((src, index) => (
-            <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border">
-              <img
-                src={src}
-                alt={`Bangladesh coach fleet ${index + 1}`}
-                className="h-full w-full object-cover"
-              />
-            </div>
+            </article>
           ))}
         </div>
       </section>
@@ -305,8 +300,8 @@ export default async function LandingPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((f) => (
-              <div key={f.title} className="rounded-xl border border-border bg-background p-6 space-y-3 shadow-soft transition-all hover:-translate-y-0.5 hover:border-primary/30">
-                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+              <div key={f.title} className="rounded-xl border border-border bg-background p-6 space-y-3 shadow-soft transition-all hover:-translate-y-0.5 hover:border-bd-green/30">
+                <div className="h-10 w-10 rounded-full bg-bd-green/12 text-bd-green flex items-center justify-center">
                   <f.icon className="h-5 w-5" />
                 </div>
                 <h3 className="font-bold text-[1.05rem] text-ink">{f.title}</h3>
@@ -354,7 +349,7 @@ export default async function LandingPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${BUS_IMAGES.cta}')` }}
         />
-        <div className="absolute inset-0 bg-brand-green/80" />
+        <div className="absolute inset-0 bg-bd-green/85" />
         <div className="container relative z-10 mx-auto px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-white">
           <div className="space-y-2 max-w-lg">
             <h2 className="text-3xl md:text-[2.35rem] font-extrabold tracking-tight leading-tight text-white">
@@ -364,7 +359,7 @@ export default async function LandingPage() {
               Tickets, tracking, SOS, and seat tips in one simple place.
             </p>
           </div>
-          <LinkButton href="/register" size="lg" className="bg-primary text-white hover:bg-primary/90 border-0 px-8 rounded-full shrink-0">
+          <LinkButton href="/register" size="lg" className="bg-accent text-white hover:bg-accent/90 border-0 px-8 shrink-0">
             Get Started
           </LinkButton>
         </div>
@@ -383,7 +378,7 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <section id="pricing" className="bg-white py-16 md:py-20">
+      <section id="pricing" className="bg-card py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 space-y-3">
             <p className="section-label">Pricing</p>
@@ -394,12 +389,12 @@ export default async function LandingPage() {
               <div
                 key={plan.name}
                 className={`rounded-lg p-6 space-y-4 bg-background ${
-                  plan.highlighted ? "border-2 border-primary" : "border border-border"
+                  plan.highlighted ? "border-2 border-accent" : "border border-border"
                 }`}
               >
-                {plan.highlighted && <Badge className="bg-primary rounded-full">Most Popular</Badge>}
+                {plan.highlighted && <Badge className="bg-accent text-white">Most Popular</Badge>}
                 <h3 className="font-semibold text-lg">{plan.name}</h3>
-                <p className="text-3xl font-bold text-primary">
+                <p className="text-3xl font-bold text-accent">
                   ৳{plan.price.toLocaleString()}
                   <span className="text-sm font-normal text-muted-foreground">/{plan.period}</span>
                 </p>
@@ -407,14 +402,14 @@ export default async function LandingPage() {
                 <ul className="space-y-2 text-sm">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-bd-green shrink-0 mt-0.5" />
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
                 <LinkButton
                   href="/register-company"
-                  className={`w-full rounded-full ${plan.highlighted ? "bg-primary text-white hover:bg-primary/90 border-0" : ""}`}
+                  className={`w-full ${plan.highlighted ? "bg-primary text-white hover:bg-primary/90 border-0" : ""}`}
                   variant={plan.highlighted ? "default" : "outline"}
                 >
                   Get Started
@@ -429,7 +424,7 @@ export default async function LandingPage() {
         <div className="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-extrabold text-lg text-white">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-brand-green">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-bd-green">
                 <Bus className="h-4 w-4" />
               </span>
               Bugos

@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { APP_NAME } from "@/constants";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, Bus } from "lucide-react";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -55,9 +55,11 @@ export function RegisterForm() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
-      <Card className="border-0 shadow-soft-lg">
+      <Card className="border border-border shadow-soft-lg overflow-hidden">
         <CardHeader className="text-center space-y-2">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl gradient-primary text-white font-bold">SBM</div>
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-bd-green text-white shadow-soft">
+            <Bus className="h-6 w-6" />
+          </div>
           <CardTitle className="text-2xl">Create Passenger Account</CardTitle>
           <CardDescription>Book bus tickets across Bangladesh with {APP_NAME}</CardDescription>
         </CardHeader>

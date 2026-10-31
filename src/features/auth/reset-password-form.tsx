@@ -49,7 +49,7 @@ export function ResetPasswordForm() {
 
   if (!token) {
     return (
-      <Card className="border-0 shadow-soft-lg w-full max-w-md">
+      <Card className="border border-border shadow-soft-lg w-full max-w-md overflow-hidden">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Invalid reset link</CardTitle>
           <CardDescription>This link is missing or expired.</CardDescription>
@@ -70,7 +70,7 @@ export function ResetPasswordForm() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
-      <Card className="border-0 shadow-soft-lg">
+      <Card className="border border-border shadow-soft-lg overflow-hidden">
         <CardHeader className="text-center space-y-2">
           <CardTitle className="text-2xl">Choose a new password</CardTitle>
           <CardDescription>Must be at least 8 characters.</CardDescription>

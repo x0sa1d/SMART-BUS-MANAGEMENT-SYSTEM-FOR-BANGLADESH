@@ -42,7 +42,7 @@ export function ForgotPasswordForm() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
-      <Card className="border-0 shadow-soft-lg">
+      <Card className="border border-border shadow-soft-lg overflow-hidden">
         <CardHeader className="text-center space-y-2">
           <CardTitle className="text-2xl">Reset password</CardTitle>
           <CardDescription>

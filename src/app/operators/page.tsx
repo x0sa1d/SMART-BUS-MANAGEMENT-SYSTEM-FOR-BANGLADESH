@@ -40,16 +40,16 @@ export default async function PublicOperatorsPage() {
       : items;
 
   return (
-    <div className="min-h-screen mesh-bg">
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2 font-semibold text-sm hover:opacity-80">
+          <Link href="/" className="flex items-center gap-2 font-semibold text-sm text-white hover:opacity-90">
             <ArrowLeft className="h-4 w-4" />
             {APP_NAME}
           </Link>
           <div className="flex items-center gap-2">
-            <LinkButton href="/search" variant="ghost">Search & Book</LinkButton>
-            <LinkButton href="/register-company" variant="gradient">Register Operator</LinkButton>
+            <LinkButton href="/search" className="bg-white/10 text-white hover:bg-white/20 border border-white/25 hidden sm:inline-flex">Search & Book</LinkButton>
+            <LinkButton href="/register-company" className="bg-accent text-white hover:bg-accent/90 border-0">Register Operator</LinkButton>
           </div>
         </div>
       </header>

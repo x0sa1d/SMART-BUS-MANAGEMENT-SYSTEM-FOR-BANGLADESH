@@ -93,11 +93,11 @@ export const PAYMENT_METHODS = ["CASH", "BKASH", "NAGAD", "ROCKET", "SSLCOMMERZ"
 export const PAYMENT_STATUSES = ["PENDING", "COMPLETED", "FAILED", "REFUNDED"] as const;
 
 export const SEAT_COLORS = {
-  AVAILABLE: { bg: "bg-green-500", text: "text-green-700", border: "border-green-500" },
-  BOOKED: { bg: "bg-red-500", text: "text-red-700", border: "border-red-500" },
-  RESERVED: { bg: "bg-yellow-500", text: "text-yellow-700", border: "border-yellow-500" },
-  BLOCKED: { bg: "bg-gray-400", text: "text-gray-600", border: "border-gray-400" },
-  SELECTED: { bg: "bg-primary", text: "text-primary", border: "border-primary" },
+  AVAILABLE: { bg: "bg-white", text: "text-ink", border: "border-[#E8E2D5]" },
+  BOOKED: { bg: "bg-[#D9D9D3]", text: "text-[#92938B]", border: "border-[#D9D9D3]" },
+  RESERVED: { bg: "bg-[#E9A23B]", text: "text-[#8A5A12]", border: "border-[#E9A23B]" },
+  BLOCKED: { bg: "bg-[#D9D9D3]", text: "text-[#92938B]", border: "border-[#D9D9D3]" },
+  SELECTED: { bg: "bg-primary", text: "text-white", border: "border-primary" },
 } as const;
 
 export const DEFAULT_PAGE_SIZE = 10;

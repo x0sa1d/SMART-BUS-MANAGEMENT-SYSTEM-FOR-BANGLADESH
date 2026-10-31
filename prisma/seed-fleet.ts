@@ -3,9 +3,21 @@ import { calculateFare, estimateDurationMinutes } from "@/lib/geo";
 import type { BusType } from "@prisma/client";
 
 export const BUSES_PER_ROUTE = 100;
+export const MIN_BUSES_PER_ROUTE = Number(process.env.FLEET_MIN_BUSES || 10);
+export const MAX_BUSES_PER_ROUTE = Number(process.env.FLEET_MAX_BUSES || 15);
+/** Today + upcoming days (default 8 = today + 7 days). */
+export const TRIP_DAYS = Number(process.env.FLEET_TRIP_DAYS || 8);
 const BUS_CAPACITY = 36;
-const TRIP_DAYS = 14;
 const BUS_TYPES: BusType[] = ["STANDARD", "DELUXE", "AC", "NON_AC"];
+
+function targetBusesForRoute(routeId: string, min: number, max: number): number {
+  const span = Math.max(0, max - min);
+  let hash = 0;
+  for (let i = 0; i < routeId.length; i++) {
+    hash = (hash * 31 + routeId.charCodeAt(i)) >>> 0;
+  }
+  return min + (hash % (span + 1));
+}
 
 let globalBusSeq = 0;
 let globalDriverSeq = 0;
@@ -60,7 +72,7 @@ async function createSeatsBatch(busIds: string[]) {
   }
 }
 
-async function seedRouteFleet(
+export async function seedRouteFleet(
   route: { id: string; distance: number; estimatedDuration: number },
   companies: { id: string }[],
   needed: number,
@@ -208,6 +220,61 @@ export async function seedFleet(busesPerRoute = BUSES_PER_ROUTE) {
   }
 
   console.log(`Fleet seed complete: ${routesProcessed} routes updated, ${busesCreated} buses added`);
+}
+
+/** Ensure each active route has between min and max buses (deterministic per route) and trips for TRIP_DAYS. */
+export async function seedWeeklyFleetPerRoute(
+  minBuses = MIN_BUSES_PER_ROUTE,
+  maxBuses = MAX_BUSES_PER_ROUTE
+) {
+  console.log(
+    `Weekly fleet: ${minBuses}-${maxBuses} buses per route, ${TRIP_DAYS} day trip window...`
+  );
+  await ensureGlobalCounters();
+
+  const [routes, companies] = await Promise.all([
+    db.route.findMany({
+      where: { deletedAt: null, isActive: true },
+      select: { id: true, distance: true, estimatedDuration: true, name: true },
+    }),
+    db.busCompany.findMany({
+      where: { deletedAt: null, status: "ACTIVE" },
+      select: { id: true },
+    }),
+  ]);
+
+  if (companies.length === 0) {
+    console.warn("No active companies — run seedBusCompanies first");
+    return;
+  }
+
+  let routesProcessed = 0;
+  let busesCreated = 0;
+
+  for (const route of routes) {
+    const existingSchedules = await db.schedule.count({
+      where: { routeId: route.id, deletedAt: null },
+    });
+
+    const target = targetBusesForRoute(route.id, minBuses, maxBuses);
+    const needed = Math.max(0, target - existingSchedules);
+    if (needed <= 0) {
+      routesProcessed++;
+      continue;
+    }
+
+    await seedRouteFleet(route, companies, needed, routesProcessed * target);
+    routesProcessed++;
+    busesCreated += needed;
+
+    if (routesProcessed % 25 === 0) {
+      console.log(`  Weekly fleet: ${routesProcessed}/${routes.length} routes, ${busesCreated} buses added...`);
+    }
+  }
+
+  console.log(
+    `Weekly fleet complete: ${routesProcessed} routes checked, ${busesCreated} buses added`
+  );
 }
 
 export async function refreshScheduleFares() {

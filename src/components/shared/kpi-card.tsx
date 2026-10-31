@@ -3,19 +3,19 @@ import { cn, formatCurrency } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
 
 const ACCENT_STYLES = {
-  green: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
-  emerald: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
-  teal: "from-[#F42A41]/20 to-[#F42A41]/5 text-[#F42A41]",
-  navy: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
-  blue: "from-[#006A4E]/15 to-[#F42A41]/10 text-[#006A4E]",
-  indigo: "from-[#006A4E]/20 to-[#006A4E]/5 text-[#006A4E] dark:text-[#1a9b74]",
-  violet: "from-[#006A4E]/15 to-[#F42A41]/10 text-[#006A4E] dark:text-[#1a9b74]",
-  amber: "from-[#F42A41]/20 to-[#F42A41]/5 text-[#F42A41]",
-  rose: "from-[#F42A41]/20 to-[#F42A41]/5 text-[#F42A41] dark:text-[#ff5a6b]",
-  cyan: "from-[#006A4E]/15 to-[#006A4E]/10 text-[#006A4E]",
-  orange: "from-[#F42A41]/20 to-[#006A4E]/10 text-[#F42A41]",
-  lime: "from-[#006A4E]/15 to-[#006A4E]/10 text-[#006A4E] dark:text-[#1a9b74]",
-  sky: "from-[#006A4E]/15 to-[#F42A41]/10 text-[#006A4E]",
+  green: "bg-bd-green/12 text-bd-green",
+  emerald: "bg-bd-green/12 text-bd-green",
+  teal: "bg-accent/12 text-accent",
+  navy: "bg-bd-green/12 text-bd-green",
+  blue: "bg-bd-green/12 text-bd-green",
+  indigo: "bg-bd-green/12 text-bd-green",
+  violet: "bg-bd-green/12 text-bd-green",
+  amber: "bg-accent/12 text-accent",
+  rose: "bg-destructive/12 text-destructive",
+  cyan: "bg-bd-green/12 text-bd-green",
+  orange: "bg-accent/12 text-accent",
+  lime: "bg-bd-green/12 text-bd-green",
+  sky: "bg-bd-green/12 text-bd-green",
 } as const;
 
 interface KpiCardProps {
@@ -50,7 +50,7 @@ export function KpiCard({
     <Card className={cn("card-elevated overflow-hidden transition-all hover:shadow-lg hover:-translate-y-0.5", className)}>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">{title}</CardTitle>
-        <div className={cn("rounded-xl bg-gradient-to-br p-2.5", accentStyle)}>
+        <div className={cn("rounded-xl p-2.5", accentStyle)}>
           <Icon className="h-4 w-4" />
         </div>
       </CardHeader>

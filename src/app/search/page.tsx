@@ -57,16 +57,16 @@ export default async function PublicSearchPage({
     : 1;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <header className="sticky top-0 z-50 site-header text-white">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2 font-semibold text-sm text-white hover:opacity-90">
             <ArrowLeft className="h-4 w-4" />
             {APP_NAME}
           </Link>
-          <div className="flex items-center gap-2">
-            <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border-0">Sign in</LinkButton>
-            <LinkButton href="/register" className="bg-primary text-white hover:bg-primary/90 border-0">Get Started</LinkButton>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <LinkButton href="/login" className="bg-white/10 text-white hover:bg-white/20 border-0 hidden sm:inline-flex text-xs sm:text-sm px-3">Sign in</LinkButton>
+            <LinkButton href="/register" className="bg-accent text-white hover:bg-accent/90 border-0 text-xs sm:text-sm px-3 sm:px-4">Get Started</LinkButton>
           </div>
         </div>
       </header>

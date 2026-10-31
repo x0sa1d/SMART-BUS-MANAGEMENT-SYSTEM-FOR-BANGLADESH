@@ -57,14 +57,14 @@ function loadGoogleMaps(apiKey: string): Promise<void> {
 function FallbackMap({ bus, source, destination, height }: LiveMapProps) {
   return (
     <div
-      className="relative w-full overflow-hidden rounded-xl border bg-[#e8eef8]"
+      className="relative w-full overflow-hidden rounded-xl border border-border bg-muted"
       style={{ height }}
     >
       <div
         className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
-            "linear-gradient(#c5d4f0 1px, transparent 1px), linear-gradient(90deg, #c5d4f0 1px, transparent 1px)",
+            "linear-gradient(color-mix(in oklab, var(--bd-green) 18%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--bd-green) 18%, transparent) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />

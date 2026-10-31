@@ -113,3 +113,61 @@ export async function ensureTripsForSearchWindow(
 ) {
   return materializeTripsFromSchedules(destination, startDate, endDate, source);
 }
+
+/** Materialize trips for all active schedules across every route in the date window. */
+export async function materializeAllTripsInWindow(startDate: Date, endDate: Date) {
+  if (!isDatabaseConfigured()) return;
+
+  const schedules = await db.schedule.findMany({
+    where: {
+      deletedAt: null,
+      isActive: true,
+      route: { deletedAt: null, isActive: true },
+      bus: { deletedAt: null, status: { in: ["ACTIVE", "AVAILABLE", "RUNNING"] } },
+    },
+    select: { id: true, busId: true, driverId: true, daysOfWeek: true },
+  });
+  if (schedules.length === 0) return;
+
+  const existingTrips = await db.trip.findMany({
+    where: {
+      deletedAt: null,
+      scheduleId: { in: schedules.map((s) => s.id) },
+      tripDate: { gte: startDate, lte: endDate },
+    },
+    select: { scheduleId: true, tripDate: true },
+  });
+
+  const existingKeys = new Set(
+    existingTrips.map((t) => `${t.scheduleId}:${formatDateKey(t.tripDate)}`)
+  );
+
+  const toCreate: {
+    scheduleId: string;
+    busId: string;
+    driverId: string;
+    tripDate: Date;
+    status: "SCHEDULED";
+  }[] = [];
+
+  for (let d = new Date(startDate); d <= endDate; d = addDaysUtc(d, 1)) {
+    for (const schedule of schedules) {
+      if (!scheduleRunsOnDate(schedule.daysOfWeek, d)) continue;
+      const key = `${schedule.id}:${formatDateKey(d)}`;
+      if (existingKeys.has(key)) continue;
+      toCreate.push({
+        scheduleId: schedule.id,
+        busId: schedule.busId,
+        driverId: schedule.driverId,
+        tripDate: new Date(d),
+        status: "SCHEDULED",
+      });
+    }
+  }
+
+  for (let i = 0; i < toCreate.length; i += 500) {
+    await db.trip.createMany({ data: toCreate.slice(i, i + 500), skipDuplicates: true });
+  }
+
+  console.log(`Materialized ${toCreate.length} trip rows (${formatDateKey(startDate)} → ${formatDateKey(endDate)})`);
+}

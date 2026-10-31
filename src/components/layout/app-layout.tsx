@@ -25,7 +25,7 @@ export function AppLayoutClient({
   const profileHref = profileMap[type];
 
   return (
-    <div className="flex h-screen overflow-hidden mesh-bg">
+    <div className="flex h-screen overflow-hidden bg-background">
       <Sidebar items={items} collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
       <div className="flex flex-1 flex-col overflow-hidden">
         <TopNav navItems={items} profileHref={profileHref} />

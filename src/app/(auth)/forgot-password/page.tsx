@@ -12,8 +12,10 @@ function ForgotPasswordFallback() {
 
 export default function ForgotPasswordPage() {
   return (
-    <Suspense fallback={<ForgotPasswordFallback />}>
-      <ForgotPasswordForm />
-    </Suspense>
+    <div className="auth-shell">
+      <Suspense fallback={<ForgotPasswordFallback />}>
+        <ForgotPasswordForm />
+      </Suspense>
+    </div>
   );
 }

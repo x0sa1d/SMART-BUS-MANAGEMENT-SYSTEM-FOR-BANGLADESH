@@ -27,8 +27,8 @@ export default async function CompanyPendingPage() {
     <div className="min-h-screen mesh-bg flex items-center justify-center p-4">
       <Card className="max-w-lg w-full card-elevated">
         <CardContent className="p-8 text-center space-y-4">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#FFB703]/20">
-            <Clock className="h-7 w-7 text-[#996f00]" />
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#c9a227]/20">
+            <Clock className="h-7 w-7 text-[#7a6410]" />
           </div>
           <h1 className="text-2xl font-bold">Application Under Review</h1>
           <p className="text-muted-foreground">

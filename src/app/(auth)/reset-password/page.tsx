@@ -12,8 +12,10 @@ function ResetPasswordFallback() {
 
 export default function ResetPasswordPage() {
   return (
-    <Suspense fallback={<ResetPasswordFallback />}>
-      <ResetPasswordForm />
-    </Suspense>
+    <div className="auth-shell">
+      <Suspense fallback={<ResetPasswordFallback />}>
+        <ResetPasswordForm />
+      </Suspense>
+    </div>
   );
 }

@@ -15,10 +15,12 @@ import { createMultiSeatBooking, checkoutCart } from "@/actions/booking.actions"
 import { useSession } from "@/lib/auth-client";
 import { PAYMENT_METHODS, SEAT_COLORS } from "@/constants";
 import { formatCurrency, cn, formatDate } from "@/lib/utils";
+import { addCalendarDays, calendarDateKey } from "@/lib/calendar-date";
+import { FALLBACK_PASSENGER_CITIES, isSameCity } from "@/lib/district-search";
 import { toast } from "sonner";
 import {
   Search, Bus, Clock, MapPin, Ticket, CreditCard, Loader2, ShoppingBag, Sparkles,
-  ArrowLeftRight, CalendarDays, Snowflake, X, ChevronDown,
+  ArrowLeftRight, CalendarDays, Snowflake, X, ChevronDown, SlidersHorizontal,
 } from "lucide-react";
 import { useTicketCart } from "./use-ticket-cart";
 import { TicketCartPanel } from "./ticket-cart-panel";
@@ -27,6 +29,9 @@ import {
   recommendSeatBlock,
   type SeatPreference,
 } from "@/lib/seat-recommendation";
+
+/** Today + 7 upcoming days on the date ribbon. */
+const DATE_RIBBON_DAYS = 8;
 
 type Division = {
   id: string;
@@ -101,9 +106,7 @@ function durationLabel(minutes: number): string {
 }
 
 function addDaysKey(base: string, days: number): string {
-  const d = new Date(`${base}T00:00:00`);
-  d.setDate(d.getDate() + days);
-  return d.toISOString().slice(0, 10);
+  return addCalendarDays(base, days);
 }
 
 function CitySuggestInput({
@@ -145,7 +148,7 @@ function CitySuggestInput({
           }}
           placeholder="Type a City"
           autoComplete="off"
-          className="w-full min-h-11 rounded-lg border border-border bg-white px-3 pr-8 text-sm text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+          className="w-full min-h-11 rounded-lg border border-border bg-input px-3 pr-8 text-sm text-ink outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
         />
         {value && (
           <button
@@ -199,7 +202,7 @@ export function SearchBusesContent({
   const router = useRouter();
   const { data: session } = useSession();
   const cart = useTicketCart();
-  const todayKey = new Date().toISOString().split("T")[0];
+  const todayKey = calendarDateKey();
   const [source, setSource] = useState(initialSource);
   const [destination, setDestination] = useState(initialDestination);
   const [travelDate, setTravelDate] = useState(
@@ -212,6 +215,7 @@ export function SearchBusesContent({
   const [trips, setTrips] = useState<TripResult[]>([]);
   const [usedFallback, setUsedFallback] = useState(false);
   const [fallbackDates, setFallbackDates] = useState<string[]>([]);
+  const [searchError, setSearchError] = useState<string | null>(null);
   const [selectedTrip, setSelectedTrip] = useState<TripResult | null>(null);
   const [selectedSeatIds, setSelectedSeatIds] = useState<Set<string>>(new Set());
   const [seatPreference, setSeatPreference] = useState<SeatPreference>("any");
@@ -234,23 +238,32 @@ export function SearchBusesContent({
   const [droppingQuery, setDroppingQuery] = useState("");
   const [selectedBoarding, setSelectedBoarding] = useState<Set<string>>(new Set());
   const [selectedDropping, setSelectedDropping] = useState<Set<string>>(new Set());
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const seatSectionRef = useRef<HTMLDivElement | null>(null);
   const allDistricts = useMemo(() => divisions.flatMap((d) => d.districts), [divisions]);
   const cityOptions = useMemo(
-    () => Array.from(new Set(allDistricts.map((d) => d.name))).sort((a, b) => a.localeCompare(b)),
+    () =>
+      Array.from(new Set([...allDistricts.map((d) => d.name), ...FALLBACK_PASSENGER_CITIES])).sort((a, b) =>
+        a.localeCompare(b)
+      ),
     [allDistricts]
   );
   const isLoggedIn = !!session?.user;
 
   const dateRibbon = useMemo(
-    () => Array.from({ length: 10 }, (_, i) => addDaysKey(todayKey, i)),
+    () => Array.from({ length: DATE_RIBBON_DAYS }, (_, i) => addDaysKey(todayKey, i)),
     [todayKey]
   );
 
-  const runSearch = useCallback((silent = false, force = false) => {
-    const dest = destination.trim();
-    const from = source.trim();
+  const runSearch = useCallback((
+    silent = false,
+    force = false,
+    overrides?: { date?: string; source?: string; destination?: string }
+  ) => {
+    const dest = (overrides?.destination ?? destination).trim();
+    const from = (overrides?.source ?? source).trim();
+    const date = overrides?.date ?? travelDate;
     if (!dest) {
       if (!silent) toast.error("Select Going To city");
       return;
@@ -259,7 +272,7 @@ export function SearchBusesContent({
       if (!silent) toast.error("Select Depart From city");
       return;
     }
-    if (from.toLowerCase() === dest.toLowerCase()) {
+    if (isSameCity(from, dest)) {
       if (!silent) toast.error("Origin and destination must be different");
       return;
     }
@@ -272,27 +285,38 @@ export function SearchBusesContent({
     startTransition(async () => {
       const result = await searchAvailableBuses({
         destination: dest,
-        date: travelDate,
+        date,
         source: from,
         busCategory,
       });
       setTrips(result.trips);
       setUsedFallback(result.usedFallback);
       setFallbackDates(result.fallbackDates);
+      setSearchError(result.error);
       setHasSearched(true);
       if (!silent) {
         setSelectedTrip(null);
         setSelectedSeatIds(new Set());
-        if (result.trips.length === 0) {
+        if (result.error) {
+          toast.error("Couldn't load available buses. Try search again.");
+        } else if (result.trips.length === 0) {
           toast.info("No upcoming trips found for this route");
         } else if (result.usedFallback) {
-          toast.info(`No buses on ${formatDate(travelDate)}. Showing nearby dates.`);
+          toast.info(`No buses on ${formatDate(date)}. Showing nearby dates.`);
         } else {
           toast.success(`Found ${result.trips.length} available bus(es)`);
         }
       }
     });
   }, [source, destination, travelDate, busCategory]);
+
+  const autoSearchStarted = useRef(false);
+  useEffect(() => {
+    if (autoSearchStarted.current) return;
+    if (!initialSource.trim() || !initialDestination.trim()) return;
+    autoSearchStarted.current = true;
+    runSearch(true, true);
+  }, [initialSource, initialDestination, runSearch]);
 
   useEffect(() => {
     if (!hasSearched) return;
@@ -326,7 +350,7 @@ export function SearchBusesContent({
 
   const filteredTrips = useMemo(() => {
     let list = [...trips];
-    if (availableOnly) list = list.filter((t) => t.availableCount > 0);
+    if (availableOnly) list = list.filter((t) => t.availableCount >= passengerCount);
     if (busCategory === "AC") list = list.filter((t) => t.schedule.bus.isAC);
     if (busCategory === "NON_AC") list = list.filter((t) => !t.schedule.bus.isAC);
     if (selectedTimes.size > 0) {
@@ -363,6 +387,7 @@ export function SearchBusesContent({
   }, [
     trips,
     availableOnly,
+    passengerCount,
     busCategory,
     selectedTimes,
     selectedBusTypes,
@@ -523,8 +548,13 @@ export function SearchBusesContent({
   }, [cart, paymentMethod, phone, router]);
 
   const swapCities = () => {
-    setSource(destination);
-    setDestination(source);
+    const nextSource = destination;
+    const nextDestination = source;
+    setSource(nextSource);
+    setDestination(nextDestination);
+    if (hasSearched && nextSource.trim() && nextDestination.trim() && !isSameCity(nextSource, nextDestination)) {
+      runSearch(false, true, { source: nextSource, destination: nextDestination });
+    }
   };
 
   const clearFilters = () => {
@@ -555,7 +585,7 @@ export function SearchBusesContent({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 max-w-full overflow-x-hidden">
       {/* Top search bar */}
       <form
         className="rounded-xl border border-border bg-white p-3 sm:p-4 shadow-soft"
@@ -576,7 +606,7 @@ export function SearchBusesContent({
             <button
               type="button"
               onClick={swapCities}
-              className="mx-auto sm:mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-primary hover:bg-primary/5"
+              className="mx-auto sm:mb-2 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-primary hover:bg-primary/5"
               aria-label="Swap cities"
             >
               <ArrowLeftRight className="h-4 w-4" />
@@ -598,9 +628,16 @@ export function SearchBusesContent({
                 <input
                   type="date"
                   min={todayKey}
+                  max={addDaysKey(todayKey, DATE_RIBBON_DAYS - 1)}
                   value={travelDate}
-                  onChange={(e) => setTravelDate(e.target.value)}
-                  className="w-full min-h-11 rounded-lg border border-border bg-white pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  onChange={(e) => {
+                    const next = e.target.value;
+                    setTravelDate(next);
+                    if (hasSearched && source.trim() && destination.trim()) {
+                      runSearch(true, false, { date: next });
+                    }
+                  }}
+                  className="w-full min-h-11 rounded-lg border border-border bg-input pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                 />
               </div>
             </div>
@@ -621,7 +658,7 @@ export function SearchBusesContent({
               <select
                 value={passengerCount}
                 onChange={(e) => setPassengerCount(Number(e.target.value))}
-                className="w-full min-h-11 rounded-lg border border-border bg-white px-3 text-sm outline-none focus:border-primary"
+                className="w-full min-h-11 rounded-lg border border-border bg-input px-3 text-sm outline-none focus:border-primary"
               >
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
                   <option key={n} value={n}>{n}</option>
@@ -644,8 +681,11 @@ export function SearchBusesContent({
       {/* Date ribbon */}
       <div className="flex gap-2 overflow-x-auto pb-1">
         {dateRibbon.map((key) => {
-          const d = new Date(`${key}T00:00:00`);
-          const label = d.toLocaleDateString("en-GB", { weekday: "short", day: "2-digit" }).toUpperCase();
+          const [year, month, day] = key.split("-").map(Number);
+          const d = new Date(Date.UTC(year, month - 1, day));
+          const label = d
+            .toLocaleDateString("en-GB", { weekday: "short", day: "2-digit", timeZone: "UTC" })
+            .toUpperCase();
           const active = key === travelDate;
           return (
             <button
@@ -653,6 +693,9 @@ export function SearchBusesContent({
               type="button"
               onClick={() => {
                 setTravelDate(key);
+                if (source.trim() && destination.trim()) {
+                  runSearch(false, true, { date: key });
+                }
               }}
               className={cn(
                 "min-w-[72px] rounded-lg border px-3 py-2 text-xs font-semibold transition-colors",
@@ -678,9 +721,25 @@ export function SearchBusesContent({
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-4 items-start">
+      <div className="flex justify-end lg:hidden">
+        <button
+          type="button"
+          onClick={() => setMobileFiltersOpen((v) => !v)}
+          className="inline-flex items-center gap-2 rounded-[10px] border border-border bg-white px-4 py-2 text-sm font-semibold text-ink shadow-soft min-h-11"
+        >
+          <SlidersHorizontal className="h-4 w-4 text-primary" />
+          {mobileFiltersOpen ? "Hide filters" : "Filters & sort"}
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[min(100%,280px)_1fr] gap-4 items-start">
         {/* Filters */}
-        <aside className="rounded-xl border border-border bg-white p-4 space-y-4 shadow-soft lg:sticky lg:top-20">
+        <aside
+          className={cn(
+            "rounded-xl border border-border bg-white p-4 space-y-4 shadow-soft lg:sticky lg:top-20",
+            mobileFiltersOpen ? "block" : "hidden lg:block"
+          )}
+        >
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-ink">All Filters</h2>
             <button type="button" onClick={clearFilters} className="text-xs font-semibold text-primary hover:underline">
@@ -696,7 +755,7 @@ export function SearchBusesContent({
                 onClick={() => setBusCategory(busCategory === "AC" ? "ALL" : "AC")}
                 className={cn(
                   "rounded-lg border px-3 py-2 text-sm font-medium flex items-center justify-center gap-1.5",
-                  busCategory === "AC" ? "border-primary bg-primary/5 text-primary" : "border-border"
+                  busCategory === "AC" ? "border-primary bg-[#E5EFE9] text-primary" : "border-border"
                 )}
               >
                 <Snowflake className="h-4 w-4" /> AC
@@ -706,7 +765,7 @@ export function SearchBusesContent({
                 onClick={() => setBusCategory(busCategory === "NON_AC" ? "ALL" : "NON_AC")}
                 className={cn(
                   "rounded-lg border px-3 py-2 text-sm font-medium",
-                  busCategory === "NON_AC" ? "border-primary bg-primary/5 text-primary" : "border-border"
+                  busCategory === "NON_AC" ? "border-primary bg-[#E5EFE9] text-primary" : "border-border"
                 )}
               >
                 NON AC
@@ -724,7 +783,7 @@ export function SearchBusesContent({
                   onClick={() => toggleSetValue(selectedBusTypes, type, setSelectedBusTypes)}
                   className={cn(
                     "rounded-full border px-3 py-1 text-xs font-medium",
-                    selectedBusTypes.has(type) ? "border-primary bg-primary text-white" : "border-border"
+                    selectedBusTypes.has(type) ? "border-primary bg-[#E5EFE9] text-primary" : "border-border"
                   )}
                 >
                   {type.replace("_", "-")}
@@ -857,8 +916,14 @@ export function SearchBusesContent({
             </div>
           </div>
 
-          {usedFallback && hasSearched && (
-            <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">
+          {searchError && hasSearched && (
+            <div className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-ink">
+              Couldn&apos;t load available buses. Check your connection and click Search again.
+            </div>
+          )}
+
+          {usedFallback && hasSearched && !searchError && (
+            <div className="rounded-lg border border-amber-500/30 bg-amber-50 px-4 py-3 text-sm text-ink">
               No buses on <strong>{formatDate(travelDate)}</strong>. Showing nearby dates
               {fallbackDates.length > 0 && <> ({fallbackDates.map((d) => formatDate(d)).join(", ")})</>}.
             </div>
@@ -882,7 +947,11 @@ export function SearchBusesContent({
           {!pending && hasSearched && filteredTrips.length === 0 && (
             <Card>
               <CardContent className="p-10 text-center text-muted-foreground">
-                No buses match your filters. Try clearing filters or another date.
+                {searchError
+                  ? "Available buses could not be loaded right now."
+                  : trips.length === 0
+                    ? "No upcoming buses for this route. Try another date or city."
+                    : "No buses match your filters. Try clearing filters or another date."}
               </CardContent>
             </Card>
           )}
@@ -926,8 +995,8 @@ export function SearchBusesContent({
                           <Bus className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 bg-white text-primary" />
                         </div>
                         <div className="flex justify-center gap-2 text-[11px] font-medium text-muted-foreground">
-                          {trip.schedule.bus.isAC && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">AC</span>}
-                          <span className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700">{trip.schedule.bus.busType}</span>
+                          {trip.schedule.bus.isAC && <span className="rounded bg-[#E5EFE9] px-1.5 py-0.5 text-primary">AC</span>}
+                          <span className="rounded bg-[#F7F3E9] px-1.5 py-0.5 text-ink">{trip.schedule.bus.busType}</span>
                         </div>
                       </div>
                       <div className="min-w-0 text-right">
@@ -940,12 +1009,12 @@ export function SearchBusesContent({
                       <div className="text-left md:text-right">
                         <p className="text-xs text-muted-foreground">Seats left: {trip.availableCount}</p>
                         {savings > 0 && (
-                          <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 mb-1">
+                          <Badge className="bg-[#27845B]/12 text-[#27845B] hover:bg-[#27845B]/12 mb-1">
                             Savings {formatCurrency(savings)}
                           </Badge>
                         )}
                         <p className="text-xs text-muted-foreground line-through">{formatCurrency(fakeMrp)}</p>
-                        <p className="text-2xl font-extrabold text-primary">{formatCurrency(listFare)}</p>
+                        <p className="text-2xl font-extrabold text-accent">{formatCurrency(listFare)}</p>
                       </div>
                       <Button
                         type="button"
@@ -979,10 +1048,10 @@ export function SearchBusesContent({
                 </div>
 
                 <div className="rounded-lg bg-muted/50 p-3 text-xs text-muted-foreground flex flex-wrap gap-4">
-                  <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-green-500" /> Available</span>
+                  <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded border border-[#E8E2D5] bg-white" /> Available</span>
                   <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-primary" /> Selected</span>
-                  <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-red-500" /> Booked</span>
-                  <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-amber-400" /> AI pick</span>
+                  <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-[#D9D9D3]" /> Booked</span>
+                  <span className="flex items-center gap-1.5"><span className="h-4 w-4 rounded bg-[#E9A23B]" /> AI pick</span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end rounded-xl border border-primary/25 bg-primary/5 p-4">
@@ -1030,14 +1099,14 @@ export function SearchBusesContent({
                       onClick={() => toggleSeat(seat)}
                       title={`Seat ${seat.seatNumber} (${seat.seatType})`}
                       className={cn(
-                        "h-10 rounded-lg text-xs font-medium border transition-all",
+                        "h-11 min-h-11 rounded-[10px] text-xs font-medium border transition-all",
                         !seat.isAvailable
-                          ? `${SEAT_COLORS.BOOKED.bg} text-white cursor-not-allowed border-transparent`
+                          ? `${SEAT_COLORS.BOOKED.bg} ${SEAT_COLORS.BOOKED.text} cursor-not-allowed border-transparent`
                           : selectedSeatIds.has(seat.id)
                             ? aiReasons.some((r) => r.startsWith(seat.seatNumber))
-                              ? "bg-amber-500 text-white border-transparent ring-2 ring-amber-300"
+                              ? "bg-[#E9A23B] text-white border-transparent ring-2 ring-[#E9A23B]/40"
                               : "bg-primary text-white border-transparent"
-                            : "bg-green-100 hover:bg-green-200 dark:bg-green-900/30 border-green-300"
+                            : "bg-white hover:bg-[#E5EFE9] border-[#E8E2D5] text-ink"
                       )}
                     >
                       {seat.seatNumber}
